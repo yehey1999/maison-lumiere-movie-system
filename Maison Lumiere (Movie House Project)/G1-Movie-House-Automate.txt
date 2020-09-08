@@ -1,5 +1,0 @@
-A movie house selling copies of DVDs to its customers wants to automate its record keeping transactions.The system generally does the following:
- 1.) A landing page showing information about the company is displayed on the screen. Menu (or links) for User login.
- 2.) A user (whom the owner wants to be the admin of the system) will register a customer and/or product.
- 3.) Once the user successfully logs in the system, a dashboard (with a set of menu) appears on the screen. 
- Refer to PDF for more details.
