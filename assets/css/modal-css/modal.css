@@ -1,0 +1,91 @@
+#customer-modal-img{
+    height: 100px;
+    width: 100px;
+}
+
+.customer-form-body{
+    min-height: 290px;
+}
+
+#modal-header{
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+}
+
+
+#modal-title{
+    font-size: 32px;
+}
+
+/* Mark input boxes that gets an error on validation: */
+input.invalid {
+    background-color: #ffdddd;
+}
+
+/* Hide all steps by default: */
+.tab {
+    display: none;
+}
+
+/* Make circles that indicate the steps of the form: */
+
+.steps-indicator{
+    text-align: center;
+    margin-top: 40px;
+    width: 100%; 
+    position: relative;
+}
+
+.step {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbbbbb;
+    border: none;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.6;
+}
+
+/* Mark the active step: */
+.step.active {
+    opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+    background-color: #4CAF50;
+}
+
+#editBtn{
+    position: absolute;
+    right: 2rem;
+    top: -0.5rem;
+}
+
+#nextBtn, #submitBtn{
+    width: 100%;
+    border-radius: 2rem;
+}
+
+#prevBtn{
+    width: 100%;
+    border-radius: 2rem;
+}
+
+#saveBtn, #discardBtn{
+    border-radius: 2rem;
+}
+
+.modal-footer{
+    padding-right: 2rem;
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,25 @@
+#card-header{
+    position: relative;
+}
+
+h2{
+    margin-bottom: 2rem;
+}
+
+#addBtn{
+    position: relative;
+    position: absolute;
+    border-radius: 50%;
+    height: 4rem;
+    width: 4rem;
+    bottom: -2rem;
+    border: 5px solid #fff;
+    display: flex;
+    justify-content: center;    
+    align-items: center;    
+    color: #fff;
+}
+
+.date-range{
+    margin-bottom: 2rem;
+}

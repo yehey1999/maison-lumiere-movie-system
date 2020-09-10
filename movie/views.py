@@ -1,0 +1,13 @@
+from django.shortcuts import render
+from django.http import HttpResponse
+from django.views.generic import View
+
+# Create your views here.
+
+class MovieIndexRegister(View):
+    def get(self, request):
+        return render(request, 'movie-registration.html')
+
+class MovieIndexView(View):
+    def get(self, request):
+        return render(request, 'movie-summary.html')
