@@ -5,15 +5,37 @@ body {
     height: 100%;
 }
 
+.navbar-wrapper {
+    position: absolute;
+    top: 6px;
+    right: 70px;
+    left: 0;
+    z-index: 20;
+  }
+  
+.nav-link {
+    font-family: 'Montserrat', sans;
+    font-size: 2vw;
+    color: white;
+}
+.nav-link:hover{
+    color:#feb11e;
+}
+
 .carousel,
 .item,
 .active {
     height: 100%;
 }
 
-
 .carousel-inner {
     height: 100%;
+}
+
+#custom-btn {
+    font-size:1.2vw; 
+    border-radius: 1rem; 
+    color: beige;
 }
 
 /* Background images are set within the HTML using inline CSS, not here */

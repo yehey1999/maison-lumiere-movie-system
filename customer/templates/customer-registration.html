@@ -26,7 +26,7 @@
 
     <!-- Navigation Start -->
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-        <a href="index.html" class="navbar-brand" id="logo-holder">
+        <a href="/" class="navbar-brand" id="logo-holder">
             <img id="logo" src="{% static 'img/maison-lumiere-logo.png' %}" alt="Logo" />
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,8 +44,8 @@
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Summary</a>
                 <div class="dropdown-menu">
-                  <a class="dropdown-item" href="/customer/">Customer</a>
-                  <a class="dropdown-item" href="/movie/">DVD</a>
+                  <a class="dropdown-item" href="/customer">Customer</a>
+                  <a class="dropdown-item" href="/movie">DVD</a>
                 </div>
               </li>
               <li class="nav-item">
@@ -256,9 +256,10 @@
     <!-- Footer End -->
 
     <!-- Form Scripts -->
-    <script src="{% static '/js/app.js' %}"></script>
-    <!--<script src="{% static '/js/validation.js' %}"></script>-->
-    <script src="{% static '/js/modal-js/upload.js' %}" type="text/javascript"></script>
+    <script src="{% static './js/app.js' %}"></script>
+    <!--<script src="./js/validation.js"></script>!-->
+
+    <script src="{% static './js/modal-js/upload.js' %}" type="text/javascript"></script>
     
     <!-- Bootstrap Scripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
