@@ -252,11 +252,12 @@
                     <div class="modal-body">
                         
                         <!-- Circles which indicates the steps of the form: -->
-                        <div class="steps-indicator">
+                        <div class="steps-indicator" style="position: relative">
                             <span id="customer-step" class="step"></span>
                             <span id="customer-step" class="step"></span>
                             <span id="customer-step" class="step"></span>
                             <span id="customer-step" class="step"></span>
+                            <button class="btn btn-primary btn-xs" id="editBtn" style="position:absolute; right: 1.2rem; top: -0.5rem"><i class="fa fa-pen" id="editBtnIcon"></i></button>
                         </div>
                     
                         <!-- Customer Form -->
@@ -271,35 +272,35 @@
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label class="">Last Name</label>
-                                        <input name="last-name" id="last-name" type="text" class="form-control" placeholder="Last Name" value="Last Name"> 
+                                        <input name="last-name" id="input-text" type="text" class="form-control" placeholder="Last Name" value="Last Name" disabled> 
                                         <div class="invalid-feedback">
                                             Please provide a valid Last Name.
                                         </div>
                                     </div>
                                     <div class="form-group col-md-6 ">
                                         <label>First Name</label>
-                                        <input name="first-name" id="first-name" type="text" class="form-control" placeholder="First Name" value="First Name">
+                                        <input name="first-name" id="input-text" type="text" class="form-control" placeholder="First Name" value="First Name" disabled>
                                         <div class="invalid-feedback">
                                             Please provide a valid First Name.
                                         </div>
                                     </div>
                                     <div class="form-group col-md-6 ">
                                         <label>Middle Name</label>
-                                        <input name="middle-name" id="middle-name" type="text" class="form-control" placeholder="Middle Name" value="Middle Name" >
+                                        <input name="middle-name" id="input-text" type="text" class="form-control" placeholder="Middle Name" value="Middle Name" disabled>
                                         <div class="invalid-feedback">
                                             Please provide a valid Middle Name.
                                         </div>
                                     </div>
                                     <div class="form-group col-md-6 col-xs-4 ">
                                         <label>Gender</label>
-                                        <select name="gender" class="custom-select" id="gender">
+                                        <select name="gender" class="custom-select" id="input-text" disabled>
                                             <option selected value="1">Male</option>
                                             <option value="2">Female</option>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-6 col-xs-4 ">
                                         <label>Status</label>
-                                        <select name="status" class="custom-select" id="status">
+                                        <select name="status" class="custom-select" id="input-text" disabled>
                                             <option selected value="single">Single</option>
                                             <option value="married">Married</option>
                                             <option value="widow">Widow</option>
@@ -307,7 +308,7 @@
                                     </div>
                                     <div class="form-group col-md-6 col-xs-4">
                                         <label>Birthdate</label>
-                                        <input name="birthdate" id="birthdate" type="date" class="form-control" id="formGroupExampleInput" placeholder="Birthdate" value="2014-02-09">
+                                        <input name="birthdate" id="input-text" type="date" class="form-control" id="formGroupExampleInput" placeholder="Birthdate" value="2014-02-09" disabled>
                                         <div class="invalid-feedback">
                                             Please provide a valid Birthdate.
                                         </div>
@@ -323,28 +324,28 @@
                                     </div>
                                     <div class="form-group col-md-6 text-left">
                                         <label>Street</label>
-                                        <input name="street" id="street" type="text" class="form-control" id="formGroupExampleInput" placeholder="Street" value="Street">
+                                        <input name="street" id="input-text" type="text" class="form-control" id="formGroupExampleInput" placeholder="Street" value="Street" disabled>
                                         <div class="invalid-feedback">
                                             Please provide a valid Street Name.
                                         </div>
                                     </div>
                                     <div class="form-group col-md-6 text-left">
                                         <label>Barangay</label>
-                                        <input name="barangay" id="barangay" type="text" class="form-control" id="formGroupExampleInput" placeholder="Barangay" value="Barangay">
+                                        <input name="barangay" id="input-text" type="text" class="form-control" id="formGroupExampleInput" placeholder="Barangay" value="Barangay" disabled>
                                         <div class="invalid-feedback">
                                             Please provide a valid Barangay.
                                         </div>
                                     </div>
                                     <div class="form-group col-md-6 text-left">
                                         <label>City</label>
-                                        <input name="city" id="city" type="text" class="form-control" id="formGroupExampleInput" placeholder="City" value="City"  >
+                                        <input name="city" id="input-text" type="text" class="form-control" id="formGroupExampleInput" placeholder="City" value="City"  disabled>
                                         <div class="invalid-feedback">
                                             Please provide a valid City.
                                         </div>
                                     </div>
                                     <div class="form-group col-md-6 text-left">
                                         <label>Province</label>
-                                        <select name="province" id="province" class="custom-select">
+                                        <select name="province" id="input-text" class="custom-select" disabled>
                                             <option selected value="2">Bohol</option>
                                             <option value="1">Cebu</option>
                                             <option value="2">Manila</option>
@@ -352,7 +353,7 @@
                                     </div>
                                     <div class="form-group col-md-6 text-left">
                                         <label>Zip Code </label>
-                                        <input name="zip-code" id="zip-code" type="text" class="form-control" id="formGroupExampleInput" placeholder="Zip Code" value="Zip Code">
+                                        <input name="zip-code" id="input-text" type="text" class="form-control" id="formGroupExampleInput" placeholder="Zip Code" value="Zip Code" disabled>
                                         <div class="invalid-feedback">
                                             Please provide a Zip Code.
                                         </div>
@@ -368,21 +369,21 @@
                                     </div>
                                     <div class="form-group col-md-6 text-left">
                                         <label>Spouse Name</label>
-                                        <input name="spouse-name" id="spouse-name" type="text" class="form-control" id="formGroupExampleInput" placeholder="Street" value="Spouse Name">
+                                        <input name="spouse-name" id="input-text" type="text" class="form-control" id="formGroupExampleInput" placeholder="Street" value="Spouse Name" disabled>
                                         <div class="invalid-feedback">
                                             Please provide a valid Spouse Name.
                                         </div>
                                     </div>
                                     <div class="form-group col-md-6 text-left">
                                         <label>Spouse Occupation</label>
-                                        <input name="spouse-occupation" id="spouse-occupation" type="text" class="form-control" id="formGroupExampleInput" placeholder="Barangay" value="Spouse Occupation">
+                                        <input name="spouse-occupation" id="input-text" type="text" class="form-control" id="formGroupExampleInput" placeholder="Barangay" value="Spouse Occupation" disabled>
                                         <div class="invalid-feedback">
                                             Please provide a valid Spouse Occupation.
                                         </div>
                                     </div>
                                     <div class="form-group col-md-6 text-left">
                                         <label>No. Of Children</label>
-                                            <input name="no-of-children" id="no-of-children" type="number" min="0" max="50" class="form-control" id="formGroupExampleInput" value="0" placeholder="0" >
+                                            <input name="no-of-children" id="input-text" type="number" min="0" max="50" class="form-control" id="formGroupExampleInput" value="0" placeholder="0" disabled>
                                     </div>
                                     </div>
                                 </div>
@@ -399,7 +400,7 @@
                                         <div class="upload-button">
                                             <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
                                         </div>
-                                        <input class="file-upload" type="file" accept="image/*" id="formGroupExampleInput"/>
+                                        <input class="file-upload" type="file" accept="image/*" id="input-text" disabled/>
                                         </div>
                                     </div>
                                     </div>
@@ -419,8 +420,8 @@
                             </div>
 
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary btn-danger col-sm-2" data-dismiss="modal" id="discardBtn">Discard</button>
-                                <button type="submit" class="btn col-md-4 col-sm-6 btn-primary btn-success" id="saveBtn">Save changes</button>
+                                <button type="button" class="btn btn-secondary btn-danger col-sm-2 d-none" data-dismiss="modal" id="discardBtn">Discard</button>
+                                <button type="submit" class="btn col-md-4 col-sm-6 btn-primary btn-success d-none" id="saveBtn">Save changes</button>
                             </div>
 
                         </form>  
