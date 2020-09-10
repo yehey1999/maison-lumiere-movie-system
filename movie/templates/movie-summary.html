@@ -26,8 +26,10 @@
 
         <!-- For Modals -->
         <link rel="stylesheet" href="{% static 'css/modal-css/modal.css' %}">
-        <script src="https://use.fontawesome.com/a39946fcdf.js"></script>
+        <!--<script src="https://use.fontawesome.com/a39946fcdf.js"></script>-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+        <script src="https://kit.fontawesome.com/fe2108eefd.js" crossorigin="anonymous"></script>
 
     </head>
 
@@ -85,6 +87,7 @@
                     <input id="min-date" type="date" />
                     <label>to</label>
                     <input id="max-date" type="date" />
+                    <button class="btn btn-light ml-2" id="refresh-btn"><i class="fas fa-redo" ></i></button>
                 </div>
                 
                 <section>
@@ -98,7 +101,7 @@
                                 <th>Release Date</th>
                                 <th>Price</th>
                                 <th>No. of Items</th>
-                                <th><i class="fa fa-plus"></i></th>
+                                <th></th>
                             </tr>
                         </thead>
 
@@ -112,7 +115,7 @@
                                 <td data-title="No. of Items" class="align-middle">100 pcs</td>
                                 <td class="align-middle">
                                     <button class="btn btn-success btn-xs" id="viewBtn"   data-toggle="modal" data-target="#modal-edit">  <i class="fa fa-eye"></i></button>
-                                    <button class="btn btn-danger  btn-xs" id="deleteBtn" data-toggle="modal" data-target="#modal-delete"><i class="fa fa-trash-o "></i></button>
+                                    <button class="btn btn-danger  btn-xs" id="deleteBtn" data-toggle="modal" data-target="#modal-delete"><i class="fas fa-trash-alt "></i></button>
                                 </td>
                             </tr>
                             <tr>
@@ -124,7 +127,7 @@
                                 <td data-title="No. of Items" class="align-middle">100 pcs</td>
                                 <td class="align-middle">
                                     <button class="btn btn-success btn-xs" id="viewBtn"   data-toggle="modal" data-target="#modal-edit">  <i class="fa fa-eye"></i></button>
-                                    <button class="btn btn-danger  btn-xs" id="deleteBtn" data-toggle="modal" data-target="#modal-delete"><i class="fa fa-trash-o "></i></button>
+                                    <button class="btn btn-danger  btn-xs" id="deleteBtn" data-toggle="modal" data-target="#modal-delete"><i class="fas fa-trash-alt "></i></button>
                                 </td>
                             </tr>
                             <tr>
@@ -136,7 +139,7 @@
                                 <td data-title="No. of Items" class="align-middle">100 pcs</td>
                                 <td class="align-middle">
                                     <button class="btn btn-success btn-xs" id="viewBtn"   data-toggle="modal" data-target="#modal-edit">  <i class="fa fa-eye"></i></button>
-                                    <button class="btn btn-danger  btn-xs" id="deleteBtn" data-toggle="modal" data-target="#modal-delete"><i class="fa fa-trash-o "></i></button>
+                                    <button class="btn btn-danger  btn-xs" id="deleteBtn" data-toggle="modal" data-target="#modal-delete"><i class="fas fa-trash-alt "></i></button>
                                 </td>
                             </tr>
                             <tr>
@@ -148,7 +151,7 @@
                                 <td data-title="No. of Items" class="align-middle">100 pcs</td>
                                 <td class="align-middle">
                                     <button class="btn btn-success btn-xs" id="viewBtn"   data-toggle="modal" data-target="#modal-edit">  <i class="fa fa-eye"></i></button>
-                                    <button class="btn btn-danger  btn-xs" id="deleteBtn" data-toggle="modal" data-target="#modal-delete"><i class="fa fa-trash-o "></i></button>
+                                    <button class="btn btn-danger  btn-xs" id="deleteBtn" data-toggle="modal" data-target="#modal-delete"><i class="fas fa-trash-alt "></i></button>
                                 </td>
                             </tr>
                             <tr>
@@ -160,7 +163,7 @@
                                 <td data-title="No. of Items" class="align-middle">100 pcs</td>
                                 <td class="align-middle">
                                     <button class="btn btn-success btn-xs" id="viewBtn"   data-toggle="modal" data-target="#modal-edit">  <i class="fa fa-eye"></i></button>
-                                    <button class="btn btn-danger  btn-xs" id="deleteBtn" data-toggle="modal" data-target="#modal-delete"><i class="fa fa-trash-o "></i></button>
+                                    <button class="btn btn-danger  btn-xs" id="deleteBtn" data-toggle="modal" data-target="#modal-delete"><i class="fas fa-trash-alt "></i></button>
                                 </td>
                             </tr>
                             <tr>
@@ -172,7 +175,7 @@
                                 <td data-title="No. of Items" class="align-middle">100 pcs</td>
                                 <td class="align-middle">
                                     <button class="btn btn-success btn-xs" id="viewBtn"   data-toggle="modal" data-target="#modal-edit">  <i class="fa fa-eye"></i></button>
-                                    <button class="btn btn-danger  btn-xs" id="deleteBtn" data-toggle="modal" data-target="#modal-delete"><i class="fa fa-trash-o "></i></button>
+                                    <button class="btn btn-danger  btn-xs" id="deleteBtn" data-toggle="modal" data-target="#modal-delete"><i class="fas fa-trash-alt "></i></button>
                                 </td>
                             </tr>
                             <tr>
@@ -184,7 +187,7 @@
                                 <td data-title="No. of Items" class="align-middle">100 pcs</td>
                                 <td class="align-middle">
                                     <button class="btn btn-success btn-xs" id="viewBtn"   data-toggle="modal" data-target="#modal-edit">  <i class="fa fa-eye"></i></button>
-                                    <button class="btn btn-danger  btn-xs" id="deleteBtn" data-toggle="modal" data-target="#modal-delete"><i class="fa fa-trash-o "></i></button>
+                                    <button class="btn btn-danger  btn-xs" id="deleteBtn" data-toggle="modal" data-target="#modal-delete"><i class="fas fa-trash-alt "></i></button>
                                 </td>
                             </tr>
                             <tr>
@@ -196,7 +199,7 @@
                                 <td data-title="No. of Items" class="align-middle">100 pcs</td>
                                 <td class="align-middle">
                                     <button class="btn btn-success btn-xs" id="viewBtn"   data-toggle="modal" data-target="#modal-edit">  <i class="fa fa-eye"></i></button>
-                                    <button class="btn btn-danger  btn-xs" id="deleteBtn" data-toggle="modal" data-target="#modal-delete"><i class="fa fa-trash-o "></i></button>
+                                    <button class="btn btn-danger  btn-xs" id="deleteBtn" data-toggle="modal" data-target="#modal-delete"><i class="fas fa-trash-alt "></i></button>
                                 </td>
                             </tr>
                         </tbody>
@@ -480,12 +483,12 @@
         <script type="text/javascript" src="https://cdn.datatables.net/searchpanes/1.1.1/js/dataTables.searchPanes.min.js"></script>
 
         <script>
-            $('.data-table').DataTable({
-                lengthMenu: [[5, 10, 20, 50, 100, -1], [5, 10, 20, 50, 100, "All"]],
-                searching: true
-            });
-
             $(document).ready(function() {
+                $('.data-table').DataTable({
+                    lengthMenu: [[5, 10, 20, 50, 100, -1], [5, 10, 20, 50, 100, "All"]],
+                    searching: true
+                });
+
                 let table = $('.data-table').DataTable();
                 
                 // Add event listeners to the two range filtering inputs
@@ -495,15 +498,22 @@
                 $('#min-date').change( function() { table.draw(); } );
                 $('#max-date').change( function() { table.draw(); } );
 
+                $('#refresh-btn').click( () => {
+                    $('#min-date').val("");
+                    $('#max-date').val("");
+
+                    table.draw();
+                });
+
                 $.fn.dataTableExt.afnFiltering.push(
                     ( settings, data, dataIndex ) => {
-                        let FilterStart = $('#min-date').val();
-                        let FilterEnd = $('#max-date').val();
-                        let DataTableStart = data[0].trim();
+                        let minDate = $('#min-date').val();
+                        let maxDate = $('#max-date').val();
+                        let date = data[0].trim();
 
-                        if (FilterStart == '' || FilterEnd == '')
+                        if (minDate === '' || maxDate === '')
                             return true;
-                        if (DataTableStart >= FilterStart && DataTableStart <= FilterEnd)
+                        if (date >= minDate && date <= maxDate)
                             return true;
                         else 
                             return false;

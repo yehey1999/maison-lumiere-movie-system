@@ -27,8 +27,11 @@
         <link rel="stylesheet" href="{% static 'css/modal-css/modal.css' %}">
         <link rel="stylesheet" href="{% static 'css/modal-css/avatar.css' %}">
         <link rel="stylesheet" href="{% static 'css/content.css' %}">
-        <script src="https://use.fontawesome.com/a39946fcdf.js"></script>
+        <!--<script src="https://use.fontawesome.com/a39946fcdf.js"></script>-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+        <script src="https://kit.fontawesome.com/fe2108eefd.js" crossorigin="anonymous"></script>
+    
     </head>
 
     <body class="bg-light">
@@ -85,6 +88,7 @@
                     <input id="min-date" type="date" />
                     <label>to</label>
                     <input id="max-date" type="date" />
+                    <button class="btn btn-light ml-2" id="refresh-btn"><i class="fas fa-redo" ></i></button>
                 </div>
 
                 <section id="no-more-tables">
@@ -109,7 +113,7 @@
                                 <td data-title="Address City" class="align-middle">Cebu City</td>
                                 <td class="align-middle">
                                     <button class="btn btn-success btn-xs" id="viewBtn" data-toggle="modal" data-target="#modal-edit"><i class="fa fa-eye"></i></button>
-                                    <button class="btn btn-danger  btn-xs" id="deleteBtn" data-toggle="modal" data-target="#modal-delete"><i class="fa fa-trash-o "></i></button>
+                                    <button class="btn btn-danger  btn-xs" id="deleteBtn" data-toggle="modal" data-target="#modal-delete"><i class="fas fa-trash-alt "></i></button>
                                 </td>
                             </tr>
                             <tr>
@@ -120,7 +124,7 @@
                                 <td data-title="Address City" class="align-middle">Cebu City</td>
                                 <td class="align-middle">
                                     <button class="btn btn-success btn-xs" id="viewBtn" data-toggle="modal" data-target="#modal-edit"><i class="fa fa-eye"></i></button>
-                                    <button class="btn btn-danger  btn-xs" id="deleteBtn" data-toggle="modal" data-target="#modal-delete"><i class="fa fa-trash-o "></i></button>
+                                    <button class="btn btn-danger  btn-xs" id="deleteBtn" data-toggle="modal" data-target="#modal-delete"><i class="fas fa-trash-alt "></i></button>
                                 </td>
                             </tr>
                             <tr>
@@ -131,7 +135,7 @@
                                 <td data-title="Address City" class="align-middle">Cebu City</td>
                                 <td class="align-middle">
                                     <button class="btn btn-success btn-xs" id="viewBtn" data-toggle="modal" data-target="#modal-edit"><i class="fa fa-eye"></i></button>
-                                    <button class="btn btn-danger  btn-xs" id="deleteBtn" data-toggle="modal" data-target="#modal-delete"><i class="fa fa-trash-o "></i></button>
+                                    <button class="btn btn-danger  btn-xs" id="deleteBtn" data-toggle="modal" data-target="#modal-delete"><i class="fas fa-trash-alt "></i></button>
                                 </td>
                             </tr>
                             <tr>
@@ -142,7 +146,7 @@
                                 <td data-title="Address City" class="align-middle">Cebu City</td>
                                 <td class="align-middle">
                                     <button class="btn btn-success btn-xs" id="viewBtn" data-toggle="modal" data-target="#modal-edit"><i class="fa fa-eye"></i></button>
-                                    <button class="btn btn-danger  btn-xs" id="deleteBtn" data-toggle="modal" data-target="#modal-delete"><i class="fa fa-trash-o "></i></button>
+                                    <button class="btn btn-danger  btn-xs" id="deleteBtn" data-toggle="modal" data-target="#modal-delete"><i class="fas fa-trash-alt "></i></button>
                                 </td>
                             </tr>
                             <tr>
@@ -153,7 +157,7 @@
                                 <td data-title="Address City" class="align-middle">Cebu City</td>
                                 <td class="align-middle">
                                     <button class="btn btn-success btn-xs" id="viewBtn" data-toggle="modal" data-target="#modal-edit"><i class="fa fa-eye"></i></button>
-                                    <button class="btn btn-danger  btn-xs" id="deleteBtn" data-toggle="modal" data-target="#modal-delete"><i class="fa fa-trash-o "></i></button>
+                                    <button class="btn btn-danger  btn-xs" id="deleteBtn" data-toggle="modal" data-target="#modal-delete"><i class="fas fa-trash-alt "></i></button>
                                 </td>
                             </tr>
                             <tr>
@@ -164,7 +168,7 @@
                                 <td data-title="Address City" class="align-middle">Cebu City</td>
                                 <td class="align-middle">
                                     <button class="btn btn-success btn-xs" id="viewBtn" data-toggle="modal" data-target="#modal-edit"><i class="fa fa-eye"></i></button>
-                                    <button class="btn btn-danger  btn-xs" id="deleteBtn" data-toggle="modal" data-target="#modal-delete"><i class="fa fa-trash-o "></i></button>
+                                    <button class="btn btn-danger  btn-xs" id="deleteBtn" data-toggle="modal" data-target="#modal-delete"><i class="fas fa-trash-alt "></i></button>
                                 </td>
                             </tr>
                             <tr>
@@ -175,7 +179,7 @@
                                 <td data-title="Address City" class="align-middle">Cebu City</td>
                                 <td class="align-middle">
                                     <button class="btn btn-success btn-xs" id="viewBtn" data-toggle="modal" data-target="#modal-edit"><i class="fa fa-eye"></i></button>
-                                    <button class="btn btn-danger  btn-xs" id="deleteBtn" data-toggle="modal" data-target="#modal-delete"><i class="fa fa-trash-o "></i></button>
+                                    <button class="btn btn-danger  btn-xs" id="deleteBtn" data-toggle="modal" data-target="#modal-delete"><i class="fas fa-trash-alt "></i></button>
                                 </td>
                             </tr>
                             <tr>
@@ -186,7 +190,7 @@
                                 <td data-title="Address City" class="align-middle">Cebu City</td>
                                 <td class="align-middle">
                                     <button class="btn btn-success btn-xs" id="viewBtn" data-toggle="modal" data-target="#modal-edit"><i class="fa fa-eye"></i></button>
-                                    <button class="btn btn-danger  btn-xs" id="deleteBtn" data-toggle="modal" data-target="#modal-delete"><i class="fa fa-trash-o "></i></button>
+                                    <button class="btn btn-danger  btn-xs" id="deleteBtn" data-toggle="modal" data-target="#modal-delete"><i class="fas fa-trash-alt "></i></button>
                                 </td>
                             </tr>
                             <tr>
@@ -197,7 +201,7 @@
                                 <td data-title="Address City" class="align-middle">Cebu City</td>
                                 <td class="align-middle">
                                     <button class="btn btn-success btn-xs" id="viewBtn" data-toggle="modal" data-target="#modal-edit"><i class="fa fa-eye"></i></button>
-                                    <button class="btn btn-danger  btn-xs" id="deleteBtn" data-toggle="modal" data-target="#modal-delete"><i class="fa fa-trash-o "></i></button>
+                                    <button class="btn btn-danger  btn-xs" id="deleteBtn" data-toggle="modal" data-target="#modal-delete"><i class="fas fa-trash-alt "></i></button>
                                 </td>
                             </tr>
                             <tr>
@@ -208,7 +212,7 @@
                                 <td data-title="Address City" class="align-middle">Cebu City</td>
                                 <td class="align-middle">
                                     <button class="btn btn-success btn-xs" id="viewBtn" data-toggle="modal" data-target="#modal-edit"><i class="fa fa-eye"></i></button>
-                                    <button class="btn btn-danger  btn-xs" id="deleteBtn" data-toggle="modal" data-target="#modal-delete"><i class="fa fa-trash-o "></i></button>
+                                    <button class="btn btn-danger  btn-xs" id="deleteBtn" data-toggle="modal" data-target="#modal-delete"><i class="fas fa-trash-alt "></i></button>
                                 </td>
                             </tr>
                             <tr>
@@ -219,7 +223,7 @@
                                 <td data-title="Address City" class="align-middle">Cebu City</td>
                                 <td class="align-middle">
                                     <button class="btn btn-success btn-xs" id="viewBtn" data-toggle="modal" data-target="#modal-edit"><i class="fa fa-eye"></i></button>
-                                    <button class="btn btn-danger  btn-xs" id="deleteBtn" data-toggle="modal" data-target="#modal-delete"><i class="fa fa-trash-o "></i></button>
+                                    <button class="btn btn-danger  btn-xs" id="deleteBtn" data-toggle="modal" data-target="#modal-delete"><i class="fas fa-trash-alt "></i></button>
                                 </td>
                             </tr>
                         </tbody>
@@ -460,14 +464,14 @@
         <script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
         <script type="text/javascript" src="https://cdn.datatables.net/searchpanes/1.1.1/js/dataTables.searchPanes.min.js"></script>
         
-        <script>
-            $('.data-table').DataTable({
-                lengthMenu: [[5, 10, 20, 50, 100, -1], [5, 10, 20, 50, 100, "All"]],
-                searching: true
-            });
-
+       <script>
             $(document).ready(function() {
-                var table = $('.data-table').DataTable();
+                $('.data-table').DataTable({
+                    lengthMenu: [[5, 10, 20, 50, 100, -1], [5, 10, 20, 50, 100, "All"]],
+                    searching: true
+                });
+
+                let table = $('.data-table').DataTable();
                 
                 // Add event listeners to the two range filtering inputs
                 $('#min-date').keyup( function() { table.draw(); } );
@@ -476,19 +480,25 @@
                 $('#min-date').change( function() { table.draw(); } );
                 $('#max-date').change( function() { table.draw(); } );
 
-                $.fn.dataTableExt.afnFiltering.push(
-                    function( settings, data, dataIndex ) {
-                        let FilterStart = $('#min-date').val();
-                        let FilterEnd = $('#max-date').val();
-                        let DataTableStart = data[0].trim();
+                $('#refresh-btn').click( () => {
+                    $('#min-date').val("");
+                    $('#max-date').val("");
 
-                        if (FilterStart == '' || FilterEnd == '')
+                    table.draw();
+                });
+
+                $.fn.dataTableExt.afnFiltering.push(
+                    ( settings, data, dataIndex ) => {
+                        let minDate = $('#min-date').val();
+                        let maxDate = $('#max-date').val();
+                        let date = data[0].trim();
+
+                        if (minDate === '' || maxDate === '')
                             return true;
-                        if (DataTableStart >= FilterStart && DataTableStart <= FilterEnd)
+                        if (date >= minDate && date <= maxDate)
                             return true;
                         else 
                             return false;
-
                     }
                 );
             });
