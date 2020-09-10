@@ -1,0 +1,88 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!--Website-->
+        <title>Maison Lumière</title>
+        <link rel="icon" type="image/png" href="{% static 'img/icon.png' %}">
+
+        <!--CSS-->
+        <link rel="stylesheet" type="text/css" href="{% static 'css/signUpIn.css' %}">
+
+        <script src="https://kit.fontawesome.com/fe2108eefd.js" crossorigin="anonymous"></script>
+
+
+    </head>
+    
+    <body style="background-image: url('{% static 'img/slide-1.jpg' %}') ">
+
+        <div class="container" id="container">
+            <!-- Sign Up Start -->
+            <div class="form-container sign-up-container">
+                <form>  
+                    <a href="/">
+                        <img src="{% static 'img/logo-small.png' %}" alt="" />
+                    </a>
+                    <h1>Create Account</h1>
+                    <div class="social-container">
+                        <a href="#" class="social"><i id="fbIcon" class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social"><i class="fab fa-google"></i></a>
+                        <a href="#" class="social"><i id="inIcon" class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    <span>or use your email for registration</span>
+                    <input type="email" placeholder="Email" name='signUp_email' required="required"/>
+                    <input type="password" placeholder="Password" name='signUp_password' required="required"/>
+                    <button name='btnSignUp' type="submit" >Sign Up</button>
+                </form>
+            </div>
+            <!-- Sign Up End -->
+
+            <!-- Sign In Start -->
+            <div class="form-container sign-in-container">
+                <form>
+                    <a href="/">
+                        <img src="{% static 'img/logo-small.png' %}" alt="" />
+                    </a>
+                    <h1>Sign in</h1>
+                    <div class="social-container">
+                        <a href="#" class="social"><i id="fbIcon" class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social"><i class="fab fa-google  "></i></a>
+                        <a href="#" class="social"><i id="inIcon" class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    <span>or use your account</span>
+                    <input type="email" placeholder="Email" name='signIn_email' required="required"/>
+                    <input type="password" placeholder="Password" name='signIn_password' required="required"/>
+                    <a href="#">Forgot your password?</a>
+                    <button name='btnSignIn' type="submit">Sign In</button>
+                </form>
+            </div>
+            <!-- Sign In End -->
+
+            <!-- Overlay Start -->
+            <div class="overlay-container">
+                <div class="overlay">
+                    <div class="overlay-panel overlay-left">
+                        <h1>Welcome Back!</h1>
+                        <p>To keep connected with us please login with your personal info</p>
+                        <button class="ghost" id="signIn">Sign In</button>
+                    </div>
+                    <div class="overlay-panel overlay-right">
+                        <h1>Hello, Friend!</h1>
+                        <p>Enter your personal details and start journey with us</p>
+                        <button class="ghost" id="signUp">Sign Up</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Overlay End -->
+            
+        </div>
+        
+        <script src="{% static 'js/signUpIn.js' %}"></script>
+    </body>
+    
+    
+</htmL>

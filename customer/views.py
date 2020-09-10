@@ -11,3 +11,4 @@ class CustomerIndexRegister(View):
 class CustomerIndexView(View):
     def get(self, request):
         return render(request, 'customer-summary.html')
+

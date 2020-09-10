@@ -6,9 +6,9 @@ from django.views.generic import View
 
 class HomeLandingView(View):
     def get(self, request):
-        return HttpResponse('Landing page')
+        return render(request, 'index.html')
 
 class HomeLoginView(View):
     def get(self, request):
-        return HttpResponse('Login page')
+        return render(request, 'signUpIn.html')
         

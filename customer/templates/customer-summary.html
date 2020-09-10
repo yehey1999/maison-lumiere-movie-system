@@ -1,4 +1,5 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -7,7 +8,7 @@
 
         <!--Website-->
         <title>Maison Lumière</title>
-        <link rel="icon" type="image/png" href="img/icon.png">
+        <link rel="icon" type="image/png" href="{% static 'img/icon.png' %}">
 
         <!-- Bootstrap -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -16,18 +17,21 @@
         <link rel="stylesheet" type="text/css" href="{% static 'css/dashboard-style.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome/css/font-awesome.css' %}">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-        
+        <link rel="stylesheet" href="{% static 'css/content.css' %}">
 
         <!--For Tables CSS-->
         <link rel="stylesheet" type="text/css" href="{% static 'css/table-responsive.css' %}">
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"/>
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/searchpanes/1.1.1/css/searchPanes.dataTables.min.css"/> 
-        
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.10.21/b-1.6.3/b-html5-1.6.3/b-print-1.6.3/fh-3.1.7/sp-1.1.1/datatables.min.css"/>
+
         <!--For Modals-->
         <link rel="stylesheet" href="{% static 'css/modal-css/modal.css' %}">
         <link rel="stylesheet" href="{% static 'css/modal-css/avatar.css' %}">
-        <link rel="stylesheet" href="{% static 'css/content.css' %}">
+
         <!--<script src="https://use.fontawesome.com/a39946fcdf.js"></script>-->
+
+        <link rel="stylesheet" href="{% static 'css/content.css' %}">
+        <script src="https://use.fontawesome.com/a39946fcdf.js"></script>
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
         <script src="https://kit.fontawesome.com/fe2108eefd.js" crossorigin="anonymous"></script>
@@ -38,7 +42,7 @@
 
         <!-- Navigation Start -->
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-            <a href="index.html" class="navbar-brand" id="logo-holder">
+            <a href="/" class="navbar-brand" id="logo-holder">
                 <img id="logo" src="{% static 'img/maison-lumiere-logo.png' %}" alt="Logo" />
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,8 +60,8 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Summary</a>
                     <div class="dropdown-menu">
-                    <a class="dropdown-item" href="/customer/">Customer</a>
-                    <a class="dropdown-item" href="/movie/">DVD</a>
+                    <a class="dropdown-item" href="/customer">Customer</a>
+                    <a class="dropdown-item" href="/movie">DVD</a>
                     </div>
                 </li>
                 <li class="nav-item">
@@ -69,7 +73,7 @@
                 </ul>
             </div>
         </nav>
-        <!-- Navigation End-->
+        <!-- Navigation End -->
 
         <!-- Body Start -->
         <div class="container card bg-white border container-customer">
@@ -106,7 +110,7 @@
 
                         <tbody>
                             <tr>
-                                <td data-title="Date Registered" class="align-middle">Jan 1, 1900</td>
+                                <td data-title="Date Registered" class="align-middle">2020-02-01</td>
                                 <td data-title="First Name" class="align-middle">John</td>
                                 <td data-title="Last Name" class="align-middle">Doe</td>
                                 <td data-title="Date of Birth" class="align-middle">Jan 1, 1800</td>
@@ -117,7 +121,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td data-title="Date Registered" class="align-middle">Jan 1, 1900</td>
+                                <td data-title="Date Registered" class="align-middle">2019-02-01</td>
                                 <td data-title="First Name" class="align-middle">John</td>
                                 <td data-title="Last Name" class="align-middle">Doe</td>
                                 <td data-title="Date of Birth" class="align-middle">Jan 1, 1800</td>
@@ -128,7 +132,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td data-title="Date Registered" class="align-middle">Jan 1, 1900</td>
+                                <td data-title="Date Registered" class="align-middle">2019-05-12</td>
                                 <td data-title="First Name" class="align-middle">John</td>
                                 <td data-title="Last Name" class="align-middle">Doe</td>
                                 <td data-title="Date of Birth" class="align-middle">Jan 1, 1800</td>
@@ -139,7 +143,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td data-title="Date Registered" class="align-middle">Jan 1, 1900</td>
+                                <td data-title="Date Registered" class="align-middle">2020-05-09</td>
                                 <td data-title="First Name" class="align-middle">John</td>
                                 <td data-title="Last Name" class="align-middle">Doe</td>
                                 <td data-title="Date of Birth" class="align-middle">Jan 1, 1800</td>
@@ -150,7 +154,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td data-title="Date Registered" class="align-middle">Jan 1, 1900</td>
+                                <td data-title="Date Registered" class="align-middle">2020-11-02</td>
                                 <td data-title="First Name" class="align-middle">John</td>
                                 <td data-title="Last Name" class="align-middle">Doe</td>
                                 <td data-title="Date of Birth" class="align-middle">Jan 1, 1800</td>
@@ -161,7 +165,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td data-title="Date Registered" class="align-middle">Jan 1, 1900</td>
+                                <td data-title="Date Registered" class="align-middle">2020-11-22</td>
                                 <td data-title="First Name" class="align-middle">John</td>
                                 <td data-title="Last Name" class="align-middle">Doe</td>
                                 <td data-title="Date of Birth" class="align-middle">Jan 1, 1800</td>
@@ -172,7 +176,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td data-title="Date Registered" class="align-middle">Jan 1, 1900</td>
+                                <td data-title="Date Registered" class="align-middle">2017-11-02</td>
                                 <td data-title="First Name" class="align-middle">John</td>
                                 <td data-title="Last Name" class="align-middle">Doe</td>
                                 <td data-title="Date of Birth" class="align-middle">Jan 1, 1800</td>
@@ -183,7 +187,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td data-title="Date Registered" class="align-middle">Jan 1, 1900</td>
+                                <td data-title="Date Registered" class="align-middle">2010-09-02</td>
                                 <td data-title="First Name" class="align-middle">John</td>
                                 <td data-title="Last Name" class="align-middle">Doe</td>
                                 <td data-title="Date of Birth" class="align-middle">Jan 1, 1800</td>
@@ -194,7 +198,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td data-title="Date Registered" class="align-middle">Jan 1, 1900</td>
+                                <td data-title="Date Registered" class="align-middle">2020-03-02</td>
                                 <td data-title="First Name" class="align-middle">John</td>
                                 <td data-title="Last Name" class="align-middle">Doe</td>
                                 <td data-title="Date of Birth" class="align-middle">Jan 1, 1800</td>
@@ -205,7 +209,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td data-title="Date Registered" class="align-middle">Jan 1, 1900</td>
+                                <td data-title="Date Registered" class="align-middle">2020-12-12</td>
                                 <td data-title="First Name" class="align-middle">John</td>
                                 <td data-title="Last Name" class="align-middle">Doe</td>
                                 <td data-title="Date of Birth" class="align-middle">Jan 1, 1800</td>
@@ -216,7 +220,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td data-title="Date Registered" class="align-middle">Jan 1, 1900</td>
+                                <td data-title="Date Registered" class="align-middle">2020-09-02</td>
                                 <td data-title="First Name" class="align-middle">John</td>
                                 <td data-title="Last Name" class="align-middle">Doe</td>
                                 <td data-title="Date of Birth" class="align-middle">Jan 1, 1800</td>
@@ -226,6 +230,7 @@
                                     <button class="btn btn-danger  btn-xs" id="deleteBtn" data-toggle="modal" data-target="#modal-delete"><i class="fas fa-trash-alt "></i></button>
                                 </td>
                             </tr>
+
                         </tbody>
                     </table> 
                 </section> 
@@ -461,14 +466,27 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
         
         <!-- Data Table Scripts -->
-        <script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-        <script type="text/javascript" src="https://cdn.datatables.net/searchpanes/1.1.1/js/dataTables.searchPanes.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.10.21/b-1.6.3/b-html5-1.6.3/b-print-1.6.3/fh-3.1.7/sp-1.1.1/datatables.min.js"></script>
         
+
        <script>
             $(document).ready(function() {
                 $('.data-table').DataTable({
+                    dom: 'Bfrtip',
+                    buttons: ['copy', 'excel', 'csv', 'pdf'],
+
                     lengthMenu: [[5, 10, 20, 50, 100, -1], [5, 10, 20, 50, 100, "All"]],
-                    searching: true
+                    searching: true,
+
+                    dom: '<<"row"<"col-sm-4"l><"col-sm-4"B><"col-sm-4"f>> rt <"float-left"i> <"float-right"p>>',
+                    pagingType: 'full_numbers',
+                    fixedHeader: true,
+                    aoColumnDefs: [{
+                        'bSortable': false,
+                        'aTargets': [-1]
+                    }]
                 });
 
                 let table = $('.data-table').DataTable();
