@@ -59,6 +59,7 @@ ROOT_URLCONF = 'maison_lumiere_movie_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        #enable to access templates folder outside
         'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS':   {  

@@ -1,15 +1,7 @@
+{% extends 'base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <!--Website-->
-        <title>Maison Lumière</title>
-        <link rel="icon" type="image/png" href="{% static 'img/icon.png' %}">
-
+    {% block head %}
         <!-- Bootstrap -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
         
@@ -35,46 +27,9 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
         <script src="https://kit.fontawesome.com/fe2108eefd.js" crossorigin="anonymous"></script>
-    
-    </head>
+    {% endblock %} 
 
-    <body class="bg-light">
-
-        <!-- Navigation Start -->
-        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-            <a href="/" class="navbar-brand" id="logo-holder">
-                <img id="logo" src="{% static 'img/maison-lumiere-logo.png' %}" alt="Logo" />
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon text-light"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Registration</a>
-                    <div class="dropdown-menu">
-                    <a class="dropdown-item" href="/customer/register">Customer</a>
-                    <a class="dropdown-item" href="/movie/register">DVD</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Summary</a>
-                    <div class="dropdown-menu">
-                    <a class="dropdown-item" href="/customer">Customer</a>
-                    <a class="dropdown-item" href="/movie">DVD</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./dashboard.html">Dashboard</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Logout</a>
-                </li>
-                </ul>
-            </div>
-        </nav>
-        <!-- Navigation End -->
-
+    {% block body %}
         <!-- Body Start -->
         <div class="container card bg-white border container-customer">
 
@@ -235,7 +190,7 @@
                     </table> 
                 </section> 
             </div>
-           <!-- Table End -->
+        <!-- Table End -->
         </div>
         <!-- Body End-->
         
@@ -430,7 +385,7 @@
             </div>
         </div>
         <!-- Customer Modal End -->
-                       
+                    
         <!--Delete Modal Start-->
         <div class="modal fade" id="modal-delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="static">
             <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
@@ -452,15 +407,9 @@
             </div>
         </div>
         <!--Delete Modal End-->
+    {% endblock %}
 
-        <!-- Footer Start -->
-        <footer class="page-footer font-small bg-secondary text-white">
-            <div class="footer-copyright text-center py-3">
-                © 2020 Copyright Maison Lumière
-            </div>
-        </footer>
-        <!-- Footer End -->
-
+    {% block scripts %}
         <!-- Bootstrap Scripts -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
@@ -472,7 +421,7 @@
         <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.10.21/b-1.6.3/b-html5-1.6.3/b-print-1.6.3/fh-3.1.7/sp-1.1.1/datatables.min.js"></script>
         
 
-       <script>
+        <script>
             $(document).ready(function() {
                 $('.data-table').DataTable({
                     dom: 'Bfrtip',
@@ -527,6 +476,5 @@
         <script src="{% static 'js/modal-js/app.js' %}"></script>
         <script src="{% static 'js/modal-js/upload.js' %}" type="text/javascript"></script>
         <script src="{% static 'js/modal-js/view-edit.js' %}"></script>
+    {% endblock %}
 
-    </body>
-</html>
