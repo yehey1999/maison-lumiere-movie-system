@@ -4,11 +4,11 @@ from django.views.generic import View
 
 # Create your views here.
 
-class CustomerIndexRegister(View):
+class CustomerRegistrationView(View):
     def get(self, request):
         return render(request, 'customer-registration.html')
 
-class CustomerIndexView(View):
+class CustomerSummaryView(View):
     def get(self, request):
         return render(request, 'customer-summary.html')
 

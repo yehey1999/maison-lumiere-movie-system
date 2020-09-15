@@ -4,10 +4,10 @@ from django.views.generic import View
 
 # Create your views here.
 
-class MovieIndexRegister(View):
+class MovieRegistrationView(View):
     def get(self, request):
         return render(request, 'movie-registration.html')
 
-class MovieIndexView(View):
+class MovieSummaryView(View):
     def get(self, request):
         return render(request, 'movie-summary.html')
