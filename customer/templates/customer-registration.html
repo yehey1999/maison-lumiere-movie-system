@@ -33,8 +33,8 @@
         </div>
 
         <!-- Customer Form Start-->
-        <form class="customer-form card-body" id="regForm" action="" autocomplete="off">
-
+        <form class="customer-form card-body" method="POST" id="regForm" action="/customer/register/" enctype="multipart/form-data" autocomplete="off">
+        {% csrf_token %}
           <!-- Form Container Start -->
           <div class="tab-holder container-fluid">
 
@@ -46,21 +46,21 @@
                 </div>
                 <div class="form-group col-md-4">
                   <label class="">Last Name</label>
-                  <input name="last-name" id="input-text" type="text" class="form-control" placeholder="Last Name"> 
+                  <input name="last_name" id="input-text" type="text" class="form-control" placeholder="Last Name"> 
                   <div class="invalid-feedback">
                     Please provide a valid Last Name.
                   </div>
                 </div>
                 <div class="form-group col-md-4 ">
                   <label>First Name</label>
-                  <input name="first-name" id="input-text" type="text" class="form-control" placeholder="First Name" >
+                  <input name="first_name" id="input-text" type="text" class="form-control" placeholder="First Name" >
                   <div class="invalid-feedback">
                     Please provide a valid First Name.
                   </div>
                 </div>
                 <div class="form-group col-md-4 ">
                   <label>Middle Name</label>
-                  <input name="middle-name" id="input-text" type="text" class="form-control" placeholder="Middle Name" >
+                  <input name="middle_name" id="input-text" type="text" class="form-control" placeholder="Middle Name" >
                   <div class="invalid-feedback">
                     Please provide a valid Middle Name.
                   </div>
@@ -68,21 +68,24 @@
                 <div class="form-group col-md-4 col-xs-4 ">
                   <label>Gender</label>
                   <select name="gender" class="custom-select">
-                    <option selected value="1">Male</option>
-                    <option value="2">Female</option>
+                    <option selected value="MALE">Male</option>
+                    <option value="FEMALE">Female</option>
                   </select>
+                  <!-- <input name="gender" id="input-text" type="text" class="form-control" placeholder="Gender" > -->
                 </div>
                 <div class="form-group col-md-4 col-xs-4 ">
                   <label>Status</label>
                   <select name="status" class="custom-select">
-                    <option selected value="single">Single</option>
-                    <option value="married">Married</option>
-                    <option value="widow">Widow</option>
+                    <option selected value="SINGLE">Single</option>
+                    <option value="MARRIED">Married</option>
+                    <option value="DIVORCED">Divorced</option>
+                    <option value="WIDOWED">Widowed</option>
                   </select>
+                  <!-- <input name="status" id="input-text" type="text" class="form-control" placeholder="Status" > -->
                 </div>
                 <div class="form-group col-md-4 col-xs-4 ">
                   <label>Birthdate</label>
-                  <input name="birthdate" id="input-text" type="date" class="form-control" id="formGroupExampleInput" placeholder="Birthdate" >
+                  <input name="birthdate" id="input-text" type="date" class="form-control" placeholder="Birthdate" >
                   <div class="invalid-feedback">
                     Please provide a valid Birthdate.
                   </div>
@@ -99,21 +102,21 @@
                 </div>
                 <div class="form-group col-md-4 ">
                   <label>Street</label>
-                  <input name="spouse-name" id="input-text" type="text" class="form-control" id="formGroupExampleInput" placeholder="Street">
+                  <input name="street" id="input-text" type="text" class="form-control" placeholder="Street">
                   <div class="invalid-feedback">
                     Please provide a valid Spouse Name.
                   </div>
                 </div>
                 <div class="form-group col-md-4 ">
                   <label>Barangay</label>
-                  <input name="barangay" id="input-text" type="text" class="form-control" id="formGroupExampleInput" placeholder="Barangay" >
+                  <input name="barangay" id="input-text" type="text" class="form-control" placeholder="Barangay" >
                   <div class="invalid-feedback">
                     Please provide a valid Barangay.
                   </div>
                 </div>
                 <div class="form-group col-md-4 ">
                   <label>City</label>
-                  <input name="city" id="input-text" type="text" class="form-control" id="formGroupExampleInput" placeholder="City" >
+                  <input name="city" id="input-text" type="text" class="form-control" placeholder="City" >
                   <div class="invalid-feedback">
                     Please provide a valid City.
                   </div>
@@ -128,7 +131,7 @@
                 </div>
                 <div class="form-group col-md-4 ">
                   <label>Zip Code </label>
-                  <input name="zip-code" id="input-text" type="text" class="form-control" id="formGroupExampleInput" placeholder="Zip Code" >
+                  <input name="zipcode" id="input-text" type="text" class="form-control" placeholder="Zip Code" >
                   <div class="invalid-feedback">
                     Please provide a Zip Code.
                   </div>
@@ -145,21 +148,21 @@
                 </div>
                 <div class="form-group col-md-4 ">
                   <label>Spouse Name</label>
-                  <input name="spouse-name" id="input-text" type="text" class="form-control" id="formGroupExampleInput" placeholder="Spouse Name">
+                  <input name="spouse_name" id="input-text" type="text" class="form-control" placeholder="Spouse Name">
                   <div class="invalid-feedback">
                     Please provide a valid Spouse Name.
                   </div>
                 </div>
                 <div class="form-group col-md-4 ">
                   <label>Spouse Occupation</label>
-                  <input name="spouse-occupation" id="input-text" type="text" class="form-control" id="formGroupExampleInput" placeholder="Spouse Occupation" >
+                  <input name="spouse_occupation" id="input-text" type="text" class="form-control" iplaceholder="Spouse Occupation" >
                   <div class="invalid-feedback">
                     Please provide a valid Spouse Occupation.
                   </div>
                 </div>
                 <div class="form-group col-md-4 ">
                   <label>No. Of Children</label>
-                  <input name="no-of-children" id="input-text" type="number" min="0" max="50" class="form-control" id="formGroupExampleInput" value="0" placeholder="0" >
+                  <input name="no_children" id="input-text" type="number" min="0" max="50" class="form-control" value="0" placeholder="0" >
                 </div>
               </div>
             </div>
@@ -177,7 +180,7 @@
                     <div class="upload-button">
                       <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
                     </div>
-                    <input class="file-upload" type="file" accept="image/*" id="formGroupExampleInput"/>
+                    <input name="image" class="file-upload" type="file" accept="image/*"/>
                   </div>
                 </div>
               </div>
