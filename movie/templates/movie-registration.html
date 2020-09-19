@@ -8,6 +8,9 @@
       <!--CSS-->
       <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
       <link rel="stylesheet" href="{% static 'css/dashboard-style.css'  %}">
+      <link rel="stylesheet" href="{% static 'css/loader.css'  %}">
+      <link rel="stylesheet" href="{% static 'css/form.css'  %}">
+      <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
     {% endblock %} 
 
     {% block body %}
@@ -15,227 +18,237 @@
       <div class="container card bg-white border">
 
         <!-- Title Start -->
-        <div id="card-header" class="card-header bg-dark text-light">
+        <div id="card-header" class="card-header bg-dark text-light" style="width: 100%">
           <h1 class="text-center" style="font-weight: 500;">DVD Registration</h1>
         </div>
-        <!-- Title End -->
-
-        <!-- Circles which indicates the steps of the form: -->
-        <div style="text-align:center;margin-top:40px;">
-            <span id="dvd-step" class="step"></span>
-            <span id="dvd-step" class="step"></span>
-            <span id="dvd-step" class="step"></span>
-            <span id="dvd-step" class="step"></span>
-        </div>
-      
-        <!-- DVD Form Start-->
-        <form class="customer-form card-body" id="regForm" action="" autocomplete="off">
-          
-          <!-- Form Container Start -->
-          <div class="tab-holder container-fluid">
-
-            <!-- Movie Tab Start -->
-            <div class="tab w3-animate-left" id="dvd-tab-content">
-              <div class="form-row">
-                <div class="col-md-12 mb-4 text-primary">
-                  <h2 class="text-center" style="font-weight: 500;">Movie Details</h5>
-                </div>
-                <div class="form-group col-md-4">
-                  <label>Title</label>
-                  <input name="title" id="input-text" type="text" class="form-control" placeholder="Title">
-                  <div class="invalid-feedback">
-                    Please provide a valid Title.
-                  </div>
-                </div>
-                <div class="form-group col-md-4">
-                  <label>Release Date</label>
-                  <input name="release_date" id="input-text" type="date" class="form-control" placeholder="Release Date" >
-                  <div class="invalid-feedback">
-                    Please provide a valid Date.
-                  </div>
-                </div>
-                <div class="form-group col-md-4">
-                  <label>Director</label>
-                  <input name="director-name" id="input-text" type="text" class="form-control" placeholder="Director's Name">
-                  <div class="invalid-feedback">
-                    Please provide a valid Director.
-                  </div>
-                </div>
-                <div class="form-group col-md-4 col-xs-4">
-                  <label>Price</label>
-                  <input class="form-control" name="price" id="input-text" type="number" min="0.01" step="0.01" max="2500" value="25.67" />
-                  <div class="invalid-feedback">
-                    Please provide a valid Price.
-                  </div>
-                </div>
-                <div class="form-group col-md-4 col-xs-4">
-                  <label>No. of Items</label>
-                  <input name="release_date" id="input-text" type="number" min="1" max="100" class="form-control" value="1" placeholder="1" >
-                </div>
-              </div>
-            </div>
-            <!-- Movie Tab End-->
-
-            <!-- Genre Tab Start -->
-            <div class="tab w3-animate-left" id="dvd-tab-content">
-              <div class="form-check form-row">
-                <div class="col-md-12 mb-4 text-primary">
-                  <h5 class="text-center" style="font-weight: 500;">Genres</h5>
-                </div>
-                <div class="form-group row">
-                  <ul class="list-group list-group-flush col-md-4">
-                    <li class="list-group-item">
-                      <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="check1" >
-                        <label class="custom-control-label" for="check1">Romance</label>
-                      </div>
-                    </li>
-                    <li class="list-group-item">
-                      <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="check2">
-                        <label class="custom-control-label" for="check2">Action</label>
-                      </div>
-                    </li>
-                    <li class="list-group-item">
-                      <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="check3" >
-                        <label class="custom-control-label" for="check3">Mystery</label>
-                      </div>
-                    </li>
-                    <li class="list-group-item">
-                      <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="check4" >
-                        <label class="custom-control-label" for="check4">Horror</label>
-                      </div>
-                    </li>
-                  </ul>
-                  <ul class="list-group list-group-flush col-md-4">
-                    <li class="list-group-item">
-                      <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="check5" >
-                        <label class="custom-control-label" for="check5">Sci-fi</label>
-                      </div>
-                    </li>
-                    <li class="list-group-item">
-                      <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="check6">
-                        <label class="custom-control-label" for="check6">Fantasy</label>
-                      </div>
-                    </li>
-                    <li class="list-group-item">
-                      <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="check7" >
-                        <label class="custom-control-label" for="check7">Historical Fiction</label>
-                      </div>
-                    </li>
-                    <li class="list-group-item">
-                      <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="check8" >
-                        <label class="custom-control-label" for="check8">Suspense</label>
-                      </div>
-                    </li>
-                  </ul>
-                  <ul class="list-group list-group-flush col-md-4">
-                    <li class="list-group-item">
-                      <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="check9" >
-                        <label class="custom-control-label" for="check9">Comedy</label>
-                      </div>
-                    </li>
-                    <li class="list-group-item">
-                      <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="check10">
-                        <label class="custom-control-label" for="check10">Anime</label>
-                      </div>
-                    </li>
-                    <li class="list-group-item">
-                      <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="check11" >
-                        <label class="custom-control-label" for="check11">Cartoon</label>
-                      </div>
-                    </li>
-                    <li class="list-group-item">
-                      <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="check12" >
-                        <label class="custom-control-label" for="check12">Spy</label>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-                
-              </div>
-            </div>
-            <!-- Genre Tab End-->
-
-            <!-- Movie Casts Tab Start -->
-            <div class="tab w3-animate-left" id="dvd-tab-content">
-              <div class="form-row">
-                <div class="col-md-12 mb-4 text-primary">
-                  <h5 class="text-center" style="font-weight: 500;">Movie Casts</h5>
-                </div>
-                <div class="col-md-6">
-                    <div class="col-md-12 row">
-                      <div class="form-group col-md-12">
-                        <label>First Name</label>
-                        <input name="first_name" type="text" class="form-control" id="first-name-cast" placeholder="First Name" >
-                      </div>
-                      <div class="form-group col-md-10">
-                        <label>Last Name</label>
-                        <input name="last_name" type="text" class="form-control" id="last-name-cast" placeholder="Last Name" >
-                      </div>
-                      <div class="form-group col-md-2 mt-auto">
-                        <btn class="btn btn-info mt-auto" id="add-btn-cast" >Add</button>
-                      </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                  <table class="table table-striped">
-                    <thead class="thead-dark">
-                      <tr>
-                        <th scope="col">First Name</th>
-                        <th scope="col">Last Name</th>
-                        <th scope="col"></th>
-                      </tr>
-                    </thead>
-                    <tbody class="casts-body-table">  
-                    </tbody>
-                  </table>
-                </div>
-
-              </div>
-            </div>
-            <!-- Movie Casts Tab End-->
-
-            <!-- DVD Images Tab Start -->
-            <div class="tab w3-animate-left" id="dvd-tab-content">
-              <div class="form-row">
-                <div class="col-md-12 mb-4 text-primary">
-                  <h5 class="text-center" style="font-weight: 500;">DVD Images</h5>
-                </div>
-                <div class="form-group col-md-4 offset-md-4">
-                  <input type="file" id="dvd-images" name="dvd_images[]" multiple>
-                </div>
-              </div>
-            </div>
-            <!-- DVD Images Tab End-->
-            
-          </div>
-          <!-- Form Container End -->
-          
-          <!-- Navigation Buttons -->
-          <div class="forms-btn form-row" style="overflow:auto; display: fixed;">
-            <div class="form-group offset-md-4 col-md-4 col-sm-6">
-              <button class="btn btn-outline-primary" type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-            </div>
-            <div class="form-group col-md-4 col-sm-6 col-xs-6">
-              <button class="js-btn-next btn btn-primary" type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
-              <button class="js-btn-next btn btn-primary d-none btn-success" type="submit" id="submitBtn">Submit</button>
-            </div>
-          </div>
-
-        </form>
-        <!-- DVD Form End-->
+        <!-- Title End -->    
         
+          <!-- Circles which indicates the steps of the form: -->
+          <div id="form-indicator" style="text-align:center;margin-top:40px;" class="">
+              <span id="dvd-step" class="step"></span>
+              <span id="dvd-step" class="step"></span>
+              <span id="dvd-step" class="step"></span>
+              <span id="dvd-step" class="step"></span>
+          </div>
+        
+          <!-- DVD Form Start-->
+          <form class="customer-form card-body" method="" id="movie-form" action="" enctype="multipart/form-data" autocomplete="off">
+            
+            {% csrf_token %}
+            <!-- Form Container Start -->
+            <div class="tab-holder container-fluid">
+
+              <!-- Movie Tab Start -->
+              <div class="tab w3-animate-left" id="dvd-tab-content">
+                <div class="form-row">
+                  <div class="col-md-12 mb-4 text-primary">
+                    <h2 class="text-center" style="font-weight: 500;">Movie Details</h5>
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label>Title</label>
+                    <input name="title" id="input-text" type="text" class="form-control" placeholder="Title">
+                    <div class="invalid-feedback">
+                      Please provide a valid Title.
+                    </div>
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label>Release Date</label>
+                    <input name="release_date" id="input-text" type="date" class="form-control" placeholder="Release Date" >
+                    <div class="invalid-feedback">
+                      Please provide a valid Date.
+                    </div>
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label>Director</label>
+                    <input name="director" id="input-text" type="text" class="form-control" placeholder="Director's Name">
+                    <div class="invalid-feedback">
+                      Please provide a valid Director.
+                    </div>
+                  </div>
+                  <div class="form-group col-md-4 col-xs-4">
+                    <label>Price</label>
+                    <input name="price"  class="form-control" id="input-text" type="number" min="0.01" step="0.01" max="2500" placeholder="0"/>
+                    <div class="invalid-feedback">
+                      Please provide a valid Price.
+                    </div>
+                  </div>
+                  <div class="form-group col-md-4 col-xs-4">
+                    <label>No. of Items</label>
+                    <input name="no_items" id="input-text" type="number" min="1" max="100" class="form-control" placeholder="0">
+                    <div class="invalid-feedback">
+                      Please provide a valid number of items.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Movie Tab End-->
+
+              <!-- Genre Tab Start -->
+              <div class="tab w3-animate-left" id="dvd-tab-content">
+                <div class="form-check form-row">
+                  <div class="col-md-12 mb-4 text-primary">
+                    <h5 class="text-center" style="font-weight: 500;">Genres</h5>
+                  </div>
+                  <div class="form-group row">
+                    <ul class="list-group list-group-flush col-md-4">
+                      <li class="list-group-item">
+                        <div class="custom-control custom-checkbox">
+                          <input name="genre" type="checkbox" class="custom-control-input" id="check1" value="Romance" >
+                          <label class="custom-control-label" for="check1">Romance</label>
+                        </div>
+                      </li>
+                      <li class="list-group-item">
+                        <div class="custom-control custom-checkbox">
+                          <input name="genre"  type="checkbox" class="custom-control-input" id="check2" value="Action">
+                          <label class="custom-control-label" for="check2">Action</label>
+                        </div>
+                      </li>
+                      <li class="list-group-item">
+                        <div class="custom-control custom-checkbox">
+                          <input name="genre"  type="checkbox" class="custom-control-input" id="check3" value="Mystery">
+                          <label class="custom-control-label" for="check3">Mystery</label>
+                        </div>
+                      </li>
+                      <li class="list-group-item">
+                        <div class="custom-control custom-checkbox">
+                          <input name="genre"  type="checkbox" class="custom-control-input" id="check4" value="Horror" >
+                          <label class="custom-control-label" for="check4">Horror</label>
+                        </div>
+                      </li>
+                    </ul>
+                    <ul class="list-group list-group-flush col-md-4">
+                      <li class="list-group-item">
+                        <div class="custom-control custom-checkbox">
+                          <input name="genre"  type="checkbox" class="custom-control-input" id="check5" value="Sci-fi">
+                          <label class="custom-control-label" for="check5">Sci-fi</label>
+                        </div>
+                      </li>
+                      <li class="list-group-item">
+                        <div class="custom-control custom-checkbox">
+                          <input name="genre"  type="checkbox" class="custom-control-input" id="check6" value="Fantasy">
+                          <label class="custom-control-label" for="check6">Fantasy</label>
+                        </div>
+                      </li>
+                      <li class="list-group-item">
+                        <div class="custom-control custom-checkbox">
+                          <input name="genre"  type="checkbox" class="custom-control-input" id="check7" value="Historical Fiction">
+                          <label class="custom-control-label" for="check7">Historical Fiction</label>
+                        </div>
+                      </li>
+                      <li class="list-group-item">
+                        <div class="custom-control custom-checkbox">
+                          <input name="genre"  type="checkbox" class="custom-control-input" id="check8" value="Suspense">
+                          <label class="custom-control-label" for="check8">Suspense</label>
+                        </div>
+                      </li>
+                    </ul>
+                    <ul class="list-group list-group-flush col-md-4">
+                      <li class="list-group-item">
+                        <div class="custom-control custom-checkbox">
+                          <input name="genre"  type="checkbox" class="custom-control-input" id="check9" value="Comedy">
+                          <label class="custom-control-label" for="check9">Comedy</label>
+                        </div>
+                      </li>
+                      <li class="list-group-item">
+                        <div class="custom-control custom-checkbox">
+                          <input name="genre"  type="checkbox" class="custom-control-input" id="check10" value="Anime">
+                          <label class="custom-control-label" for="check10">Anime</label>
+                        </div>
+                      </li>
+                      <li class="list-group-item">
+                        <div class="custom-control custom-checkbox">
+                          <input name="genre"  type="checkbox" class="custom-control-input" id="check11" value="Cartoon">
+                          <label class="custom-control-label" for="check11">Cartoon</label>
+                        </div>
+                      </li>
+                      <li class="list-group-item">
+                        <div class="custom-control custom-checkbox">
+                          <input name="genre"  type="checkbox" class="custom-control-input" id="check12" value="Spy">
+                          <label class="custom-control-label" for="check12">Spy</label>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  
+                </div>
+              </div>
+              <!-- Genre Tab End-->
+
+              <!-- Movie Casts Tab Start -->
+              <div class="tab w3-animate-left" id="dvd-tab-content">
+                <div class="form-row">
+                  <div class="col-md-12 mb-4 text-primary">
+                    <h5 class="text-center" style="font-weight: 500;">Movie Casts</h5>
+                  </div>
+                  <div class="col-md-6">
+                      <div class="col-md-12 row">
+                        <div class="form-group col-md-12">
+                          <label>First Name</label>
+                          <input name="first_name" type="text" class="form-control" id="first-name-cast" placeholder="First Name" >
+                        </div>
+                        <div class="form-group col-md-10">
+                          <label>Last Name</label>
+                          <input name="last_name" type="text" class="form-control" id="last-name-cast" placeholder="Last Name" >
+                        </div>
+                        <div class="form-group col-md-2 mt-auto">
+                          <btn class="btn btn-info mt-auto" id="add-btn-cast" >Add</button>
+                        </div>
+                      </div>
+                  </div>
+                  <div class="col-md-6">
+                    <table class="table table-striped">
+                      <thead class="thead-dark">
+                        <tr>
+                          <th scope="col">First Name</th>
+                          <th scope="col">Last Name</th>
+                          <th scope="col"></th>
+                        </tr>
+                      </thead>
+                      <tbody class="casts-body-table">  
+                      </tbody>
+                    </table>
+                  </div>
+
+                </div>
+              </div>
+              <!-- Movie Casts Tab End-->
+
+              <!-- DVD Images Tab Start -->
+              <div class="tab w3-animate-left" id="dvd-tab-content">
+                <div class="form-row">
+                  <div class="col-md-12 mb-4 text-primary">
+                    <h5 class="text-center" style="font-weight: 500;">DVD Images</h5>
+                  </div>
+                  <div class="form-group col-md-4 offset-md-4">
+                    <input type="file" id="dvd-images" name="image" multiple>
+                  </div>
+                </div>
+              </div>
+              <!-- DVD Images Tab End-->
+              
+            </div>
+            <!-- Form Container End -->
+            
+            <!-- Navigation Buttons -->
+            <div class="forms-btn form-row" style="overflow:auto; display: fixed;">
+              <div class="form-group offset-md-4 col-md-4 col-sm-6">
+                <button class="btn btn-outline-primary" type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+              </div>
+              <div class="form-group col-md-4 col-sm-6 col-xs-6">
+                <button class="js-btn-next btn btn-primary" type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+                <button class="js-btn-next btn btn-primary d-none btn-success" type="submit" id="submitBtn">Submit</button>
+              </div>
+            </div>
+
+          </form>
+          <!-- DVD Form End-->
+
+          <div id="loader" class="lds-roller d-none align-self-center"  style="margin-top: auto; margin-bottom: auto;">
+            <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+          </div>
+          <div id="success-indicator" class="d-none align-self-center" style="margin-top: auto; margin-bottom: auto;">
+            SUCCESS
+          </div>
     </div>
     <!-- Body End -->
   {% endblock %}
@@ -243,7 +256,8 @@
   {% block scripts %}
     <!-- Form Scripts -->
     <script src="{% static '/js/app.js' %}"></script>
-    <script src="{% static 'js/casts.js' %}"></script>
+    <script src="{% static '/js/casts.js' %}"></script>
+    <script src="{% static '/js/fetch/movie-register-fetch.js'%}"></script>
     
     <!-- Bootstrap Scripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

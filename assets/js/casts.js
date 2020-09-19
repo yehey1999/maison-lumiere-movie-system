@@ -2,6 +2,7 @@ let addCastBtn = document.querySelector("#add-btn-cast");
 let castsBodyTable = document.querySelector(".casts-body-table");
 let firstNameCast = document.querySelector("#first-name-cast");
 let lastNameCast = document.querySelector("#last-name-cast");
+let index = 1;
 
 
 addCastBtn.addEventListener('click', (e) => {
@@ -26,6 +27,8 @@ const createRow = (firstname, lastname) => {
     let tdCloseBtn = document.createElement("td");
 
     row.setAttribute("class","w3-animate-left");
+    row.setAttribute("id", firstname + " " + lastname);
+    
     tdFirstName.innerHTML = firstname;
     tdLastName.innerHTML = lastname;
     tdCloseBtn.innerHTML = "<span id='close' class='close close-btn text-center' aria-hidden='true'>&times;</span>"
@@ -33,6 +36,9 @@ const createRow = (firstname, lastname) => {
     row.appendChild(tdFirstName);
     row.appendChild(tdLastName);
     row.appendChild(tdCloseBtn);
+
+    console.log("row");
+    console.log(row);
 
     return row;
 }

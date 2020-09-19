@@ -3,6 +3,7 @@ const submitBtn = document.querySelector("#submitBtn");
 
 basicInfoInputTexts.forEach( element => {
     element.addEventListener('input', (e) => {
+
         if(e.target.value !== ""){
             e.target.classList.add("is-valid");
             e.target.classList.remove("is-invalid");
