@@ -6,7 +6,7 @@ from .models import *
 from .forms import MovieForm
 # Create your views here.
 
-class MovieIndexRegister(View):
+class MovieRegistrationView(View):
     def get(self, request):
         return render(request, 'movie-registration.html')
     
@@ -42,6 +42,6 @@ class MovieIndexRegister(View):
 
 
 
-class MovieIndexView(View):
+class MovieSummaryView(View):
     def get(self, request):
         return render(request, 'movie-summary.html')
