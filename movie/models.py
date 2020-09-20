@@ -13,8 +13,8 @@ class Movie(models.Model):
     genres = models.CharField(max_length=255)
     casts = models.CharField(max_length=255)
     images = models.ImageField(null=True, blank=True, upload_to='movies/')
-    created_at = models.DateTimeField(default=datetime.now())   
-    updated_at = models.DateTimeField(default=datetime.now())
+    created_at = models.DateField(default=datetime.now())   
+    updated_at = models.DateField(default=datetime.now())
     
     class Meta:
         db_table = "Movie"
