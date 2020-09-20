@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.views.generic import View
 from .forms import CustomerForm
 from .models import *
@@ -39,11 +39,13 @@ class CustomerRegistrationView(View):
 
             form.save()
 
-            return HttpResponse('Customer record saved~')
+            #return HttpResponse('Customer record saved~')
+            return JsonResponse({'success': True})
 
         else:
             print(form.errors)
-            return HttpResponse('Invalid :(')
+            #return HttpResponse('Invalid :(')
+            return JsonResponse({'success': False})
 
 class CustomerSummaryView(View):
     def get(self, request):

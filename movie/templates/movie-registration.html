@@ -30,6 +30,18 @@
               <span id="dvd-step" class="step"></span>
               <span id="dvd-step" class="step"></span>
           </div>
+
+          <div id="loader" class="lds-roller d-none align-self-center"  style="margin-top: auto; margin-bottom: auto;">
+            <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+          </div>
+          <div id="success-indicator" class="d-none align-self-center" style="margin-top: auto; margin-bottom: auto;">
+            <!--Add here the success indicator-->
+            SUCCESS
+          </div>
+          <div id="failed-indicator" class="d-none align-self-center" style="margin-top: auto; margin-bottom: auto;">
+            <!--Add here the failed indicator-->
+            FAILED
+          </div>
         
           <!-- DVD Form Start-->
           <form class="customer-form card-body" method="" id="movie-form" action="" enctype="multipart/form-data" autocomplete="off">
@@ -242,13 +254,6 @@
 
           </form>
           <!-- DVD Form End-->
-
-          <div id="loader" class="lds-roller d-none align-self-center"  style="margin-top: auto; margin-bottom: auto;">
-            <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
-          </div>
-          <div id="success-indicator" class="d-none align-self-center" style="margin-top: auto; margin-bottom: auto;">
-            SUCCESS
-          </div>
     </div>
     <!-- Body End -->
   {% endblock %}

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.views.generic import View
 
 from .models import *
@@ -35,10 +35,10 @@ class MovieRegistrationView(View):
                         images=image
                     )
             movie.save()
-            return JsonResponse({'success': 'true'})
+            return JsonResponse({'success': True})
         else:
             print(form.errors)
-            return JsonResponse({'success': 'false'})
+            return HttpResponse("fail");
 
 
 
