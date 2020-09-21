@@ -34,13 +34,20 @@
           <div id="loader" class="lds-roller d-none align-self-center"  style="margin-top: auto; margin-bottom: auto;">
             <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
           </div>
-          <div id="success-indicator" class="d-none align-self-center" style="margin-top: auto; margin-bottom: auto;">
-            <!--Add here the success indicator-->
-            SUCCESS
+          <div id="success-indicator" class="d-none align-self-center text-center" style="margin-top: auto; margin-bottom: auto;">
+            <!-- success indicator-->
+            <img class="img-fluid" id="img-indicator" src="{% static 'img/success-popcorn.gif' %}"><br>
+            <h3 class="text-indicator">Yet another remarkable film to watch!</h3>
+            <p class="text-indicator">“The whole of life is just like watching a film. 
+                                    Only it's as though you always get in ten minutes after the big picture has started, 
+                                    and no-one will tell you the plot, so you have to work it out all yourself from the clues.”
+                                    <br>― Terry Pratchett, Moving Pictures</p>
           </div>
-          <div id="failed-indicator" class="d-none align-self-center" style="margin-top: auto; margin-bottom: auto;">
-            <!--Add here the failed indicator-->
-            FAILED
+          <div id="failed-indicator" class="d-none align-self-center text-center" style="margin-top: auto; margin-bottom: auto;">
+            <!-- failed indicator-->
+            <img class="img-fluid" id="img-indicator" src="{% static 'img/fail-ohno.gif' %}"><br>
+            <h3 class="text-indicator">Please try again.</h3>
+            <p class="text-indicator">If at first you don't succeed, try, try, try again.</p>
           </div>
         
           <!-- DVD Form Start-->
@@ -203,7 +210,7 @@
                           <input name="last_name" type="text" class="form-control" id="last-name-cast" placeholder="Last Name" >
                         </div>
                         <div class="form-group col-md-2 mt-auto">
-                          <btn class="btn btn-info mt-auto" id="add-btn-cast" >Add</button>
+                          <button class="btn btn-info mt-auto" id="add-btn-cast" >Add</button>
                         </div>
                       </div>
                   </div>

@@ -201,6 +201,16 @@ body{
   
 /*Customer Form*/
 
+/*Registration Success Indicator*/
+#img-indicator{
+  width: 300px; 
+  height: 300px; 
+}
+.text-indicator{
+  text-align: center;
+}
+/*Registration Success Indicator*/
+
 footer{
   margin-top: 7rem;
   height: 5rem;

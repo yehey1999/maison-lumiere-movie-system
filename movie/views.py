@@ -38,7 +38,7 @@ class MovieRegistrationView(View):
             return JsonResponse({'success': True})
         else:
             print(form.errors)
-            return HttpResponse("fail");
+            return JsonResponse({'success': False})
 
 
 
