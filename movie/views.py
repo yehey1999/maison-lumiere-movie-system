@@ -38,10 +38,14 @@ class MovieRegistrationView(View):
             return JsonResponse({'success': True})
         else:
             print(form.errors)
-            return HttpResponse("fail");
+            return JsonResponse({'success': False})
 
 
 
 class MovieSummaryView(View):
     def get(self, request):
-        return render(request, 'movie-summary.html')
+        qs_movies = Movie.objects.all()
+        context = {
+            'movies':qs_movies
+        }
+        return render(request, 'movie-summary.html', context)
