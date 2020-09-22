@@ -7,7 +7,7 @@ const selects = document.querySelectorAll("select");
 let isEdit = true;
 let editBtnIcon = document.querySelector("#editBtnIcon");
 
-const title = document.querySelector("#modal-title");
+const modalTitle = document.querySelector("#modal-title");
 
 viewBtn.addEventListener('click', () => {
     if(isEdit===true){
@@ -46,7 +46,7 @@ const edit = () => {
     editBtn.classList.remove('btn-primary');
     editBtn.classList.add('btn-success');
 
-    title.innerHTML = "Edit";
+    modalTitle.innerHTML = "Edit";
     disableStatus(false);
     saveBtn.classList.remove('d-none');
     discardBtn.classList.remove('d-none');
@@ -63,7 +63,7 @@ const view = () => {
     editBtn.classList.remove('btn-success');
     editBtn.classList.add('btn-primary');
 
-    title.innerHTML = "View";
+    modalTitle.innerHTML = "View";
     disableStatus(true);
     saveBtn.classList.add('d-none');
     discardBtn.classList.add('d-none');

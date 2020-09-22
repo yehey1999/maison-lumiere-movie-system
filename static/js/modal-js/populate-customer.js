@@ -21,7 +21,23 @@ const noChildren = document.querySelector("#no-of-children");
 //Profile
 const profilePic = document.querySelector("#profile-pic");
 
-const populateCustomer = (data) => {
+const populateCustomer = (customer) => {
+    lastName.value = customer.last_name;
+    firstName.value = customer.first_name;
+    middleName.value = customer.middle_name;
+    gender.value = customer.gender;
+    status.value = customer.status;
+    birthdate.value = customer.birthdate;
+    
+    street.value = customer.street;
+    province.value = customer.province;
+    barangay.value = customer.barangay;
+    city.value = customer.city;
+    zipCode.value = customer.zipCode;
+
+    spouseName.value = customer.spouse_name;
+    spouseOccupation.value = customer.spouse_occupation;
+    noChildren.value = customer.no_children;
 
 }
 

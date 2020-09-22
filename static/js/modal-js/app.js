@@ -4,6 +4,7 @@ const closeBtn = document.querySelector("#closeBtn");
 const discardBtn = document.querySelector("#discardBtn");
 const tabs = document.querySelectorAll(".tab");
 const inputs = document.querySelectorAll(".modal #input-text");
+
 const editModalBtn = document.querySelector("#edit-modal-btn");
 
 

@@ -19,12 +19,12 @@ movieForm.addEventListener('submit', (e) => {
     //get the genres
     let genres = "";
     let genresCheckboxes = document.querySelectorAll("input[name=genre]");
-    genresCheckboxes.forEach(genre => genres += genre.checked ? genre.value + ", " : "");
+    genresCheckboxes.forEach(genre => genres += genre.checked ? genre.value + "," : "");
 
     //get the casts inputs
     let casts = "";
     let castsInputs = document.querySelectorAll(".casts-body-table tr");
-    castsInputs.forEach(cast => casts += cast.id + ", " );
+    castsInputs.forEach(cast => casts += cast.id + "," );
 
     //make a form data out of your form
     //append the additional data

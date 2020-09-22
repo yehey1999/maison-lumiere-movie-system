@@ -3,6 +3,7 @@ const customerForm = document.querySelector('#customer-form');
 
 const formIndicator = document.querySelector('#form-indicator');
 const successIndicator = document.querySelector('#success-indicator');
+const failedIndicator = document.querySelector('#failed-indicator');
 const loader = document.querySelector('#loader');
 
 customerForm.addEventListener('submit', (e) => {
@@ -26,13 +27,11 @@ customerForm.addEventListener('submit', (e) => {
     })
     .then(res => res.json())
     .then(res => {
-        console.log(res);
-        if(res.success === true){
-            loader.classList.remove('d-block');
-            loader.classList.add('d-none');
+        loader.classList.remove('d-block');
+        loader.classList.add('d-none');
+        if(res.success === true)
             successIndicator.classList.add('d-block');
-        }
         else
-            console.log("Error");
+            failedIndicator.classList.add('d-block');
     });
 })
