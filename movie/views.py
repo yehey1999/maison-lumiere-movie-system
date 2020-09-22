@@ -44,4 +44,8 @@ class MovieRegistrationView(View):
 
 class MovieSummaryView(View):
     def get(self, request):
-        return render(request, 'movie-summary.html')
+        qs_movies = Movie.objects.all()
+        context = {
+            'movies':qs_movies
+        }
+        return render(request, 'movie-summary.html', context)

@@ -61,31 +61,20 @@
                         </thead>
 
                         <tbody>
-                            <tr>
-                                <td data-title="Date Registered" class="align-middle">2020-09-01</td>
-                                <td data-title="Genre" class="align-middle">1-Horror</td>
-                                <td data-title="Title" class="align-middle">Madilim Na</td>
-                                <td data-title="Release Date" class="align-middle">Jan 1, 1800</td>
-                                <td data-title="Price" class="align-middle">258.50</td>
-                                <td data-title="No. of Items" class="align-middle">100 pcs</td>
-                                <td class="align-middle">
-                                    <button onclick="populateDVD({title: 'Shake Rattle Roll', release_date: '2020-02-03', director: 'Joshua Lee', price: '272.80', no_items: '5', casts: 'Joshua Rosalijos,Jason Williams,Kevin Harley', genres: 'Romance,Action,Comedy,Suspense'})" class="btn btn-success btn-xs" id="viewBtn" data-toggle="modal" data-target="#modal-view"><i class="fa fa-eye"></i></button>
-                                    <button class="btn btn-danger  btn-xs" id="deleteBtn" data-toggle="modal" data-target="#modal-delete"><i class="fas fa-trash-alt "></i></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td data-title="Date Registered" class="align-middle">2020-09-01</td>
-                                <td data-title="Genre" class="align-middle">Horror, Romance, Action </td>
-                                <td data-title="Title" class="align-middle">Madilim Na</td>
-                                <td data-title="Release Date" class="align-middle">Jan 1, 1800</td>
-                                <td data-title="Price" class="align-middle">258.50</td>
-                                <td data-title="No. of Items" class="align-middle">100 pcs</td>
-                                <td class="align-middle">
-                                    <button onclick="populateDVD({title: 'Harry Potter', release_date: '2005-12-12', director: 'Wylen Lee', price: '572.80', no_items: '67', casts: 'Joshua Rosalijos,Jason Williams,Kevin Harley', genres: 'Romance,Action,Comedy,Suspense'})" class="btn btn-success btn-xs" id="viewBtn" data-toggle="modal" data-target="#modal-view"><i class="fa fa-eye"></i></button>
-                                    <button class="btn btn-danger  btn-xs" id="deleteBtn" data-toggle="modal" data-target="#modal-delete"><i class="fas fa-trash-alt "></i></button>
-                                </td>
-                            </tr>
-                            
+                            {% for movie in movies %}
+                                <tr>
+                                    <td data-title="Date Registered" class="align-middle">{{movie.created_at}}</td>
+                                    <td data-title="Genre" class="align-middle">{{movie.genres}}</td>
+                                    <td data-title="Title" class="align-middle">{{movie.title}}</td>
+                                    <td data-title="Release Date" class="align-middle">{{movie.release_date}}</td>
+                                    <td data-title="Price" class="align-middle">{{movie.price}}</td>
+                                    <td data-title="No. of Items" class="align-middle">{{movie.no_items}}</td>
+                                    <td class="align-middle">
+                                        <button class="btn btn-success btn-xs" id="viewBtn"   data-toggle="modal" data-target="#modal-view">  <i class="fa fa-eye"></i></button>
+                                        <button class="btn btn-danger  btn-xs" id="deleteBtn" data-toggle="modal" data-target="#modal-delete"><i class="fas fa-trash-alt "></i></button>
+                                    </td>
+                                </tr>
+                            {% endfor %}
                         </tbody>
                     </table> 
                 </section> 

@@ -39,15 +39,17 @@ class CustomerRegistrationView(View):
 
             form.save()
 
-            #return HttpResponse('Customer record saved~')
             return JsonResponse({'success': True})
 
         else:
             print(form.errors)
-            #return HttpResponse('Invalid :(')
             return JsonResponse({'success': False})
 
 class CustomerSummaryView(View):
     def get(self, request):
-        return render(request, 'customer-summary.html')
+        qs_customers = Customer.objects.all()
+        context = {
+            'customers':qs_customers
+        }
+        return render(request, 'customer-summary.html', context)
 
