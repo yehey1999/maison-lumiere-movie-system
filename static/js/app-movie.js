@@ -84,6 +84,10 @@ const nextPrev = (n) => {
   showTab(currentTab);
 }
 
+//This is where the validation
+//will revolve 
+//validateForm and isValidInput
+
 const validateForm = () => {
   let tabs, inputs, i, valid = true;
   tabs = document.getElementsByClassName("tab");
@@ -92,15 +96,27 @@ const validateForm = () => {
   // A loop that checks every input field in the current tab:
   for(i = 0; i < inputs.length; i++){
 
+    //you can remove this
+    //if statement because these are non-existent in the customer form
     if(inputs[i].id ==='first-name-cast' || inputs[i].id === 'last-name-cast')
       continue;
 
+    //you may remove the outer conditional statement
+    //because checkboxes are non-existent n customer
     if(inputs[i].type !== 'checkbox'){
+
+      //check if the input[i] is valid
       if(isValidInput(inputs[i]) === false){
         inputs[i].className += " is-invalid";
+        //inputs[i].classList.add("is-invalid")
+        //are the same
         valid = false;
       }
       else{
+        //this add is-valid class to the input
+        //this removes is-invalid class to the input
+        //take note:
+        //these classes are from bootstrap
         inputs[i].classList.add("is-valid");
         inputs[i].classList.remove("is-invalid");
       }
@@ -116,10 +132,16 @@ const validateForm = () => {
   return valid;
 }
 
+//this function checks if the input is valid
 const isValidInput = (input) => {
+    
     if(input.value === "")
       return false;
 
+    //this conditional statements 
+    //identify what type of input are they
+    //and do validation based on their names
+    
     if(input.name === "title" || input.name === "director")
       return input.value.length >= 2 && input.value.length <= 50 ? true : false;
     
