@@ -25,6 +25,7 @@ movieForm.addEventListener('submit', (e) => {
     let casts = "";
     let castsInputs = document.querySelectorAll(".casts-body-table tr");
     castsInputs.forEach(cast => casts += cast.id + "," );
+    casts = casts.slice(0, -1);
 
     //make a form data out of your form
     //append the additional data

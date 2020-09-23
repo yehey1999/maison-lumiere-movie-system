@@ -18,9 +18,11 @@
 
         <!-- For Modals -->
         <link rel="stylesheet" href="{% static 'css/modal-css/modal.css' %}">
-        <!--<script src="https://use.fontawesome.com/a39946fcdf.js"></script>-->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="{% static 'css/modal-css/avatar.css' %}">
 
+        <script src="https://use.fontawesome.com/a39946fcdf.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        
         <script src="https://kit.fontawesome.com/fe2108eefd.js" crossorigin="anonymous"></script>
     {% endblock %}
 
@@ -61,18 +63,22 @@
                         </thead>
 
                         <tbody>
-                            {% for movie in movies %}
-                                <tr>
+                            
+                            {% for movie, json_movie in movies %}
+                                <tr movie-json="{{json_movie}}" media-url="{{MEDIA_URL}}" id="data{{movie.id}}">
+                                    
                                     <td data-title="Date Registered" class="align-middle">{{movie.created_at}}</td>
                                     <td data-title="Genre" class="align-middle">{{movie.genres}}</td>
                                     <td data-title="Title" class="align-middle">{{movie.title}}</td>
                                     <td data-title="Release Date" class="align-middle">{{movie.release_date}}</td>
                                     <td data-title="Price" class="align-middle">{{movie.price}}</td>
                                     <td data-title="No. of Items" class="align-middle">{{movie.no_items}}</td>
+                                
                                     <td class="align-middle">
-                                        <button class="btn btn-success btn-xs" id="viewBtn"   data-toggle="modal" data-target="#modal-view">  <i class="fa fa-eye"></i></button>
+                                        <button class="btn btn-success btn-xs" onclick="populateDVD({{movie.id}})" id="viewBtn" data-toggle="modal" data-target="#modal-view">  <i class="fa fa-eye"></i></button>
                                         <button class="btn btn-danger  btn-xs" id="deleteBtn" data-toggle="modal" data-target="#modal-delete"><i class="fas fa-trash-alt "></i></button>
                                     </td>
+                                    
                                 </tr>
                             {% endfor %}
                         </tbody>
@@ -135,14 +141,14 @@
                                 </div>
                                 <div class="form-group col-md-4 col-xs-4">
                                     <label>Price</label>
-                                    <input class="form-control" name="price" id="input-text" type="number" min="0.01" step="0.01" max="2500" value="0" disabled/>
+                                    <input class="form-control" name="price" id="input-text" type="number" min="0.01" step="0.01" max="2500" disabled required/>
                                     <div class="invalid-feedback">
                                     Please provide a valid Price.
                                     </div>
                                 </div>
                                 <div class="form-group col-md-4 col-xs-4">
                                     <label>No. of Items</label>
-                                    <input name="no_items" id="input-text" type="number" min="1" max="100" class="form-control" value="1" placeholder="1"  disabled>
+                                    <input name="no_items" id="input-text" type="number" min="1" max="100" class="form-control"  placeholder="1"  disabled>
                                 </div>
                                 </div>
                             </div>
@@ -249,11 +255,11 @@
                                     <div class="col-md-12 row">
                                         <div class="form-group col-md-12">
                                         <label>First Name</label>
-                                        <input name="first_name" type="text" class="form-control" id="first-name-cast" placeholder="First Name" disabled>
+                                            <input name="first_name" type="text" class="form-control" id="first-name-cast" placeholder="First Name" disabled>
                                         </div>
                                         <div class="form-group col-md-10">
                                         <label>Last Name</label>
-                                        <input name="last_name" type="text" class="form-control" id="last-name-cast" placeholder="Last Name" disabled>
+                                            <input name="last_name" type="text" class="form-control" id="last-name-cast" placeholder="Last Name" disabled>
                                         </div>
                                         <div class="form-group col-md-2 mt-auto">
                                         <btn class="btn btn-info mt-auto" id="add-btn-cast" >Add</button>
@@ -285,7 +291,20 @@
                                     <h2 class="text-center" style="font-weight: 500;">DVD Images</h2>
                                 </div>
                                 <div class="form-group col-md-4 offset-md-4">
-                                    <input type="file" id="input-text" name="image" multiple disabled>
+                                    <div class="form-row">
+                                        <div class="col-md-12">
+                                            <div class="avatar-wrapper">
+                                            <img class="profile-pic" src="" />
+                                            <div class="upload-button">
+                                                <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
+                                            </div>
+                                                <input name="image" class="file-upload" type="file" accept="image/*"/>
+                                            </div>
+                                        </div>
+                                     </div>
+                                     <!--
+                                        <input type="file" id="input-text" name="image" multiple disabled>
+                                     -->
                                 </div>
                                 </div>
                             </div>
@@ -341,7 +360,9 @@
     
     {% block scripts %}
         <!-- Bootstrap Scripts -->
+        <!--
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        -->
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
         
@@ -385,18 +406,21 @@
                     table.draw();
                 });
 
+                
                 $.fn.dataTableExt.afnFiltering.push(
                     ( settings, data, dataIndex ) => {
                         let minDate = $('#min-date').val();
                         let maxDate = $('#max-date').val();
                         let date = data[0].trim();
-
-                        if (minDate === '' || maxDate === '')
+                        
+                        if (minDate === '' || maxDate === '' )
                             return true;
-                        if (date >= minDate && date <= maxDate)
+
+                        if (Date.parse(date) >= Date.parse(minDate) && Date.parse(date) <= Date.parse(maxDate))
                             return true;
                         else 
                             return false;
+
                     }
                 );
             });
@@ -404,9 +428,13 @@
         
 
         <!-- Modals Scripts -->
+        
         <script src="{% static 'js/modal-js/app.js' %}"></script>
+        
         <script src="{% static 'js/modal-js/upload.js' %}" type="text/javascript"></script>
+        
         <script src="{% static 'js/modal-js/casts.js' %}"></script>
         <script src="{% static 'js/modal-js/view-edit.js' %}"></script>
         <script src="{% static 'js/modal-js/populate-dvd.js' %}"></script>
+        
     {% endblock %}

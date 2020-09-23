@@ -4,14 +4,13 @@ const selects = document.querySelectorAll("select");
 
 //const saveBtn = document.querySelector("#saveBtn");
 //const inputs = document.querySelectorAll(".modal #input-text");
+
 let isEdit = false;
 let editBtnIcon = document.querySelector("#editBtnIcon");
 
 const modalTitle = document.querySelector("#modal-title");
 
 const checkboxes = document.querySelectorAll("input[type=checkbox]");
-
-
 
 viewBtn.addEventListener('click', () => {
     if(isEdit===true){
@@ -62,7 +61,6 @@ const edit = () => {
 }
 
 const view = () => {
-    
     editBtnIcon.className = 'fa fa-pen';
     editBtn.classList.remove('btn-success');
     editBtn.classList.add('btn-primary');
@@ -71,9 +69,6 @@ const view = () => {
     disableStatus(true);
     saveBtn.classList.add('d-none');
     discardBtn.classList.add('d-none');
-
-
-
 
     console.log('true');
 }
@@ -88,8 +83,16 @@ const disableStatus = (status) => {
     checkboxes.forEach(checkbox => {
         checkbox.disabled = status;
     })
-   // firstNameCast.disabled=status;
-   // lastNameCast.disabled=status;
+
+    try{
+        if(firstNameCast === null)
+            firstNameCast.disabled=status;
+
+        if(lastNameCast=== null)
+            lastNameCast.disabled=status;
+    }catch(err){
+
+    }
     console.log(inputs);
 }
 

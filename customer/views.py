@@ -4,6 +4,11 @@ from django.views.generic import View
 from .forms import CustomerForm
 from .models import *
 
+from json import dumps
+
+import json
+from django.core.serializers.json import DjangoJSONEncoder
+
 # Create your views here.
 
 class CustomerRegistrationView(View):
@@ -47,9 +52,12 @@ class CustomerRegistrationView(View):
 
 class CustomerSummaryView(View):
     def get(self, request):
-        qs_customers = Customer.objects.all()
+        qs_customers = Customer.objects.all();
+
         context = {
-            'customers':qs_customers
+            'customers': qs_customers
         }
+        
+        #print(json_customers)
         return render(request, 'customer-summary.html', context)
 

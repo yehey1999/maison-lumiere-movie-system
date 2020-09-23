@@ -5,11 +5,13 @@ let lastNameCast = document.querySelector("#last-name-cast");
 let index = 1;
 
 
-addCastBtn.addEventListener('click', (e) => {
+addCastBtn.addEventListener('click', () => {
+    
     castsBodyTable.appendChild(createRow(firstNameCast.value, lastNameCast.value))
     
     firstNameCast.value = "";
     lastNameCast.value = "";
+    
 });
 
 castsBodyTable.addEventListener('click', (e) => {

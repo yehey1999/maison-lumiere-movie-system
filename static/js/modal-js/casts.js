@@ -3,14 +3,15 @@ let castsBodyTable = document.querySelector(".casts-body-table");
 let firstNameCast = document.querySelector("#first-name-cast");
 let lastNameCast = document.querySelector("#last-name-cast");
 
-
 addCastBtn.addEventListener('click', (e) => {
+    
     castsBodyTable.appendChild(createRow(firstNameCast.value, lastNameCast.value))
     
     firstNameCast.value = "";
     lastNameCast.value = "";
 
     console.log("hello");
+    
 });
 
 castsBodyTable.addEventListener('click', (e) => {

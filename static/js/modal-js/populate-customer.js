@@ -21,7 +21,15 @@ const noChildren = document.querySelector("#no-of-children");
 //Profile
 const profilePic = document.querySelector("#profile-pic");
 
-const populateCustomer = (customer) => {
+const populateCustomer = (id) => {
+    
+    console.log("id");
+    //customer = JSON.parse(document.querySelector("#data"+id).getAttribute('customer-json'));
+    //console.log(customer);
+    customer = document.querySelector("#data"+id).getAttribute('customer-json');
+    console.log(customer.first_name)
+
+    /*
     lastName.value = customer.last_name;
     firstName.value = customer.first_name;
     middleName.value = customer.middle_name;
@@ -38,6 +46,9 @@ const populateCustomer = (customer) => {
     spouseName.value = customer.spouse_name;
     spouseOccupation.value = customer.spouse_occupation;
     noChildren.value = customer.no_children;
+    
+    */
+    //profilePic.src = `{{load static '${customer[0].image}'}}`;
 
 }
 

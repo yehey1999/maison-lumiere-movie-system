@@ -4,7 +4,7 @@ const submitBtn = document.querySelector("#submitBtn");
 
 basicInfoInputTexts.forEach( element => {
     element.addEventListener('input', (event) => {
-      if(event.target.value !== ""){
+      if(isValidInput(event.target)){
           event.target.classList.add("is-valid");
           event.target.classList.remove("is-invalid");
       }
@@ -95,14 +95,17 @@ const validateForm = () => {
     if(inputs[i].id ==='first-name-cast' || inputs[i].id === 'last-name-cast')
       continue;
 
-    if(inputs[i].value == ""){
-      // add an "invalid" class to the field:
-      inputs[i].className += " is-invalid";
-      // and set the current valid status to false:
-      valid = false;
+    if(inputs[i].type !== 'checkbox'){
+      if(isValidInput(inputs[i]) === false){
+        inputs[i].className += " is-invalid";
+        valid = false;
+      }
+      else{
+        inputs[i].classList.add("is-valid");
+        inputs[i].classList.remove("is-invalid");
+      }
     }
-    else{
-    }
+
   }
 
   // If the valid status is true, mark the step as finished and valid:
@@ -111,6 +114,22 @@ const validateForm = () => {
   }
 
   return valid;
+}
+
+const isValidInput = (input) => {
+    if(input.value === "")
+      return false;
+
+    if(input.name === "title" || input.name === "director")
+      return input.value.length >= 2 && input.value.length <= 50 ? true : false;
+    
+    if(input.name === "price")
+      return input.value >= 1 && input.value <= 10000 ? true : false;
+    
+    if(input.name === "no_items")
+      return input.value >= 1 && input.value <= 1000 ? true : false;
+    
+    return true;
 }
 
 

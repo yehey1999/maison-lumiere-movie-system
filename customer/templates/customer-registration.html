@@ -16,7 +16,7 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     {% endblock %}
 
-    {% block body %}zzzzzzzz
+    {% block body %}
     <!-- Body Start -->
       <div class="container card bg-white border">
 
@@ -39,11 +39,17 @@
         </div>
         <div id="success-indicator" class="d-none align-self-center" style="margin-top: auto; margin-bottom: auto;">
           <!--Add here the success indicator-->
-          SUCCESS
+          <!-- success indicator-->
+          <img class="img-fluid" id="img-indicator" src="{% static 'img/success-popcorn.gif' %}"><br>
+          <h3>Nitwit! Blubber! Oddment! Tweak!</h3>
+          <p>Happiness can be found even in the darkest of times, if one only remembers to turn on the light.
+                                    <br>― Albus Dumbledore</p>
         </div>
         <div id="failed-indicator" class="d-none align-self-center" style="margin-top: auto; margin-bottom: auto;">
           <!--Add here the failed indicator-->
-          FAILED
+          <img class="img-fluid" id="img-indicator" src="{% static 'img/fail-ohno.gif' %}"><br>
+          <h3 class="text-indicator">Please try again.</h3>
+          <p class="text-indicator">If at first you don't succeed, try, try, try again.</p>
         </div>
 
         <!-- Customer Form Start-->

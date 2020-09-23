@@ -5,10 +5,19 @@ const price = document.querySelector("input[name=price]");
 const noItems = document.querySelector("input[name=no_items]");
 const genres = document.querySelectorAll("input[type=checkbox]");
 const castHolder = document.querySelector("#casts-body-table");
-const image = document.querySelector("input[name=image]");
+const image = document.querySelector(".profile-pic");
 
 
-const populateDVD = (movie) => {
+
+const populateDVD = (id) => {
+    console.log("id");
+    movie = JSON.parse(document.querySelector("#data"+id).getAttribute('movie-json'));
+    media_url = document.querySelector("#data"+id).getAttribute('media-url');
+
+    console.log(movie)
+    console.log(movie.title)
+
+    
     movieTitle.value = movie.title;
     releaseDate.value = movie.release_date;
     director.value = movie.director;
@@ -22,8 +31,10 @@ const populateDVD = (movie) => {
         castsBodyTable.removeChild(castsBodyTable.firstChild);
     
     casts.forEach( cast => {
-        let name = cast.split(' ');
-        castsBodyTable.appendChild(createRowMovie(name[0], name[1]));
+        if(cast){
+            let name = cast.split(' ');
+            castsBodyTable.appendChild(createRowMovie(name[0], name[1]));
+        }
     })
 
     genres.forEach( g => g.checked = false)
@@ -32,10 +43,12 @@ const populateDVD = (movie) => {
         genres.forEach( g => {
             if(g.value === genre)
                 g.checked = true;
-            
         })
     })
     
+    image.src = media_url+movie.images;
+
+    console.log(media_url+movie.images)
 }
 
 const createRowMovie = (firstname, lastname) => {

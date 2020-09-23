@@ -11,6 +11,7 @@
       <link rel="stylesheet" href="{% static 'css/loader.css'  %}">
       <link rel="stylesheet" href="{% static 'css/form.css'  %}">
       <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     {% endblock %} 
 
     {% block body %}
@@ -64,38 +65,38 @@
                     <h2 class="text-center" style="font-weight: 500;">Movie Details</h5>
                   </div>
                   <div class="form-group col-md-4">
-                    <label>Title</label>
-                    <input name="title" id="input-text" type="text" class="form-control" placeholder="Title">
+                    <label>Title <span style="color: red">*</span></label>
+                    <input name="title" id="input-text" type="text" pattern=".{2,50}" class="form-control" placeholder="Title">
                     <div class="invalid-feedback">
-                      Please provide a valid Title.
+                      Please provide a valid Title: 2 - 50 characters.
                     </div>
                   </div>
                   <div class="form-group col-md-4">
-                    <label>Release Date</label>
+                    <label>Release Date <span style="color: red">*</span></label>
                     <input name="release_date" id="input-text" type="date" class="form-control" placeholder="Release Date" >
                     <div class="invalid-feedback">
                       Please provide a valid Date.
                     </div>
                   </div>
                   <div class="form-group col-md-4">
-                    <label>Director</label>
+                    <label>Director <span style="color: red">*</span></label>
                     <input name="director" id="input-text" type="text" class="form-control" placeholder="Director's Name">
                     <div class="invalid-feedback">
-                      Please provide a valid Director.
+                      Please provide a valid Director: 2 - 50 characters.
                     </div>
                   </div>
                   <div class="form-group col-md-4 col-xs-4">
-                    <label>Price</label>
+                    <label>Price <span style="color: red">*</span><small>&nbsp;&nbsp;amount: Php 1 - 1000</small></label>
                     <input name="price"  class="form-control" id="input-text" type="number" min="0.01" step="0.01" max="2500" placeholder="0"/>
                     <div class="invalid-feedback">
-                      Please provide a valid Price.
+                      Please provide a valid Price: 1 - 10000.
                     </div>
                   </div>
                   <div class="form-group col-md-4 col-xs-4">
-                    <label>No. of Items</label>
+                    <label>No. of Items <span style="color: red">*</span><small>&nbsp;&nbsp;qty: 1 - 100</small> </label>
                     <input name="no_items" id="input-text" type="number" min="1" max="100" class="form-control" placeholder="0">
                     <div class="invalid-feedback">
-                      Please provide a valid number of items.
+                      Please provide a valid number of items: 1 - 1000.
                     </div>
                   </div>
                 </div>
@@ -210,7 +211,7 @@
                           <input name="last_name" type="text" class="form-control" id="last-name-cast" placeholder="Last Name" >
                         </div>
                         <div class="form-group col-md-2 mt-auto">
-                          <button class="btn btn-info mt-auto" id="add-btn-cast" >Add</button>
+                          <button class="btn btn-info mt-auto" id="add-btn-cast" type="button" >Add</button>
                         </div>
                       </div>
                   </div>
@@ -236,13 +237,31 @@
               <div class="tab w3-animate-left" id="dvd-tab-content">
                 <div class="form-row">
                   <div class="col-md-12 mb-4 text-primary">
+                      <h2 class="text-center">Profile</h2>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="avatar-wrapper">
+                      <img class="profile-pic" src="" />
+                      <div class="upload-button">
+                        <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
+                      </div>
+                      <input name="image" class="file-upload" type="file" accept="image/*"/>
+                    </div>
+                  </div>
+                </div>
+                <!--
+                <div class="form-row">
+                  <div class="col-md-12 mb-4 text-primary">
                     <h5 class="text-center" style="font-weight: 500;">DVD Images</h5>
                   </div>
                   <div class="form-group col-md-4 offset-md-4">
+
                     <input type="file" id="dvd-images" name="image" multiple>
                   </div>
                 </div>
+                 -->
               </div>
+              
               <!-- DVD Images Tab End-->
               
             </div>
@@ -250,7 +269,10 @@
             
             <!-- Navigation Buttons -->
             <div class="forms-btn form-row" style="overflow:auto; display: fixed;">
-              <div class="form-group offset-md-4 col-md-4 col-sm-6">
+              <div class="form-group col-md-4 col-sm-6">
+                Fields <span style="color: red">*</span> are required.
+              </div>
+              <div class="form-group col-md-4 col-sm-6">
                 <button class="btn btn-outline-primary" type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
               </div>
               <div class="form-group col-md-4 col-sm-6 col-xs-6">
@@ -267,9 +289,10 @@
 
   {% block scripts %}
     <!-- Form Scripts -->
-    <script src="{% static '/js/app.js' %}"></script>
+    <script src="{% static '/js/app-movie.js' %}"></script>
     <script src="{% static '/js/casts.js' %}"></script>
     <script src="{% static '/js/fetch/movie-register-fetch.js'%}"></script>
+    <script src="{% static './js/modal-js/upload.js' %}" type="text/javascript"></script>
     
     <!-- Bootstrap Scripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

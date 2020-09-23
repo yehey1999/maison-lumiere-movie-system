@@ -4,10 +4,14 @@ const selects = document.querySelectorAll("select");
 
 //const saveBtn = document.querySelector("#saveBtn");
 //const inputs = document.querySelectorAll(".modal #input-text");
-let isEdit = true;
+let isEdit = false;
 let editBtnIcon = document.querySelector("#editBtnIcon");
 
 const modalTitle = document.querySelector("#modal-title");
+
+const checkboxes = document.querySelectorAll("input[type=checkbox]");
+
+
 
 viewBtn.addEventListener('click', () => {
     if(isEdit===true){
@@ -21,6 +25,7 @@ viewBtn.addEventListener('click', () => {
 });
 
 editBtn.addEventListener('click', () => {
+    isEdit = !isEdit;
     if(isEdit===true){
         edit();
         console.log('edit');
@@ -52,8 +57,7 @@ const edit = () => {
     discardBtn.classList.remove('d-none');
     saveBtn.classList.add('entry');
     discardBtn.classList.add('entry');
-
-    isEdit = false;    
+   
     
 }
 
@@ -63,15 +67,15 @@ const view = () => {
     editBtn.classList.remove('btn-success');
     editBtn.classList.add('btn-primary');
 
-    modalTitle.innerHTML = "View";
+    modalTitle  .innerHTML = "View";
     disableStatus(true);
     saveBtn.classList.add('d-none');
     discardBtn.classList.add('d-none');
 
-    isEdit = true;
+
+
 
     console.log('true');
-    
 }
 
 const disableStatus = (status) => {
@@ -81,6 +85,19 @@ const disableStatus = (status) => {
     selects.forEach(select => {
         select.disabled = status;
     });
-
+    checkboxes.forEach(checkbox => {
+        checkbox.disabled = status;
+    })
+   // firstNameCast.disabled=status;
+   // lastNameCast.disabled=status;
     console.log(inputs);
 }
+
+
+discardBtn.addEventListener('click', () => {
+    isEdit = false;
+})
+  
+closeBtn.addEventListener("click", () => {
+    isEdit = false;
+})
