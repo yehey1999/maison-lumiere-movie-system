@@ -1,5 +1,5 @@
 const movieTitle = document.querySelector("input[name=title]");
-const releaseDate = document.querySelector("input[name=release_date");
+const releaseDate = document.querySelector("input[name=release_date]");
 const director = document.querySelector("input[name=director]");
 const price = document.querySelector("input[name=price]");
 const noItems = document.querySelector("input[name=no_items]");
@@ -17,7 +17,6 @@ const populateDVD = (id) => {
     console.log(movie)
     console.log(movie.title)
 
-    
     movieTitle.value = movie.title;
     releaseDate.value = movie.release_date;
     director.value = movie.director;

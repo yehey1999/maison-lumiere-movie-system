@@ -64,15 +64,15 @@
                         </thead>
 
                         <tbody>
-                            {% for customer in customers %}
-                                <tr id="data{{customer.id}}">
+                            {% for customer, json_customer in customers %}
+                                <tr id="data{{customer.id}}" customer-json="{{json_customer}}" media-url="{{MEDIA_URL}}" >
                                     <td data-title="Date Registered" class="align-middle">{{customer.created_at}}</td>
-                                    <td data-title="First Name" class="align-middle">{{customer.customer.first_name}}</td>
+                                    <td data-title="First Name" class="align-middle">{{customer.first_name}}</td>
                                     <td data-title="Last Name" class="align-middle">{{customer.last_name}}</td>
                                     <td data-title="Date of Birth" class="align-middle">{{customer.birthdate}}</td>
                                     <td data-title="Address City" class="align-middle">{{customer.city}}</td>
                                     <td class="align-middle">
-                                        <button class="btn btn-success btn-xs"  id="viewBtn" data-toggle="modal" data-target="#modal-edit"><i class="fa fa-eye"></i></button>
+                                        <button class="btn btn-success btn-xs"  id="viewBtn" data-toggle="modal" data-target="#modal-edit" onclick="populateCustomer( {{customer.id}} )" ><i class="fa fa-eye"></i></button>
                                         <button class="btn btn-danger  btn-xs" id="deleteBtn" data-toggle="modal" data-target="#modal-delete"><i class="fas fa-trash-alt "></i></button>
                                     </td>
                                 </tr>
@@ -117,21 +117,21 @@
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label class="">Last Name</label>
-                                        <input name="last-name" id="input-text" type="text" class="form-control" placeholder="Last Name" value="Last Name" disabled> 
+                                        <input name="last_name" id="input-text" type="text" class="form-control" placeholder="Last Name"  minlength="2" maxlength="50" disabled> 
                                         <div class="invalid-feedback">
-                                            Please provide a valid Last Name.
+                                            Please provide a valid Last Name: 2 - 50 characters.
                                         </div>
                                     </div>
                                     <div class="form-group col-md-6 ">
                                         <label>First Name</label>
-                                        <input name="first-name" id="input-text" type="text" class="form-control" placeholder="First Name" value="First Name" disabled>
+                                        <input name="first_name" id="input-text" type="text" class="form-control" placeholder="First Name"  minlength="2" maxlength="50" disabled>
                                         <div class="invalid-feedback">
-                                            Please provide a valid First Name.
+                                            Please provide a valid First Name: 2 - 50 characters.
                                         </div>
                                     </div>
                                     <div class="form-group col-md-6 ">
                                         <label>Middle Name</label>
-                                        <input name="middle-name" id="input-text" type="text" class="form-control" placeholder="Middle Name" value="Middle Name" disabled>
+                                        <input name="middle_name" id="input-text" type="text" class="form-control" placeholder="Middle Name" maxlength="50" disabled>
                                         <div class="invalid-feedback">
                                             Please provide a valid Middle Name.
                                         </div>
@@ -139,21 +139,22 @@
                                     <div class="form-group col-md-6 col-xs-4 ">
                                         <label>Gender</label>
                                         <select name="gender" class="custom-select" id="input-text" disabled>
-                                            <option selected value="1">Male</option>
-                                            <option value="2">Female</option>
+                                            <option selected value="MALE">Male</option>
+                                            <option value="FEMALE">Female</option>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-6 col-xs-4 ">
                                         <label>Status</label>
                                         <select name="status" class="custom-select" id="input-text" disabled>
-                                            <option selected value="single">Single</option>
-                                            <option value="married">Married</option>
-                                            <option value="widow">Widow</option>
+                                            <option selected value="SINGLE">Single</option>
+                                            <option value="MARRIED">Married</option>
+                                            <option value="DIVORCED">Divorced</option>
+                                            <option value="WIDOWED">Widowed</option>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-6 col-xs-4">
                                         <label>Birthdate</label>
-                                        <input name="birthdate" id="input-text" type="date" class="form-control" id="formGroupExampleInput" placeholder="Birthdate" value="2014-02-09" disabled>
+                                        <input name="birthdate" id="input-text" type="date" class="form-control" placeholder="Birthdate" disabled>
                                         <div class="invalid-feedback">
                                             Please provide a valid Birthdate.
                                         </div>
@@ -169,36 +170,36 @@
                                     </div>
                                     <div class="form-group col-md-6 text-left">
                                         <label>Street</label>
-                                        <input name="street" id="input-text" type="text" class="form-control" id="formGroupExampleInput" placeholder="Street" value="Street" disabled>
+                                        <input name="street" id="input-text" type="text" class="form-control" placeholder="Street" minlength="2" maxlength="50" disabled>
                                         <div class="invalid-feedback">
-                                            Please provide a valid Street Name.
+                                            Please provide a valid Street Name: 2 - 50 characters.
                                         </div>
                                     </div>
                                     <div class="form-group col-md-6 text-left">
                                         <label>Barangay</label>
-                                        <input name="barangay" id="input-text" type="text" class="form-control" id="formGroupExampleInput" placeholder="Barangay" value="Barangay" disabled>
+                                        <input name="barangay" id="input-text" type="text" class="form-control" placeholder="Barangay" minlength="2" maxlength="50" disabled>
                                         <div class="invalid-feedback">
-                                            Please provide a valid Barangay.
+                                            Please provide a valid Barangay: 2 - 50 characters.
                                         </div>
                                     </div>
                                     <div class="form-group col-md-6 text-left">
                                         <label>City</label>
-                                        <input name="city" id="input-text" type="text" class="form-control" id="formGroupExampleInput" placeholder="City" value="City"  disabled>
+                                        <input name="city" id="input-text" type="text" class="form-control" placeholder="City" value="City" minlength="2" maxlength="50" disabled>
                                         <div class="invalid-feedback">
-                                            Please provide a valid City.
+                                            Please provide a valid City: 2 - 50 characters.
                                         </div>
                                     </div>
                                     <div class="form-group col-md-6 text-left">
                                         <label>Province</label>
                                         <select name="province" id="input-text" class="custom-select" disabled>
-                                            <option selected value="2">Bohol</option>
-                                            <option value="1">Cebu</option>
-                                            <option value="2">Manila</option>
+                                            <option selected value="BOHOL">Bohol</option>
+                                            <option value="CEBU">Cebu</option>
+                                            <option value="MANILA">Manila</option>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-6 text-left">
                                         <label>Zip Code </label>
-                                        <input name="zip-code" id="input-text" type="text" class="form-control" id="formGroupExampleInput" placeholder="Zip Code" value="Zip Code" disabled>
+                                        <input name="zipcode" id="input-text" type="text" class="form-control" placeholder="Zip Code" value="Zip Code" minlength="3" maxlength="4" disabled>
                                         <div class="invalid-feedback">
                                             Please provide a Zip Code.
                                         </div>
@@ -214,21 +215,21 @@
                                     </div>
                                     <div class="form-group col-md-6 text-left">
                                         <label>Spouse Name</label>
-                                        <input name="spouse-name" id="input-text" type="text" class="form-control" id="formGroupExampleInput" placeholder="Street" value="Spouse Name" disabled>
+                                        <input name="spouse_name" id="input-text" type="text" class="form-control" placeholder="Spouse Name" minlength="2" maxlength="50" disabled>
                                         <div class="invalid-feedback">
-                                            Please provide a valid Spouse Name.
+                                            Please provide a valid Spouse Name: 2 - 50 characters.
                                         </div>
                                     </div>
                                     <div class="form-group col-md-6 text-left">
                                         <label>Spouse Occupation</label>
-                                        <input name="spouse-occupation" id="input-text" type="text" class="form-control" id="formGroupExampleInput" placeholder="Barangay" value="Spouse Occupation" disabled>
+                                        <input name="spouse_occupation" id="input-text" type="text" class="form-control" placeholder="Spouse Occupation" minlength="2" maxlength="50" disabled>
                                         <div class="invalid-feedback">
-                                            Please provide a valid Spouse Occupation.
+                                            Please provide a valid Spouse Occupation: 2 - 50 characters.
                                         </div>
                                     </div>
                                     <div class="form-group col-md-6 text-left">
                                         <label>No. Of Children</label>
-                                            <input name="no-of-children" id="input-text" type="number" min="0" max="50" class="form-control" id="formGroupExampleInput" value="0" placeholder="0" disabled>
+                                            <input name="no_children" id="input-text" type="number" min="0" max="50" class="form-control" placeholder="No. of Children" disabled>
                                     </div>
                                     </div>
                                 </div>
@@ -308,65 +309,13 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
         <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.10.21/b-1.6.3/b-html5-1.6.3/b-print-1.6.3/fh-3.1.7/sp-1.1.1/datatables.min.js"></script>
-        
-
-        <script>
-            $(document).ready(function() {
-                $('.data-table').DataTable({
-                    dom: 'Bfrtip',
-                    buttons: ['copy', 'excel', 'csv', 'pdf'],
-
-                    lengthMenu: [[5, 10, 20, 50, 100, -1], [5, 10, 20, 50, 100, "All"]],
-                    searching: true,
-
-                    dom: '<<"row"<"col-sm-4"l><"col-sm-4"B><"col-sm-4"f>> rt <"float-left"i> <"float-right"p>>',
-                    pagingType: 'full_numbers',
-                    fixedHeader: true,
-                    aoColumnDefs: [{
-                        'bSortable': false,
-                        'aTargets': [-1]
-                    }]
-                });
-
-                let table = $('.data-table').DataTable();
-                
-                // Add event listeners to the two range filtering inputs
-                $('#min-date').keyup( function() { table.draw(); } );
-                $('#max-date').keyup( function() { table.draw(); } );
-
-                $('#min-date').change( function() { table.draw(); } );
-                $('#max-date').change( function() { table.draw(); } );
-
-                $('#refresh-btn').click( () => {
-                    $('#min-date').val("");
-                    $('#max-date').val("");
-
-                    table.draw();
-                });
-
-                $.fn.dataTableExt.afnFiltering.push(
-                    ( settings, data, dataIndex ) => {
-                        let minDate = $('#min-date').val();
-                        let maxDate = $('#max-date').val();
-                        let date = data[0].trim();
-                        
-                        if (minDate === '' || maxDate === '' )
-                            return true;
-
-                        if (Date.parse(date) >= Date.parse(minDate) && Date.parse(date) <= Date.parse(maxDate))
-                            return true;
-                            
-                        else 
-                            return false;
-                    }
-                );
-            });
-        </script>
+        <script type="text/javascript" src="{% static 'js/data-table.js' %}"></script>
 
         <!-- Modal Scripts -->
-        <script src="{% static 'js/modal-js/app.js' %}"></script>
-        <script src="{% static 'js/modal-js/upload.js' %}" type="text/javascript"></script>
-        <script src="{% static 'js/modal-js/view-edit.js' %}"></script>
-        
+        <script type="text/javascript" src="{% static 'js/modal-js/app.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/modal-js/upload.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/modal-js/view-edit.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/modal-js/populate-customer.js' %}"></script>
+
     {% endblock %}
 

@@ -51,11 +51,18 @@ class CustomerRegistrationView(View):
             return JsonResponse({'success': False})
 
 class CustomerSummaryView(View):
-    def get(self, request):
-        qs_customers = Customer.objects.all();
+     def get(self, request):
+        qs_customers = Customer.objects.all().values()
+        
+        json_customers = []
+        for qs_customer in qs_customers:
+            json_customer = dumps(qs_customer, indent = 4, cls=DjangoJSONEncoder) 
+            json_customers.append(json_customer)
+
+        customers = zip(qs_customers, json_customers)
 
         context = {
-            'customers': qs_customers
+            'customers': customers
         }
         
         #print(json_customers)

@@ -1,8 +1,14 @@
-const basicInfoInputTexts = document.querySelectorAll("#input-text");
+const inputTexts = document.querySelectorAll("#input-text");
 const submitBtn = document.querySelector("#submitBtn");
+const tabs = document.getElementsByClassName("tab");
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
+const steps = document.getElementsByClassName("step");
 
+// Current tab is set to be the first tab (0)
+let currentTab = 0; 
 
-basicInfoInputTexts.forEach( element => {
+inputTexts.forEach( element => {
     element.addEventListener('input', (event) => {
       if(isValidInput(event.target)){
           event.target.classList.add("is-valid");
@@ -16,43 +22,38 @@ basicInfoInputTexts.forEach( element => {
     });
 });
 
-
-// Current tab is set to be the first tab (0)
-let currentTab = 0; 
-
 const fixStepIndicator = (n) => {
   // This function removes the "active" class of all steps...
-  let i, x = document.getElementsByClassName("step");
+  let i;
   
-  for (i = 0; i < x.length; i++)
-    x[i].className = x[i].className.replace(" active", "");
+  for (i = 0; i < steps.length; i++)
+    steps[i].className = steps[i].className.replace(" active", "");
 
 
   //... and adds the "active" class to the current step:
-  x[n].className += " active";
+  steps[n].className += " active";
 }
 
 const showTab = (n) => {
   // This function will display the specified tab of the form ...
-  let x = document.getElementsByClassName("tab");
-  x[n].style.display = "block";
+  tabs[n].style.display = "block";
 
   // ... and fix the Previous/Next buttons:
   if (n == 0) 
-    document.getElementById("prevBtn").style.display = "none";
+    prevBtn.style.display = "none";
   else{
-    document.getElementById("prevBtn").style.display = "inline";
-    document.getElementById("nextBtn").classList.remove("d-none"); 
+    prevBtn.style.display = "inline";
+    nextBtn.classList.remove("d-none"); 
     submitBtn.classList.add("d-none");
   }
 
-  if (n == (x.length - 1)) {
-    document.getElementById("nextBtn").classList.toggle("d-none"); 
+  if (n == (tabs.length - 1)) {
+    nextBtn.classList.toggle("d-none"); 
     submitBtn.classList.toggle("d-none");
   } 
   else{
-    document.getElementById("nextBtn").innerHTML = "Next";
-    document.getElementById("nextBtn").classList.remove("btn-success");
+    nextBtn.innerHTML = "Next";
+    nextBtn.classList.remove("btn-success");
   }
 
   // ... and run a function that displays the correct step indicator:
@@ -61,7 +62,6 @@ const showTab = (n) => {
 
 const nextPrev = (n) => {
   // This function will figure out which tab to display
-  let tabs = document.getElementsByClassName("tab");
 
   // Exit the function if any field in the current tab is invalid:
   if (n == 1 && !validateForm()) 
@@ -89,8 +89,7 @@ const nextPrev = (n) => {
 //validateForm and isValidInput
 
 const validateForm = () => {
-  let tabs, inputs, i, valid = true;
-  tabs = document.getElementsByClassName("tab");
+  let inputs, i, valid = true;
   inputs = tabs[currentTab].getElementsByTagName("input");
 
   // A loop that checks every input field in the current tab:
@@ -102,7 +101,7 @@ const validateForm = () => {
       continue;
 
     //you may remove the outer conditional statement
-    //because checkboxes are non-existent n customer
+    //because checkboxes are non-existent in customer
     if(inputs[i].type !== 'checkbox'){
 
       //check if the input[i] is valid
@@ -126,7 +125,7 @@ const validateForm = () => {
 
   // If the valid status is true, mark the step as finished and valid:
   if(valid){
-    document.getElementsByClassName("step")[currentTab].className += " finish";
+    steps[currentTab].className += " finish";
   }
 
   return valid;
@@ -138,7 +137,7 @@ const isValidInput = (input) => {
     if(input.value === "")
       return false;
 
-    //this conditional statements 
+    //these conditional statements 
     //identify what type of input are they
     //and do validation based on their names
     
@@ -153,7 +152,6 @@ const isValidInput = (input) => {
     
     return true;
 }
-
 
 showTab(currentTab);
 

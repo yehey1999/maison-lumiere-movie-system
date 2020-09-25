@@ -48,7 +48,7 @@ class MovieRegistrationView(View):
 
 class MovieSummaryView(View):
     def get(self, request):
-        qs_movies = Movie.objects.all().values();
+        qs_movies = Movie.objects.all().values()
         #qs_movies = Movie.objects.all()
         #json_movies = dumps(qs_movies)
         

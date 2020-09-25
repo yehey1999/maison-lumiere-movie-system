@@ -37,16 +37,15 @@
         <div id="loader" class="lds-roller d-none align-self-center"  style="margin-top: auto; margin-bottom: auto;">
           <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
         </div>
-        <div id="success-indicator" class="d-none align-self-center" style="margin-top: auto; margin-bottom: auto;">
-          <!--Add here the success indicator-->
+        <div id="success-indicator" class="d-none align-self-center text-center" style="margin-top: auto; margin-bottom: auto;">
           <!-- success indicator-->
           <img class="img-fluid" id="img-indicator" src="{% static 'img/success-popcorn.gif' %}"><br>
           <h3>Nitwit! Blubber! Oddment! Tweak!</h3>
           <p>Happiness can be found even in the darkest of times, if one only remembers to turn on the light.
-                                    <br>― Albus Dumbledore</p>
+             <br>― Albus Dumbledore</p>
         </div>
-        <div id="failed-indicator" class="d-none align-self-center" style="margin-top: auto; margin-bottom: auto;">
-          <!--Add here the failed indicator-->
+        <div id="failed-indicator" class="d-none align-self-center text-center" style="margin-top: auto; margin-bottom: auto;">
+          <!-- failed indicator-->
           <img class="img-fluid" id="img-indicator" src="{% static 'img/fail-ohno.gif' %}"><br>
           <h3 class="text-indicator">Please try again.</h3>
           <p class="text-indicator">If at first you don't succeed, try, try, try again.</p>
@@ -64,47 +63,45 @@
                 <div class="col-md-12 mb-4 text-primary">
                   <h2 class="text-center">Basic Information</h2>
                 </div>
-                <div class="form-group col-md-4">
-                  <label class="">Last Name</label>
-                  <input name="last_name" id="input-text" type="text" class="form-control" placeholder="Last Name"> 
+                <div class="form-group col-md-4 col-xs-4 ">
+                  <label class="">Last Name <span style="color: red">*</span></label>
+                  <input name="last_name" id="input-text" type="text" class="form-control" placeholder="Last Name" minlength="2" maxlength="50"> 
                   <div class="invalid-feedback">
-                    Please provide a valid Last Name.
-                  </div>
-                </div>
-                <div class="form-group col-md-4 ">
-                  <label>First Name</label>
-                  <input name="first_name" id="input-text" type="text" class="form-control" placeholder="First Name" >
-                  <div class="invalid-feedback">
-                    Please provide a valid First Name.
-                  </div>
-                </div>
-                <div class="form-group col-md-4 ">
-                  <label>Middle Name</label>
-                  <input name="middle_name" id="input-text" type="text" class="form-control" placeholder="Middle Name" >
-                  <div class="invalid-feedback">
-                    Please provide a valid Middle Name.
+                    Please provide a valid Last Name: 2 - 50 characters.
                   </div>
                 </div>
                 <div class="form-group col-md-4 col-xs-4 ">
-                  <label>Gender</label>
+                  <label>First Name <span style="color: red">*</span></label>
+                  <input name="first_name" id="input-text" type="text" class="form-control" placeholder="First Name" minlength="2" maxlength="50">
+                  <div class="invalid-feedback">
+                    Please provide a valid First Name: 2 - 50 characters.
+                  </div>
+                </div>
+                <div class="form-group col-md-4 col-xs-4 ">
+                  <label>Middle Name</label>
+                  <input name="middle_name" id="input-text" type="text" class="form-control" placeholder="Middle Name" minlength="0" maxlength="50" >
+                  <!-- <div class="invalid-feedback">
+                    Please provide a valid Middle Name.
+                  </div> -->
+                </div>
+                <div class="form-group col-md-4 col-xs-4 ">
+                  <label>Gender <span style="color: red">*</span></label>
                   <select name="gender" class="custom-select">
                     <option selected value="MALE">Male</option>
                     <option value="FEMALE">Female</option>
                   </select>
-                  <!-- <input name="gender" id="input-text" type="text" class="form-control" placeholder="Gender" > -->
                 </div>
                 <div class="form-group col-md-4 col-xs-4 ">
-                  <label>Status</label>
+                  <label>Status <span style="color: red">*</span></label>
                   <select name="status" class="custom-select">
                     <option selected value="SINGLE">Single</option>
                     <option value="MARRIED">Married</option>
                     <option value="DIVORCED">Divorced</option>
                     <option value="WIDOWED">Widowed</option>
                   </select>
-                  <!-- <input name="status" id="input-text" type="text" class="form-control" placeholder="Status" > -->
                 </div>
                 <div class="form-group col-md-4 col-xs-4 ">
-                  <label>Birthdate</label>
+                  <label>Birthdate <span style="color: red">*</span></label>
                   <input name="birthdate" id="input-text" type="date" class="form-control" placeholder="Birthdate" >
                   <div class="invalid-feedback">
                     Please provide a valid Birthdate.
@@ -120,40 +117,40 @@
                 <div class="col-md-12 mb-4 text-primary ">
                   <h2 class="text-center">Address</h2>
                 </div>
-                <div class="form-group col-md-4 ">
-                  <label>Street</label>
-                  <input name="street" id="input-text" type="text" class="form-control" placeholder="Street">
+                <div class="form-group col-md-4 col-xs-4 text-left ">
+                  <label>Street <span style="color: red">*</span></label>
+                  <input name="street" id="input-text" type="text" class="form-control" placeholder="Street" minlength="2" maxlength="50" >
                   <div class="invalid-feedback">
-                    Please provide a valid Spouse Name.
+                    Please provide a valid Street: 2 - 50 characters.
                   </div>
                 </div>
-                <div class="form-group col-md-4 ">
-                  <label>Barangay</label>
-                  <input name="barangay" id="input-text" type="text" class="form-control" placeholder="Barangay" >
+                <div class="form-group col-md-4 col-xs-4 text-left ">
+                  <label>Barangay <span style="color: red">*</span></label>
+                  <input name="barangay" id="input-text" type="text" class="form-control" placeholder="Barangay" minlength="2" maxlength="50">
                   <div class="invalid-feedback">
-                    Please provide a valid Barangay.
+                    Please provide a valid Barangay: 2 - 50 characters.
                   </div>
                 </div>
-                <div class="form-group col-md-4 ">
-                  <label>City</label>
-                  <input name="city" id="input-text" type="text" class="form-control" placeholder="City" >
+                <div class="form-group col-md-4 col-xs-4 text-left ">
+                  <label>City <span style="color: red">*</span></label>
+                  <input name="city" id="input-text" type="text" class="form-control" placeholder="City" minlength="2" maxlength="50" >
                   <div class="invalid-feedback">
-                    Please provide a valid City.
+                    Please provide a valid City: 2 - 50 characters.
                   </div>
                 </div>
-                <div class="form-group col-md-4 ">
-                  <label>Province</label>
+                <div class="form-group col-md-4 col-xs-4 text-left ">
+                  <label>Province <span style="color: red">*</span></label>
                   <select name="province" class="custom-select">
-                    <option selected value="2">Bohol</option>
-                    <option value="1">Cebu</option>
-                    <option value="2">Manila</option>
+                    <option selected value="BOHOL">Bohol</option>
+                    <option value="CEBU">Cebu</option>
+                    <option value="MANILA">Manila</option>
                   </select>
                 </div>
-                <div class="form-group col-md-4 ">
-                  <label>Zip Code </label>
-                  <input name="zipcode" id="input-text" type="text" class="form-control" placeholder="Zip Code" >
+                <div class="form-group col-md-4 col-xs-4 text-left ">
+                  <label>Zip Code <span style="color: red">*</span></label>
+                  <input name="zipcode" id="input-text" type="text" class="form-control" placeholder="Zip Code" minlength="3" maxlength="4" >
                   <div class="invalid-feedback">
-                    Please provide a Zip Code.
+                    Please provide a valid Zip Code: 3 - 4 digits.
                   </div>
                 </div>
               </div>
@@ -164,25 +161,25 @@
             <div class="tab w3-center w3-animate-left" id="customer-tab-content">
               <div class="form-row">
                 <div class="col-md-12 mb-4 text-primary">
-                  <h2 class="text-center">Spouse</h2>
+                  <h2 class="text-center">Spouse Details</h2>
                 </div>
-                <div class="form-group col-md-4 ">
+                <div class="form-group col-md-4 text-left ">
                   <label>Spouse Name</label>
-                  <input name="spouse_name" id="input-text" type="text" class="form-control" placeholder="Spouse Name">
+                  <input name="spouse_name" id="input-text" type="text" class="form-control" placeholder="Spouse Name" minlength="2" maxlength="50">
                   <div class="invalid-feedback">
-                    Please provide a valid Spouse Name.
+                    Please provide a valid Spouse Name: 2 - 50 characters.
                   </div>
                 </div>
-                <div class="form-group col-md-4 ">
+                <div class="form-group col-md-4 text-left ">
                   <label>Spouse Occupation</label>
-                  <input name="spouse_occupation" id="input-text" type="text" class="form-control" iplaceholder="Spouse Occupation" >
+                  <input name="spouse_occupation" id="input-text" type="text" class="form-control" placeholder="Spouse Occupation" minlength="2" maxlength="50" >
                   <div class="invalid-feedback">
-                    Please provide a valid Spouse Occupation.
+                    Please provide a valid Spouse Occupation: 2 - 50 characters.
                   </div>
                 </div>
-                <div class="form-group col-md-4 ">
+                <div class="form-group col-md-4 text-left ">
                   <label>No. Of Children</label>
-                  <input name="no_children" id="input-text" type="number" min="0" max="50" class="form-control" placeholder="0" >
+                  <input name="no_children" id="input-text" type="number" min="0" max="50" class="form-control" placeholder="No. of Children" >
                 </div>
               </div>
             </div>
@@ -212,7 +209,10 @@
 
           <!-- Navigation Buttons -->
           <div class="forms-btn form-row" style="overflow:auto; display: fixed;display: fixed;">
-            <div class="form-group offset-md-4 col-md-4 col-sm-6">
+            <div class="form-group col-md-4 col-sm-6">
+              Fields <span style="color: red">*</span> are required.
+            </div>
+            <div class="form-group col-md-4 col-sm-6">
               <button class="btn btn-outline-primary" type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
             </div>
             <div class="form-group col-md-4 col-sm-6 col-xs-6">
@@ -230,7 +230,7 @@
 
     {% block scripts %}
       <!-- Form Scripts -->
-      <script src="{% static './js/app.js' %}"></script>
+      <script src="{% static './js/app-customer.js' %}"></script>
       <script src="{% static './js/fetch/customer-register-fetch.js'%}"></script>
       <!--<script src="./js/validation.js"></script>!-->
 
