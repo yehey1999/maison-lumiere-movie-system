@@ -7,9 +7,11 @@ const genres = document.querySelectorAll("input[type=checkbox]");
 const castHolder = document.querySelector("#casts-body-table");
 const image = document.querySelector(".profile-pic");
 
+const movieForm = document.querySelector(".movie-form")
 
 
 const populateDVD = (id) => {
+
     console.log("id");
     movie = JSON.parse(document.querySelector("#data"+id).getAttribute('movie-json'));
     media_url = document.querySelector("#data"+id).getAttribute('media-url');
@@ -48,7 +50,13 @@ const populateDVD = (id) => {
     image.src = media_url+movie.images;
 
     console.log(media_url+movie.images)
+
+    movieForm.action = "/movie/update/"+id+"/";
 }
+
+movieForm.addEventListener('submit', e => {
+   
+})
 
 const createRowMovie = (firstname, lastname) => {
     let row = document.createElement("tr");  

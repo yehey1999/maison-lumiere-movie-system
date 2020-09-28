@@ -21,6 +21,8 @@ const noChildren = document.querySelector("input[name=no_children]");
 //Profile
 const profilePic = document.querySelector("#profile-pic");
 
+
+
 const populateCustomer = (id) => {
     //console.log("id");
     customer = JSON.parse(document.querySelector("#data"+id).getAttribute('customer-json'));
@@ -47,6 +49,8 @@ const populateCustomer = (id) => {
 
     profilePic.src = media_url+customer.image;
     console.log(media_url+customer.image);
+
+    
 }
 
 

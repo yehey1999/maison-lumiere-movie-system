@@ -110,7 +110,8 @@
                             <button class="btn btn-primary btn-xs" id="editBtn" style="position:absolute; right: 1.2rem; top: -0.5rem"><i class="fa fa-pen" id="editBtnIcon"></i></button>
                         </div>
                         
-                        <form class="customer-form card-body" id="regForm" action="" autocomplete="off">
+                        <form class="movie-form card-body" id="regForm" action="" method="POST" autocomplete="off" enctype="multipart/form-data">
+                            {%csrf_token%}
                             <div class="tab-holder container-fluid customer-form-body">
                             <!-- Movie Tab -->
                             <div class="tab w3-animate-left" id="dvd-tab-content">
