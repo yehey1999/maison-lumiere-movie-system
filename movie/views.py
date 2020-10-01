@@ -49,27 +49,18 @@ class MovieRegistrationView(View):
 class MovieSummaryView(View):
     def get(self, request):
         qs_movies = Movie.objects.all().values()
-        #qs_movies = Movie.objects.all()
-        #json_movies = dumps(qs_movies)
         
         json_movies = []
         for qs_movie in qs_movies:
-            #print(dumps(list(qs_movie), cls=DjangoJSONEncoder))
-            #print(serializers.serialize('json', qs_movie))
             json_movie = dumps(qs_movie, indent = 4, cls=DjangoJSONEncoder) 
             json_movies.append(json_movie)
-            #print(qs_movie[images.url)
         
         movies = zip(qs_movies, json_movies)
         
         context = {
             'movies': movies
-            #'movies': qs_movies
-            #'image': qs_movies[1].images.url
         }
         
-        #print("hello");        
-        #print(json_movies)
         print("hello world")
         
         return render(request, 'movie-summary.html', context)

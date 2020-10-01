@@ -95,13 +95,9 @@ const validateForm = () => {
   // A loop that checks every input field in the current tab:
   for(i = 0; i < inputs.length; i++){
 
-    //you can remove this
-    //if statement because these are non-existent in the customer form
     if(inputs[i].id ==='first-name-cast' || inputs[i].id === 'last-name-cast')
       continue;
 
-    //you may remove the outer conditional statement
-    //because checkboxes are non-existent in customer
     if(inputs[i].type !== 'checkbox'){
 
       //check if the input[i] is valid
