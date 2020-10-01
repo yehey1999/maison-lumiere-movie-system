@@ -70,7 +70,7 @@ class CustomerSummaryView(View):
     def post(self, request):
         if request.method == 'POST':
             if 'deleteBtn' in request.POST:
-                customer_id = request.POST.get("customer_id")
+                customer_id = request.POST.get("customer_id1")
                 delete_customer = Customer.objects.filter(person_ptr_id=customer_id).delete()
                 delete_person = Person.objects.filter(id = customer_id).delete()
                 return redirect('/customer')
