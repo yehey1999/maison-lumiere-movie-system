@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
 from django.views.generic import View
 from .forms import CustomerForm
@@ -51,7 +51,7 @@ class CustomerRegistrationView(View):
             return JsonResponse({'success': False})
 
 class CustomerSummaryView(View):
-     def get(self, request):
+    def get(self, request):
         qs_customers = Customer.objects.all().values()
         
         json_customers = []
@@ -65,6 +65,30 @@ class CustomerSummaryView(View):
             'customers': customers
         }
         
-        #print(json_customers)
         return render(request, 'customer-summary.html', context)
+    
+    def post(self, request):
+        if request.method == 'POST':
+            if 'deleteBtn' in request.POST:
+                customer_id = request.POST.get("customer_id")
+                delete_customer = Customer.objects.filter(person_ptr_id=customer_id).delete()
+                delete_person = Person.objects.filter(id = customer_id).delete()
+                return redirect('/customer')
 
+            elif 'saveBtn' in request.POST:
+                customer_id = request.POST.get("customer_id2")
+                customer = Customer.objects.get(person_ptr_id=customer_id)
+                form = CustomerForm(request.POST, instance=customer)
+
+                if form.is_valid():
+                    customer = form.save(commit=False)
+                    middle_name = request.POST.get("middle_name")
+                    spouse_name = request.POST.get("spouse_name")
+                    spouse_occupation = request.POST.get("spouse_occupation")
+                    no_children = request.POST.get("no_children")
+                    image = request.FILES.get("image", "")
+                    customer.save()
+                    return redirect('/customer')
+
+
+        return HttpResponse("error")

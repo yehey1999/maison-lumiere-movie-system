@@ -62,6 +62,8 @@ class MovieSummaryView(View):
             'movies': movies
         }
         
+        print("hello world")
+        
         return render(request, 'movie-summary.html', context)
     
     def post(self, request):

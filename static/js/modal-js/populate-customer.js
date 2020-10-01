@@ -1,3 +1,5 @@
+const customer_id = document.querySelector("input[name=customer_id2]");
+
 //Basic Info Tab
 const lastName = document.querySelector("input[name=last_name]");
 const firstName = document.querySelector("input[name=first_name]");
@@ -24,11 +26,11 @@ const profilePic = document.querySelector("#profile-pic");
 
 
 const populateCustomer = (id) => {
-    //console.log("id");
     customer = JSON.parse(document.querySelector("#data"+id).getAttribute('customer-json'));
     media_url = document.querySelector("#data"+id).getAttribute('media-url');
     //console.log(customer);
     
+    customer_id.value = customer.id;
     lastName.value = customer.last_name;
     firstName.value = customer.first_name;
     middleName.value = customer.middle_name;
@@ -49,7 +51,6 @@ const populateCustomer = (id) => {
 
     profilePic.src = media_url+customer.image;
     console.log(media_url+customer.image);
-
 }
 
 

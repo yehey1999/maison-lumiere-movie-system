@@ -121,7 +121,7 @@ const validateForm = () => {
     if(y[i].disabled === true)
       continue;
       
-    if(y[i].id ==='first-name-cast' || y[i].id === 'last-name-cast')
+    if(y[i].id ==='first-name-cast' || y[i].id === 'last-name-cast' || y[i].id ==='customer_id')
       continue;
 
     if(y[i].value == ""){
