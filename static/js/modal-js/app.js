@@ -20,6 +20,13 @@ closeBtn.addEventListener("click", () => {
   restart();
 })
 
+/*
+saveBtn.addEventListener("click", e => {
+  restart();
+
+  console.log("Ao")
+})
+*/
 
 inputs.forEach( element => {
     element.addEventListener('input', (e) => {

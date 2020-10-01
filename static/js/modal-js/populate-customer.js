@@ -50,7 +50,6 @@ const populateCustomer = (id) => {
     profilePic.src = media_url+customer.image;
     console.log(media_url+customer.image);
 
-    
 }
 
 

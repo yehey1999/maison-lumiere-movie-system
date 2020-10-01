@@ -4,21 +4,25 @@ const director = document.querySelector("input[name=director]");
 const price = document.querySelector("input[name=price]");
 const noItems = document.querySelector("input[name=no_items]");
 const genres = document.querySelectorAll("input[type=checkbox]");
-const castHolder = document.querySelector("#casts-body-table");
+const castsHolder = document.querySelector(".casts-body-table");
 const image = document.querySelector(".profile-pic");
+const movieId = document.querySelector("input[name=movie-id-update]");
+const movieGenres = document.querySelector("input[name=movie-genres]");
 
 const movieForm = document.querySelector(".movie-form")
 
+const updateBtn = document.querySelector("#saveBtn");
+
+const modal = document.querySelector(".modal");
 
 const populateDVD = (id) => {
 
-    console.log("id");
     movie = JSON.parse(document.querySelector("#data"+id).getAttribute('movie-json'));
     media_url = document.querySelector("#data"+id).getAttribute('media-url');
 
-    console.log(movie)
-    console.log(movie.title)
+    console.log(id);
 
+    movieId.value = id;
     movieTitle.value = movie.title;
     releaseDate.value = movie.release_date;
     director.value = movie.director;
@@ -28,17 +32,19 @@ const populateDVD = (id) => {
     console.log(movie.title);
     let casts = movie.casts.split(',');
     
-    while(castsBodyTable.firstChild)
-        castsBodyTable.removeChild(castsBodyTable.firstChild);
+    while(castsHolder.firstChild)
+        castsHolder.removeChild(castsHolder.firstChild);
     
     casts.forEach( cast => {
         if(cast){
             let name = cast.split(' ');
-            castsBodyTable.appendChild(createRowMovie(name[0], name[1]));
+            castsHolder.appendChild(createRowMovie(name[0], name[1]));
         }
     })
 
     genres.forEach( g => g.checked = false)
+    
+    movieGenres.value += movie.genres;
     
     movie.genres.split(',').forEach(genre => {
         genres.forEach( g => {
@@ -49,14 +55,7 @@ const populateDVD = (id) => {
     
     image.src = media_url+movie.images;
 
-    console.log(media_url+movie.images)
-
-    movieForm.action = "/movie/update/"+id+"/";
 }
-
-movieForm.addEventListener('submit', e => {
-   
-})
 
 const createRowMovie = (firstname, lastname) => {
     let row = document.createElement("tr");  

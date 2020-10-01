@@ -37,13 +37,19 @@ editBtn.addEventListener('click', () => {
 
 closeBtn.addEventListener('click', () => {
     view();
-    console.log('close');
+    isEdit = false;
 })
 discardBtn.addEventListener('click', () => {
     view();
-    console.log('close');
+    isEdit = false;
 })
 
+/*
+saveBtn.addEventListener('click', () => {
+    view();
+    isEdit = false;
+})
+*/
 const edit = () => {
     
     editBtnIcon.className = 'fa fa-eye';
@@ -85,22 +91,14 @@ const disableStatus = (status) => {
     })
 
     try{
-        if(firstNameCast === null)
+        //if(firstNameCast !== null)
             firstNameCast.disabled=status;
 
-        if(lastNameCast=== null)
+       // if(lastNameCast !== null)
             lastNameCast.disabled=status;
     }catch(err){
 
     }
-    console.log(inputs);
+
 }
 
-
-discardBtn.addEventListener('click', () => {
-    isEdit = false;
-})
-  
-closeBtn.addEventListener("click", () => {
-    isEdit = false;
-})
