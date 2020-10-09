@@ -18,6 +18,7 @@ class Person(models.Model):
     spouse_name = models.CharField(blank=True, null=True, max_length = 50)
     spouse_occupation = models.CharField(blank=True, null=True, max_length = 50)
     no_children = models.IntegerField(blank=True, null=True)
+    email = models.EmailField(max_length = 50)
     
     class Meta:
         db_table = "Person"
