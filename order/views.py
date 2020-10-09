@@ -8,6 +8,9 @@ class CustomerOrdersView(View):
     def get(self, request):
         return HttpResponse("Customer Orders View")
     
+    def post(self, requeset):
+        return HttpResponse("Order Form")
+    
 
 class MoviesOrderView(View):
     def get(self, request):
