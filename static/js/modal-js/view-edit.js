@@ -5,6 +5,9 @@ const selects = document.querySelectorAll("select");
 //const saveBtn = document.querySelector("#saveBtn");
 //const inputs = document.querySelectorAll(".modal #input-text");
 
+let firstNameCast = document.querySelector("#first-name-cast");
+let lastNameCast = document.querySelector("#last-name-cast");
+
 let isEdit = false;
 let editBtnIcon = document.querySelector("#editBtnIcon");
 
