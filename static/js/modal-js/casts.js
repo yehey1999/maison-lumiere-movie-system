@@ -4,17 +4,25 @@
     let castsBodyTable = document.querySelector(".casts-body-table");
     let firstNameCast = document.querySelector("#first-name-cast");
     let lastNameCast = document.querySelector("#last-name-cast");
-    let casts = document.querySelector("input[name=movie-casts]")
+    let castsV = document.querySelector("input[name=movie-casts]")
 
     addCastBtn.addEventListener('click', (e) => {
         
         e.preventDefault();
-        
+        let casts = "";
+        casts = firstNameCast.value + " " + lastNameCast.value + ",";
         castsBodyTable.appendChild(createRow(firstNameCast.value, lastNameCast.value))
-        casts.value += `${firstNameCast.value} ${lastNameCast.value},`;
+        //casts.value += `${firstNameCast.value} ${lastNameCast.value},`;
         
         firstNameCast.value = "";
         lastNameCast.value = "";
+
+        
+        let castsInputs = document.querySelectorAll(".casts-body-table tr");
+        castsInputs.forEach(cast => casts += cast.id + "," );
+        //casts = casts.slice(0, -1);
+
+        castsV.value += casts;
 
     });
 
@@ -23,6 +31,15 @@
 
         if(e.target.id  === "close")
             e.target.parentElement.parentElement.remove();
+        
+        let casts = "";
+        castsV.value = "";
+        let castsInputs = document.querySelectorAll(".casts-body-table tr");
+        castsInputs.forEach(cast => casts += cast.id + "," );
+        casts = casts.slice(0, -1);
+
+        castsV.value += casts;
+    
 
     });
 

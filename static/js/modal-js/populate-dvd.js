@@ -9,6 +9,8 @@ const image = document.querySelector(".profile-pic");
 const movieId = document.querySelector("input[name=movie-id-update]");
 const movieGenres = document.querySelector("input[name=movie-genres]");
 
+let castsV = document.querySelector("input[name=movie-casts]");
+
 const movieForm = document.querySelector(".movie-form")
 
 const updateBtn = document.querySelector("#saveBtn");
@@ -44,7 +46,8 @@ const populateDVD = (id) => {
 
     genres.forEach( g => g.checked = false)
     
-    movieGenres.value += movie.genres;
+    movieGenres.value = movie.genres;
+    castsV.value = movie.casts;
     
     movie.genres.split(',').forEach(genre => {
         genres.forEach( g => {

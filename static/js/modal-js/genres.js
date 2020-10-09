@@ -4,11 +4,19 @@
 
     genres.forEach(genre => {
         genre.addEventListener("change", (e) => {
+            movieGenres.value = "";
 
-            if(e.target.checked)
-                movieGenres.value += `${e.target.value},`;
+            genres.forEach(g => {
+                if(g.checked === true)
+                    movieGenres.value += `${g.value},`;
+        
+                console.log("Here")
+            });
+            
 
         });
     })
+
+
 
 })()
