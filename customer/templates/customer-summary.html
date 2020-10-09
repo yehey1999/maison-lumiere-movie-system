@@ -134,7 +134,7 @@
                         </div>
                     
                         <!-- Customer Form -->
-                        <form class="card-body" id="customer-updateForm" action="" method="post" autocomplete="off" enctype="multipart/form-data">
+                        <form class="card-body" id="regForm" action="" method="post" autocomplete="off" enctype="multipart/form-data">
                             {% csrf_token %}
                             <div class="tab-holder container-fluid customer-form-body">
                                 <!-- Basic Info Tab -->
@@ -161,9 +161,6 @@
                                     <div class="form-group col-md-6 ">
                                         <label>Middle Name</label>
                                         <input name="middle_name" id="input-text" type="text" class="form-control" placeholder="Middle Name" maxlength="50" disabled>
-                                        <div class="invalid-feedback">
-                                            Please provide a valid Middle Name.
-                                        </div>
                                     </div>
                                     <div class="form-group col-md-6 col-xs-4 ">
                                         <label>Gender</label>
@@ -245,16 +242,10 @@
                                     <div class="form-group col-md-6 text-left">
                                         <label>Spouse Name</label>
                                         <input name="spouse_name" id="input-text" type="text" class="form-control" placeholder="Spouse Name" minlength="2" maxlength="50" disabled>
-                                        <div class="invalid-feedback">
-                                            Please provide a valid Spouse Name: 2 - 50 characters.
-                                        </div>
                                     </div>
                                     <div class="form-group col-md-6 text-left">
                                         <label>Spouse Occupation</label>
                                         <input name="spouse_occupation" id="input-text" type="text" class="form-control" placeholder="Spouse Occupation" minlength="2" maxlength="50" disabled>
-                                        <div class="invalid-feedback">
-                                            Please provide a valid Spouse Occupation: 2 - 50 characters.
-                                        </div>
                                     </div>
                                     <div class="form-group col-md-6 text-left">
                                         <label>No. Of Children</label>

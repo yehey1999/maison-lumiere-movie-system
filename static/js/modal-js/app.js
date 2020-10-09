@@ -30,14 +30,14 @@ saveBtn.addEventListener("click", e => {
 
 inputs.forEach( element => {
     element.addEventListener('input', (e) => {
-        if(e.target.value !== ""){
-            e.target.classList.add("is-valid");
-            e.target.classList.remove("is-invalid");
-        }
-        else{
-            e.target.classList.remove("is-valid");
-            e.target.classList.add("is-invalid");
-        }
+      if(e.target.value !== "" || y[i].name === 'middle_name' || y[i].name === 'spouse_name'|| y[i].name === 'spouse_occupation'){
+        e.target.classList.add("is-valid");
+        e.target.classList.remove("is-invalid");
+      }
+      else{
+        e.target.classList.remove("is-valid");
+        e.target.classList.add("is-invalid");
+      }
     });
 });
 
@@ -121,9 +121,13 @@ const validateForm = () => {
     if(y[i].disabled === true)
       continue;
       
-    if(y[i].id ==='first-name-cast' || y[i].id === 'last-name-cast' || y[i].id ==='customer_id')
-      continue;
-
+    if(y[i].id ==='first-name-cast' || y[i].id === 'last-name-cast' || y[i].id ==='customer_id' 
+       || y[i].name === 'middle_name' || y[i].name === 'spouse_name'|| y[i].name === 'spouse_occupation'){
+        y[i].className += " is-valid";
+        valid = true;
+        continue;
+       }
+       
     if(y[i].value == ""){
       // add an "invalid" class to the field:
       y[i].className += " is-invalid";
