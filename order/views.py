@@ -2,14 +2,20 @@ from django.shortcuts import render, HttpResponse
 from django.views.generic import View
 
 from .models import Order
-from .models import Customer
+from customer.models import Customer
 from movie.models import Movie
 from .forms import OrderForm
 
 
 class CustomerOrdersView(View):
-    def get(self, request):
-        return render(request, 'test.html')
+    def get(self, request, id):
+        customer = Customer.objects.get(id=id)
+        
+        context = {
+            'customer': customer
+        }
+        
+        return render(request, 'test.html', context)
     
     def post(self, request):
         
@@ -27,7 +33,7 @@ class CustomerOrdersView(View):
             
             for id in movie_ids:
                 movie = Movie.objects.get(id=id)
-                if movie.quantity > 0:
+                if movie.no_items > 0:
                     form.movies.add(movie)
                 else:
                     return  HttpResponse("Form not Valid")
