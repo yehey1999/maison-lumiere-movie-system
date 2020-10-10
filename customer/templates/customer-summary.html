@@ -73,7 +73,9 @@
                                     <td data-title="Address City" class="align-middle">{{customer.city}}</td>
                                     <td class="align-middle">
                                         <button class="btn btn-success btn-xs"  id="viewBtn" data-toggle="modal" data-target="#modal-edit" onclick="populateCustomer( {{customer.id}} )" ><i class="fa fa-eye"></i></button>
-                                        <button class="btn btn-danger  btn-xs" id="deleteModalBtn" data-toggle="modal" data-target="#modal-delete-{{customer.id}}"><i class="fas fa-trash-alt "></i></button>
+                                        <button class="btn btn-danger  btn-xs" id="deleteModalBtn" data-toggle="modal" data-target="#modal-delete-{{customer.id}}"><i class="fa fa-trash-alt "></i></button>
+                                        <a href="/order/movies" class="btn btn-primary btn-x" role="button" aria-pressed="true"><i class="fa fa-shopping-cart "></i></a>
+                                        
                                     </td>
                                 </tr>
                                 
@@ -134,7 +136,7 @@
                         </div>
                     
                         <!-- Customer Form -->
-                        <form class="card-body" id="customer-updateForm" action="" method="post" autocomplete="off" enctype="multipart/form-data">
+                        <form class="card-body" id="regForm" action="" method="post" autocomplete="off" enctype="multipart/form-data">
                             {% csrf_token %}
                             <div class="tab-holder container-fluid customer-form-body">
                                 <!-- Basic Info Tab -->
@@ -161,9 +163,6 @@
                                     <div class="form-group col-md-6 ">
                                         <label>Middle Name</label>
                                         <input name="middle_name" id="input-text" type="text" class="form-control" placeholder="Middle Name" maxlength="50" disabled>
-                                        <div class="invalid-feedback">
-                                            Please provide a valid Middle Name.
-                                        </div>
                                     </div>
                                     <div class="form-group col-md-6 col-xs-4 ">
                                         <label>Gender</label>
@@ -195,7 +194,7 @@
                                 <div class="tab  w3-center w3-animate-left" id="customer-tab-content">
                                     <div class="form-row">
                                     <div class="col-md-12 mb-4 text text-primary ">
-                                        <h2 class="text-center">Address</h2>
+                                        <h2 class="text-center">Address and Contact Details</h2>
                                     </div>
                                     <div class="form-group col-md-6 text-left">
                                         <label>Street</label>
@@ -233,6 +232,13 @@
                                             Please provide a Zip Code.
                                         </div>
                                     </div>
+                                    <div class="form-group col-md-4 col-xs-4 text-left ">
+                                        <label>Email Address <span style="color: red">*</span></label>
+                                        <input name="email" id="input-text" type="email" class="form-control" placeholder="Email Address" maxlength="50" >
+                                        <div class="invalid-feedback">
+                                          Please provide a valid Email Address.
+                                        </div>
+                                    </div>
                                     </div>
                                 </div>
 
@@ -245,16 +251,10 @@
                                     <div class="form-group col-md-6 text-left">
                                         <label>Spouse Name</label>
                                         <input name="spouse_name" id="input-text" type="text" class="form-control" placeholder="Spouse Name" minlength="2" maxlength="50" disabled>
-                                        <div class="invalid-feedback">
-                                            Please provide a valid Spouse Name: 2 - 50 characters.
-                                        </div>
                                     </div>
                                     <div class="form-group col-md-6 text-left">
                                         <label>Spouse Occupation</label>
                                         <input name="spouse_occupation" id="input-text" type="text" class="form-control" placeholder="Spouse Occupation" minlength="2" maxlength="50" disabled>
-                                        <div class="invalid-feedback">
-                                            Please provide a valid Spouse Occupation: 2 - 50 characters.
-                                        </div>
                                     </div>
                                     <div class="form-group col-md-6 text-left">
                                         <label>No. Of Children</label>

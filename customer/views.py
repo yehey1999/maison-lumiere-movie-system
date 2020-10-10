@@ -9,6 +9,8 @@ from json import dumps
 import json
 from django.core.serializers.json import DjangoJSONEncoder
 
+from movie.models import Movie
+
 # Create your views here.
 
 class CustomerRegistrationView(View):
@@ -82,13 +84,15 @@ class CustomerSummaryView(View):
 
                 if form.is_valid():
                     customer = form.save(commit=False)
-                    middle_name = request.POST.get("middle_name")
-                    spouse_name = request.POST.get("spouse_name")
-                    spouse_occupation = request.POST.get("spouse_occupation")
-                    no_children = request.POST.get("no_children")
-                    image = request.FILES.get("image", "")
+                    customer.middle_name = request.POST.get("middle_name")
+                    customer.spouse_name = request.POST.get("spouse_name")
+                    customer.spouse_occupation = request.POST.get("spouse_occupation")
+                    customer.no_children = request.POST.get("no_children")
+                    customer.image = request.FILES.get("image")
                     customer.save()
                     return redirect('/customer')
 
 
         return HttpResponse("error")
+
+

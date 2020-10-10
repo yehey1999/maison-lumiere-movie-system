@@ -28,7 +28,6 @@ const profilePic = document.querySelector("#profile-pic");
 const populateCustomer = (id) => {
     customer = JSON.parse(document.querySelector("#data"+id).getAttribute('customer-json'));
     media_url = document.querySelector("#data"+id).getAttribute('media-url');
-    //console.log(customer);
     
     customer_id.value = customer.id;
     lastName.value = customer.last_name;
