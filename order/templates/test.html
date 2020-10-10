@@ -1,0 +1,12 @@
+Hello
+
+<form method="POST" action="{% url 'order:customer-order' %}">
+    {% csrf_token %}
+    <input type="text" name="total" value="205" >
+    <input type="text" name="quantity" value="20">
+
+    <input type="text" name="movie" value="2" >
+    <input type="text" name="customer_id" value="2" >
+
+    <input type="submit" value="submit">
+</form>

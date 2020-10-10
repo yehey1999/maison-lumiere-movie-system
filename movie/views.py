@@ -9,7 +9,6 @@ from .forms import MovieForm
 from json import dumps
 from django.core.serializers.json import DjangoJSONEncoder
 from django.core import serializers
-
 from django.urls import reverse
 
 class MovieRegistrationView(View):

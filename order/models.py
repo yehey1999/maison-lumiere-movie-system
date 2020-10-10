@@ -5,7 +5,7 @@ from customer.models import Customer
 
 # Create your models here.
 class Order(models.Model):
-    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    customer = models.ForeignKey(to=Customer, on_delete=models.CASCADE)
     total = models.FloatField(default=0.00)
     quantity = models.IntegerField(default=1)
     order_at = models.DateField(default=datetime.now())
