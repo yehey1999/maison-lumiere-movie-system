@@ -137,7 +137,7 @@ const isValidInput = (input) => {
   //and do validation based on their names
   
   if(input.name === "first_name" || input.name === "last_name" || input.name === "street" 
-  || input.name === "barangay" || input.name === "city" || input.name === "province" )
+  || input.name === "barangay" || input.name === "city" || input.name === "province" || input.name === "email")
       return input.value.length >= 2 && input.value.length <= 50 ? true : false;
 
   if(input.name === "gender")

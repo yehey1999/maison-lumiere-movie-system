@@ -73,7 +73,8 @@
                                     <td data-title="Address City" class="align-middle">{{customer.city}}</td>
                                     <td class="align-middle">
                                         <button class="btn btn-success btn-xs"  id="viewBtn" data-toggle="modal" data-target="#modal-edit" onclick="populateCustomer( {{customer.id}} )" ><i class="fa fa-eye"></i></button>
-                                        <button class="btn btn-danger  btn-xs" id="deleteModalBtn" data-toggle="modal" data-target="#modal-delete-{{customer.id}}"><i class="fas fa-trash-alt "></i></button>
+                                        <button class="btn btn-danger  btn-xs" id="deleteModalBtn" data-toggle="modal" data-target="#modal-delete-{{customer.id}}"><i class="fa fa-trash-alt "></i></button>
+                                        <button class="btn btn-primary  btn-xs" id="orderBtn" data-target=""><i class="fa fa-shopping-cart "></i></button>
                                     </td>
                                 </tr>
                                 
@@ -192,7 +193,7 @@
                                 <div class="tab  w3-center w3-animate-left" id="customer-tab-content">
                                     <div class="form-row">
                                     <div class="col-md-12 mb-4 text text-primary ">
-                                        <h2 class="text-center">Address</h2>
+                                        <h2 class="text-center">Address and Contact Details</h2>
                                     </div>
                                     <div class="form-group col-md-6 text-left">
                                         <label>Street</label>
@@ -228,6 +229,13 @@
                                         <input name="zipcode" id="input-text" type="text" class="form-control" placeholder="Zip Code" value="Zip Code" minlength="3" maxlength="4" disabled>
                                         <div class="invalid-feedback">
                                             Please provide a Zip Code.
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-4 col-xs-4 text-left ">
+                                        <label>Email Address <span style="color: red">*</span></label>
+                                        <input name="email" id="input-text" type="email" class="form-control" placeholder="Email Address" maxlength="50" >
+                                        <div class="invalid-feedback">
+                                          Please provide a valid Email Address.
                                         </div>
                                     </div>
                                     </div>

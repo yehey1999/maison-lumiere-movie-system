@@ -1,14 +1,22 @@
 $(document).ready(function() {
     $('.data-table').DataTable({
         dom: 'Bfrtip',
+        //export buttons
         buttons: ['copy', 'excel', 'csv', 'pdf'],
 
+        //show entries dropdown
         lengthMenu: [[5, 10, 20, 50, 100, -1], [5, 10, 20, 50, 100, "All"]],
+
+        //search bar
         searching: true,
 
+        //formatting
         dom: '<<"row"<"col-sm-4"l><"col-sm-4"B><"col-sm-4"f>> rt <"float-left"i> <"float-right"p>>',
+
+        //pagination
         pagingType: 'full_numbers',
-        fixedHeader: true,
+        
+        //fixedHeader: true,
         aoColumnDefs: [{
             'bSortable': false,
             'aTargets': [-1]
