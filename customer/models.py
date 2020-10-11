@@ -24,7 +24,6 @@ class Person(models.Model):
 
 class Customer(Person):
     image = models.ImageField(null=True, blank=True, upload_to = 'customers/')
-    email = models.EmailField(max_length = 50)
     created_at = models.DateField(default = datetime.now())
     updated_at = models.DateField(default = datetime.now())
 

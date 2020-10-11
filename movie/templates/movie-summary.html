@@ -72,8 +72,8 @@
                                     <td data-title="Genre" class="align-middle">{{movie.genres}}</td>
                                     <td data-title="Title" class="align-middle">{{movie.title}}</td>
                                     <td data-title="Release Date" class="align-middle">{{movie.release_date}}</td>
-                                    <td data-title="Price" class="align-middle">{{movie.price}}</td>
-                                    <td data-title="No. of Items" class="align-middle">{{movie.no_items}}</td>
+                                    <td data-title="Price" class="align-middle text-center">&#8369; {{movie.price}}</td>
+                                    <td data-title="No. of Items" class="align-middle text-center">{{movie.no_items}}</td>
                                 
                                     <td class="align-middle">
                                         <button class="btn btn-success btn-xs" onclick="populateDVD({{movie.id}})" id="viewBtn" data-toggle="modal" data-target="#modal-view">  <i class="fa fa-eye"></i></button>
@@ -171,7 +171,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group col-md-4 col-xs-4">
-                                    <label>Price</label>
+                                    <label>Price (&#8369;)</label>
                                     <input class="form-control" name="price" id="input-text" type="number" min="0.01" step="0.01" max="2500" disabled required/>
                                     <div class="invalid-feedback">
                                     Please provide a valid Price: 1 - 10000.
