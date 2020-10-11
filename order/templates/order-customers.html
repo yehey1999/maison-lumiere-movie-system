@@ -54,13 +54,22 @@
                     </thead>
 
                     <tbody>
-                        <tr>
-                            <td data-title="Date Ordered" class="align-middle">Oct. 1, 2020</td>
-                            <td data-title="First Name" class="align-middle">Wylen Joan</td>
-                            <td data-title="Last Name" class="align-middle">Lee</td>
-                            <td data-title="Movie Title" class="align-middle">Up</td>
-                            <td data-title="Price" class="align-middle">100.0</td>
-                        </tr>
+                        {% for order in orders %}
+                            <tr>
+                                <td data-title="Date Ordered" class="align-middle">{{order.order_at}}</td>
+                                <td data-title="First Name" class="align-middle">{{order.customer.first_name}}</td>
+                                <td data-title="Last Name" class="align-middle">{{order.customer.last_name}}</td>
+                                <td data-title="Movie Title" class="align-middle">
+
+                                    {% for movie in order.movies.all %}
+                                        {{ movie.title }} <br />              
+                                    {% endfor %}
+
+                                </td>
+
+                                <td data-title="Price" class="align-middle">{{order.total}}</td>
+                            </tr>
+                        {% endfor %}
                     </tbody>
                 </table> 
             </section> 
@@ -72,14 +81,14 @@
     {% endblock %}
 
     {% block scripts %}
-    <!-- Bootstrap Scripts -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-    
-    <!-- Data Table Scripts -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.10.21/b-1.6.3/b-html5-1.6.3/b-print-1.6.3/fh-3.1.7/sp-1.1.1/datatables.min.js"></script>
-    <script type="text/javascript" src="{% static 'js/data-table.js' %}"></script>
+        <!-- Bootstrap Scripts -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+        
+        <!-- Data Table Scripts -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.10.21/b-1.6.3/b-html5-1.6.3/b-print-1.6.3/fh-3.1.7/sp-1.1.1/datatables.min.js"></script>
+        <script type="text/javascript" src="{% static 'js/data-table.js' %}"></script>
     {% endblock %}

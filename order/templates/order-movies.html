@@ -24,24 +24,30 @@
         <div id="card-header" class="card-header bg-dark text-light">
         <h1 class="text-center">Available Movies</h1>
         </div>
+        
         <!-- Title End -->
+        <div class="d-block w-100 pt-2 pr-4 text-right" >
+            <p> Customer ID: {{customer.id}} </p>
+            <p> Customer Name: {{customer.last_name}} {{customer.first_name}} </p>
+        </div>
 
         <!-- Cards Start -->
         <div class="row" style="padding: 4%;">
-            {% for movie, json_movie in movies %}
+
+            {% for movie in movies %}
                 <div class="col-sm-3" style="margin-bottom: 2%">
-                <div class="card text-center" movie-json="{{json_movie}}">
-                    <div class="card-header">
-                        <h5 class="card-title" name="title">{{movie.title}}</h5>
+                    <div class="card text-center">
+                        <div class="card-header">
+                            <h5 class="card-title" name="title">{{movie.title}}</h5>
+                            </div>
+                        <img src="{{MEDIA_URL}}{{movie.images}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <p class="card-text" names="genres">{{movie.genres}}</p>
                         </div>
-                    <img src="{{MEDIA_URL}}{{movie.images}}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text" names="genres">{{movie.genres}}</p>
+                        <div class="card-footer text-center">
+                            <button type="button" class="btn btn-success btn-lg ticketBtn" data-clicked="F" data-price="{{movie.price}}" id="{{movie.title}}" data-movie="{{movie.id}}"><i class="fas fa-ticket-alt"></i></button>
+                        </div>
                     </div>
-                    <div class="card-footer text-center">
-                        <button class="btn btn-success btn-lg" id="addBtn" data-target=""><i class="fas fa-ticket-alt"></i></button>
-                    </div>
-                </div>
                 </div>
             {% endfor %}
             
@@ -53,12 +59,53 @@
         <div class="row">
             <div class="col-md-4"> </div>
             <div class="col-md-4 offset-md-4 text-center" style="padding-left: 4%; padding-right: 4%; padding-bottom: 4%;">
-                <h3> Total: <span>&#8369;</span> 100.00 </h3>
-                <button class="btn btn-success btn-md" id="orderBtn" data-target=""> <h4> Place Order </h4> </button>
+                <table class="orders">
+                    <thead>
+                        <tr>
+                            <th>Items</th>
+                            <th>Price</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr id="" >
+                            <td data-title="Date Registered" class="align-middle"></td>
+                            <td data-title="First Name" class="align-middle"></td>
+                        </tr> 
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <tr>
+                                <td>Total:</td>
+                                <td id="total">0</td>
+                                <td>Quantity:</td>
+                                <td id="quantity">0</td>
+                            </tr>
+                        </tr> 
+                    </tfoot>                   
+                </table>
+
+                <form method="POST" action="/order/customers/">
+                    {% csrf_token %}
+
+                    <!-- These are hidden inputs -->
+                    <!-- there values are set in the javascript below -->
+                    <input name="total" hidden>
+                    <input name="quantity" hidden>
+                    <input name="customer_id" value="{{customer.id}}" hidden>
+
+                    <!-- when this button is click, it will be redirected to tha action url in the form -->
+                    <button type="submit" class="btn btn-success btn-md" id="orderBtn" > <h4> Place Order </h4> </button>
+
+                </form>
+
             </div>
         </div>
 
     </div>
+
+
     <!-- Body End -->
     {% endblock %}
 
@@ -67,4 +114,92 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    
+    
+    <script type="text/javascript">
+        // custom attributes
+        // data-movie
+        // data-price
+        // data-clicked
+
+        //ticketBtns
+        //red = reserved
+        //green = available
+        const tickets = document.querySelectorAll('.ticketBtn');
+
+        //to display 
+        const totalPrice = document.querySelector('#total')
+
+        //to display
+        const quantityItems = document.querySelector('#quantity');
+
+        //a hidden input, used for sending total
+        const totalInput = document.querySelector("input[name=total]");
+
+        //a hidden input, used for sending quantity
+        const quantityInput = document.querySelector("input[name=quantity]");
+
+        //initial values
+        let total = 0;
+        let quantity = 0;
+
+        //iterate all ticket buttons
+        tickets.forEach(ticket => {
+             
+            //add event listener to all ticket buttons
+            ticket.addEventListener('click', () => {
+
+                // F => means this ticket button is not reserved
+                if(ticket.getAttribute("data-clicked") == 'F'){
+                    ticket.classList.add("btn-danger");
+
+                    // T => means this this ticket button is reserved
+                    ticket.setAttribute("data-clicked", 'T');
+
+                    // add the price of this ticket to the total
+                    total += parseInt(ticket.getAttribute('data-price'));
+
+                    // increment the quantity items
+                    quantity += 1;
+
+                    // create hidden input in storing movie id selected
+                    $('<input>').attr({
+                        type: 'hidden',
+                        id: `movie${ticket.getAttribute('data-movie')}`,
+                        name: 'movie',
+                        value: ticket.getAttribute('data-movie')
+                    }).appendTo('form');
+
+                }
+                else{
+                    // T => means this this ticket button is not reserved
+                    ticket.setAttribute("data-clicked", 'F');
+                    ticket.classList.remove("btn-danger");
+
+                    // substract the price of this ticket to the total
+                    total -= parseInt(ticket.getAttribute('data-price'));
+
+                    // decrement the quantity items
+                    quantity -= 1;
+
+                    // delete hidden input in storing movie id selected
+                    $(`#movie${ticket.getAttribute('data-movie')}`).remove();
+                    
+                }
+
+                // display the total quantity and price in the UI
+                quantityItems.innerHTML = quantity;
+                totalPrice.innerHTML = total;
+
+                // set the values for hidden inputs - total & quantity
+                totalInput.value = total;
+                quantityInput.value = quantity;
+
+            });
+            ;   
+        })
+
+
+    </script>
+    
     {% endblock %}
