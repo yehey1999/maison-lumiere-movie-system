@@ -33,7 +33,7 @@
             <!-- Title Start-->
             <div id="card-header" class="card-header bg-dark text-light">
                 <h2 class="text-center" style="font-weight: 500;">DVD Report Summary</h2>
-                <a href="/movie/register" class="btn btn-warning btn-xs text-center" id="addBtn"><i class="fa fa-plus fa-2x"></i></a>
+                <a href="{% url 'movie:register' %}" class="btn btn-warning btn-xs text-center" id="addBtn"><i class="fa fa-plus fa-2x"></i></a>
             </div>
             <!-- Title End-->
 
@@ -83,7 +83,7 @@
                                     <div class="modal fade" id="modal-delete-{{movie.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="static">
                                         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                                             <div class="modal-content">
-                                                <form method="POST" action="/movie/">
+                                                <form method="POST" action="{% url 'movie:view' %}">
                                                     {% csrf_token %}
                                                     <div class="modal-header bg-dark text-white" id="modal-header">
                                                         <h2 class="modal-title" id="modal-title">Delete</h2>

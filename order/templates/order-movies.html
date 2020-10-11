@@ -86,7 +86,7 @@
                     </tfoot>                   
                 </table>
 
-                <form method="POST" action="/order/customers/">
+                <form method="POST" action="{% url 'order:customer-order' %}">
                     {% csrf_token %}
 
                     <!-- These are hidden inputs -->

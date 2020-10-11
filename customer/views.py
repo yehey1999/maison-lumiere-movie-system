@@ -75,7 +75,7 @@ class CustomerSummaryView(View):
                 customer_id = request.POST.get("customer_id1")
                 delete_customer = Customer.objects.filter(person_ptr_id=customer_id).delete()
                 delete_person = Person.objects.filter(id = customer_id).delete()
-                return redirect('/customer')
+                return redirect('customer:view')
 
             elif 'saveBtn' in request.POST:
                 customer_id = request.POST.get("customer_id2")
@@ -90,7 +90,7 @@ class CustomerSummaryView(View):
                     customer.no_children = request.POST.get("no_children")
                     customer.image = request.FILES.get("image")
                     customer.save()
-                    return redirect('/customer')
+                    return redirect('customer:view')
 
 
         return HttpResponse("error")

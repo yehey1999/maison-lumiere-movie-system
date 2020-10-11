@@ -97,6 +97,6 @@ class OrderCustomersView(View):
             form.save_m2m();
             
             #redirect to customers orders to view the orders details
-            return redirect("/order/customers/")
+            return redirect("order:customer-order")
   
         return HttpResponse("Order Form")
