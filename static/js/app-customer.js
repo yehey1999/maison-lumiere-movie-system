@@ -1,6 +1,9 @@
+// This JS is used for validating the inputs of the registration form for customer app
+
 const inputTexts = document.querySelectorAll("#input-text");
 const submitBtn = document.querySelector("#submitBtn");
 const tabs = document.getElementsByClassName("tab");
+
 const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");
 const steps = document.getElementsByClassName("step");
@@ -9,6 +12,9 @@ const steps = document.getElementsByClassName("step");
 let currentTab = 0; 
 
 inputTexts.forEach( element => {
+    // This function adds or removes is-valid and is-invalid class for each input
+    // everytime there is an event,
+    // depending on the validity of the input as defined in isValidInput()
     element.addEventListener('input', (event) => {
       if(isValidInput(event.target)){
           event.target.classList.add("is-valid");
@@ -128,32 +134,37 @@ const validateForm = () => {
 const isValidInput = (input) => {
   if(input.name === 'middle_name' || input.name === "spouse_name" || input.name === "spouse_occupation")
     return true;
-
-  if(input.value === "")
+  
+  if(input.checkValidity())
+    return true;
+  else
     return false;
+
+  // if(input.value === "")
+  //   return false;
 
   //these conditional statements 
   //identify what type of input are they
   //and do validation based on their names
   
-  if(input.name === "first_name" || input.name === "last_name" || input.name === "street" 
-  || input.name === "barangay" || input.name === "city" || input.name === "province")
-      return input.value.length >= 2 && input.value.length <= 50 ? true : false;
+  // if(input.name === "first_name" || input.name === "last_name" || input.name === "street" 
+  // || input.name === "barangay" || input.name === "city" || input.name === "province")
+  //     return input.value.length >= 2 && input.value.length <= 50 ? true : false;
 
-  if(input.name === "gender")
-    return input.value === "MALE" || input.value === "FEMALE" ? true : false;
+  // if(input.name === "gender")
+  //   return input.value === "MALE" || input.value === "FEMALE" ? true : false;
 
-  if(input.name === "status")
-    return input.value === "SINGLE" || input.value === "MARRIED" || input.value === "DIVORCED" || input.value === "WIDOWED" ? true : false;
+  // if(input.name === "status")
+  //   return input.value === "SINGLE" || input.value === "MARRIED" || input.value === "DIVORCED" || input.value === "WIDOWED" ? true : false;
 
-  if(input.name === "zipcode"){
-    if(isNaN(input.value))
-      return false;
-    if(input.value.length >= 3 && input.value.length <= 4)
-      return true;
-    else 
-      return false;
-  }
+  // if(input.name === "zipcode"){
+  //   if(isNaN(input.value))
+  //     return false;
+  //   if(input.value.length >= 3 && input.value.length <= 4)
+  //     return true;
+  //   else 
+  //     return false;
+  // }
 
   return true;
 }

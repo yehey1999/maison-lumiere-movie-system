@@ -59,32 +59,23 @@
         <hr>
         <div class="row">
             <div class="col-md-4"> </div>
-            <div class="col-md-4 offset-md-4 text-center" style="padding-left: 4%; padding-right: 4%; padding-bottom: 4%;">
-                <table class="orders">
-                    <thead>
-                        <tr>
-                            <th>Items</th>
-                            <th>Price</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-
+            <div class="col-md-4 offset-md-4 text-center" style="padding-left: 4%; padding-right: 4%; padding-bottom: 4%; width:100%; ">
+                <table class="orders text-left mx-auto w-auto" style="table-layout:fixed;">
                     <tbody>
-                        <tr id="" >
-                            <td data-title="Date Registered" class="align-middle"></td>
-                            <td data-title="First Name" class="align-middle"></td>
-                        </tr> 
-                    </tbody>
-                    <tfoot>
                         <tr>
-                            <tr>
-                                <td>Total: &#8369;</td>
-                                <td id="total"> 0</td>
-                                <td>Quantity:</td>
-                                <td id="quantity">0</td>
-                            </tr>
-                        </tr> 
-                    </tfoot>                   
+                            <td>Total: </td>
+                            <td class="text-right">&#8369; &nbsp;</td>
+                            <td id="total"> 0</td>
+                        </tr>
+                        <tr>
+                            <td>Quantity:</td>
+                            <td></td>
+                            <td id="quantity">0</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                        </tr>
+                    </tbody>                   
                 </table>
 
                 <form method="POST" action="/order/customers/">
