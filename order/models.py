@@ -12,6 +12,7 @@ class Order(models.Model):
     due_at = models.DateField(default=datetime.now()+timedelta(days=30))
     movies = models.ManyToManyField(Movie)
     status = models.CharField(max_length = 6)
+    is_deleted = models.BooleanField(default=False)
     
     class Meta:
         db_table = "Order"

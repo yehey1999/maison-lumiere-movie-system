@@ -30,6 +30,7 @@ class OrderMoviesView(View):
             'customer': customer
         }
         
+        
         return render(request, 'order-movies.html', context)
 
 
@@ -39,7 +40,14 @@ class OrderMoviesView(View):
 class OrderCustomersView(View):
     def get(self, request):
         #get all the order objects
-        orders = Order.objects.all();
+        #customers = Customer.objects.filter(is_deleted=False)
+        
+        #orders = customers.order_set.all()
+        #orders = Order.objects.filter(is_deleted=False)
+        
+        #reverse relationship
+        #https://www.webforefront.com/django/setuprelationshipsdjangomodels.html
+        orders = Order.objects.filter(customer__is_deleted=False)
         
         #add this to context
         context = {
@@ -50,53 +58,69 @@ class OrderCustomersView(View):
 
     def post(self, request):
         
-        form = OrderForm(request.POST)
-        
-        #check if form is valid
-        if form.is_valid():
+        if 'deleteBtn' in request.POST:
+            id = request.POST.get('order-id')
             
-            #get all the movie input which a name attribute of movie: input[name=movie]
-            movie_ids = request.POST.getlist('movie')
+            order = Order.objects.get(id=id)
             
-            #get the customer id 
-            customer_id = request.POST.get('customer_id')
-
-            #make the order form commit=false
-            #so that we can edit the form
-            #If your model has a many-to-many relation and you specify commit=False when you save a form
-            #Django cannot immediately save the form data for the many-to-many relation
-            #This is because it isn’t possible to save many-to-many data for an instance until the instance exists in the database.
-            order = form.save(commit=False)
+            for _movie in order.movies.all():
+                movie = Movie.objects.get(id=_movie.id)
+                movie.no_items += 1
+                movie.save()
             
-            #link to the customer who order
-            order.customer = Customer.objects.get(person_ptr_id=customer_id)
-            
-            #save the form
+            order.is_deleted = True
             order.save()
             
-            #iterate on all the movie ids
-            for id in movie_ids:
-                #get the movie object
-                movie = Movie.objects.get(id=id)
-                
-                #check if movie items is greater than 0
-                if movie.no_items > 0:
-                    #if true, link the movie to the order
-                    order.movies.add(movie)
-                    
-                    #decrement the movie no_items by -1
-                    movie.no_items -= 1;
-                    
-                    #save the movie
-                    movie.save()
-                else:
-                    return  HttpResponse("Form not Valid")
-            
-            #order.save()
-            #After you’ve manually saved the instance produced by the form, you can invoke save_m2m() to save the many-to-many form data
-            form.save_m2m();
-            
-            #redirect to customers orders to view the orders details
             return redirect("order:customer-order")
+        
+        else:    
+            form = OrderForm(request.POST)
+            
+            #check if form is valid
+            if form.is_valid():
+                
+                #get all the movie input which a name attribute of movie: input[name=movie]
+                movie_ids = request.POST.getlist('movie')
+                
+                #get the customer id 
+                customer_id = request.POST.get('customer_id')
+
+                #make the order form commit=false
+                #so that we can edit the form
+                #If your model has a many-to-many relation and you specify commit=False when you save a form
+                #Django cannot immediately save the form data for the many-to-many relation
+                #This is because it isn’t possible to save many-to-many data for an instance until the instance exists in the database.
+                order = form.save(commit=False)
+                
+                #link to the customer who order
+                order.customer = Customer.objects.get(person_ptr_id=customer_id)
+                
+                #save the form
+                order.save()
+                
+                #iterate on all the movie ids
+                for id in movie_ids:
+                    #get the movie object
+                    movie = Movie.objects.get(id=id)
+                    
+                    #check if movie items is greater than 0
+                    if movie.no_items > 0:
+                        #if true, link the movie to the order
+                        order.movies.add(movie)
+                        
+                        #decrement the movie no_items by -1
+                        movie.no_items -= 1;
+                        
+                        #save the movie
+                        movie.save()
+                    else:
+                        return  HttpResponse("Form not Valid")
+                
+                #order.save()
+                #After you’ve manually saved the instance produced by the form, you can invoke save_m2m() to save the many-to-many form data
+                form.save_m2m();
+                
+                #redirect to customers orders to view the orders details
+                return redirect("order:customer-order")
   
         return HttpResponse("Order Form")

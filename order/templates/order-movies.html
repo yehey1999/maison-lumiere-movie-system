@@ -40,7 +40,7 @@
                         <div class="card-header" style="height: 80px;">
                             <h5 class="card-title" name="title">{{movie.title}}</h5>
                         </div>
-                        <img src="{{MEDIA_URL}}{{movie.images}}" class="card-img-top" alt="..." style="max-width: 100%; height: 300px;">
+                        <img src="{{MEDIA_URL}}{{movie.images}}" class="card-img-top" alt="..." style="max-width: 100%; height: 130px;">
                         <div class="card-body text-truncate" style="height: 90px;">
                             <p class="card-text" name="genres">{{movie.genres}}</p>
                             <p class="card-text" name="price">&#8369; {{movie.price}}</p>
@@ -58,34 +58,37 @@
 
         <hr>
         <div class="row">
-            <div class="col-md-4"> </div>
             <div class="col-md-4 offset-md-4 text-center" style="padding-left: 4%; padding-right: 4%; padding-bottom: 4%;">
-                <table class="orders">
-                    <thead>
-                        <tr>
-                            <th>Items</th>
-                            <th>Price</th>
-                            <th></th>
-                        </tr>
-                    </thead>
+                
 
-                    <tbody>
-                        <tr id="" >
-                            <td data-title="Date Registered" class="align-middle"></td>
-                            <td data-title="First Name" class="align-middle"></td>
-                        </tr> 
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <tr>
-                                <td>Total: &#8369;</td>
-                                <td id="total"> 0</td>
-                                <td>Quantity:</td>
-                                <td id="quantity">0</td>
-                            </tr>
-                        </tr> 
-                    </tfoot>                   
-                </table>
+                <div class="col-25">
+                    <div class="text-left">
+                        <h4>Cart
+                            <span class="price" style="color:black">
+                            <i class="fa fa-shopping-cart"></i>
+                            <b id="quantity">0</b>
+                            </span>
+                        </h4>
+                        <table class="orders text-left" style="width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>Items</th>
+                                    <th>Price</th>
+                                </tr>
+                            </thead>
+                            <tbody class="items">
+
+                            </tbody>
+
+                            <tfoot class="pt-3">
+                                <tr>
+                                    <td><b>Total: </b></td>
+                                    <td>&#8369; <span id="total">0</span></td>
+                                </tr>                        
+                            </tfoot>                 
+                        </table>
+                    </div>
+                </div>
 
                 <form method="POST" action="{% url 'order:customer-order' %}">
                     {% csrf_token %}
@@ -97,7 +100,7 @@
                     <input name="customer_id" value="{{customer.id}}" hidden>
 
                     <!-- when this button is click, it will be redirected to tha action url in the form -->
-                    <button type="submit" class="btn btn-success btn-md" id="orderBtn" > <h4> Place Order </h4> </button>
+                    <button type="submit" class="btn btn-success" id="orderBtn" style="margin-top: 2rem;"> <h4> Place Order </h4> </button>
 
                 </form>
 
@@ -171,6 +174,13 @@
                         value: ticket.getAttribute('data-movie')
                     }).appendTo('form');
 
+                    $('.items').append(`
+                        <tr id='title${ticket.getAttribute('data-movie')}'>
+                            <td>${ticket.id}</td>
+                            <td>&#8369; ${ticket.getAttribute('data-price')}</td>
+                        </tr> 
+                    `);
+
                 }
                 else{
                     // T => means this this ticket button is not reserved
@@ -185,6 +195,7 @@
 
                     // delete hidden input in storing movie id selected
                     $(`#movie${ticket.getAttribute('data-movie')}`).remove();
+                    $(`#title${ticket.getAttribute('data-movie')}`).remove();
                     
                 }
 

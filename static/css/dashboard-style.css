@@ -21,8 +21,10 @@ nav li {
 }
 
 body{
+  
   background: rgb(254,177,30);
   background: linear-gradient(90deg, rgba(254,177,30,1) 10%, rgba(254,177,30,1) 30%, rgba(254,177,30,1) 40%, rgba(203,9,54,1) 87%, rgba(229,75,19,1) 100%, rgba(9,9,121,1) 100%);
+  
 }
 
 /* Container */

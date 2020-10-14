@@ -57,7 +57,7 @@
                     <input type="email" placeholder="Email" name='signIn_email' required="required"/>
                     <input type="password" placeholder="Password" name='signIn_password' required="required"/>
                     <a href="#">Forgot your password?</a>
-                    <button name='btnSignIn' type="submit">Sign In</button>
+                    <a name='btnSignIn' href="{% url 'customer:view' %}" style="background: blue; color: white; padding: 0.8rem 3rem; border-radius: 50px; font-weight: 500;">SIGN IN</a>
                 </form>
             </div>
             <!-- Sign In End -->

@@ -54,7 +54,7 @@ class CustomerRegistrationView(View):
 
 class CustomerSummaryView(View):
     def get(self, request):
-        qs_customers = Customer.objects.all().values()
+        qs_customers = Customer.objects.filter(is_deleted=False).values()
         
         json_customers = []
         for qs_customer in qs_customers:
@@ -73,8 +73,10 @@ class CustomerSummaryView(View):
         if request.method == 'POST':
             if 'deleteBtn' in request.POST:
                 customer_id = request.POST.get("customer_id1")
-                delete_customer = Customer.objects.filter(person_ptr_id=customer_id).delete()
-                delete_person = Person.objects.filter(id = customer_id).delete()
+                delete_customer = Customer.objects.get(person_ptr_id=customer_id)
+                delete_customer.is_deleted = True
+                delete_customer.save()
+                #delete_person = Person.objects.filter(id = customer_id).delete()
                 return redirect('customer:view')
 
             elif 'saveBtn' in request.POST:

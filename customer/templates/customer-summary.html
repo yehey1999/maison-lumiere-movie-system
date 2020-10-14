@@ -204,26 +204,19 @@
                                         </div>
                                     </div>
                                     <div class="form-group col-md-6 text-left">
-                                        <label>Barangay</label>
-                                        <input name="barangay" id="input-text" type="text" class="form-control" placeholder="Barangay" minlength="2" maxlength="50" disabled>
-                                        <div class="invalid-feedback">
-                                            Please provide a valid Barangay: 2 - 50 characters.
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-6 text-left">
-                                        <label>City</label>
-                                        <input name="city" id="input-text" type="text" class="form-control" placeholder="City" value="City" minlength="2" maxlength="50" disabled>
-                                        <div class="invalid-feedback">
-                                            Please provide a valid City: 2 - 50 characters.
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-6 text-left">
                                         <label>Province</label>
-                                        <select name="province" id="input-text" class="custom-select" disabled>
-                                            <option selected value="BOHOL">Bohol</option>
-                                            <option value="CEBU">Cebu</option>
-                                            <option value="MANILA">Manila</option>
+                                        <select name="province" id="province" class="custom-select" disabled>
                                         </select>
+                                    </div>
+                                    <div class="form-group col-md-6 text-left">
+                                        <label>City <span style="color: red">*</span></label>
+                                        <select id="city" name="city" class="custom-select" disabled>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-6 text-left">
+                                        <label>Barangay <span style="color: red">*</span></label>
+                                        <select id="barangay" name="barangay" class="custom-select"  disabled>
+                                        </select> 
                                     </div>
                                     <div class="form-group col-md-6 text-left">
                                         <label>Zip Code </label>
@@ -315,7 +308,91 @@
         <script type="text/javascript" src="{% static 'js/modal-js/app.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/modal-js/upload.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/modal-js/view-edit.js' %}"></script>
-        <script type="text/javascript" src="{% static 'js/modal-js/populate-customer.js' %}"></script>
+ 
 
+        <script type="text/javascript">
+                const cityDropdown = $("#city");
+                const provinceDropdown = $("#province");
+                const barangayDropdown = $("#barangay");
+
+                let provinces = {};
+                let cities = {};
+                let barangays = {};
+
+                fetchAddresses()
+                .then((res)=> {
+
+                    provinces.RECORDS.sort((a,b) => {
+                        return a.provDesc.localeCompare(b.provDesc); 
+                    })
+                    
+                    populateProvinces();
+                    populateCities(provinces.RECORDS[0].provCode);
+                    populateBarangays(cities.RECORDS[0].citymunCode)
+                });
+
+                
+                const populateProvinces = () => {
+                    provinces.RECORDS.forEach(province => {
+                        provinceDropdown.append(`<option id='${province.provCode}' data-province='${capitalizeFirstLetter(province.provDesc)}'>${capitalizeFirstLetter(province.provDesc)}</option>`);
+                    })
+                }
+
+                const populateCities = (provCode) => {
+                    cityDropdown.empty();
+
+                    let cityCode = -1;
+                    cities.RECORDS.forEach(city => {
+                        if(city.provCode == provCode){
+                            cityCode = cityCode === -1 ? city.citymunCode : cityCode;
+                            cityDropdown.append(`<option id='${city.citymunCode}' data-city='${capitalizeFirstLetter(city.citymunDesc)}'>${capitalizeFirstLetter(city.citymunDesc)}</option>`);
+                        }
+                    })
+
+                    populateBarangays(cityCode);              
+                }
+
+                const populateBarangays = cityCode => {
+                    barangayDropdown.empty();
+                    barangays.RECORDS.forEach(barangay => {
+                        if(barangay.citymunCode == cityCode)
+                            barangayDropdown.append("<option>" + barangay.brgyDesc + "</option>");     
+        
+                    })
+                }
+
+                provinceDropdown.change(e => {
+                const provCode = provinceDropdown.children("option:selected").attr("id");
+                populateCities(provCode);
+                });
+
+                cityDropdown.change(e => {
+                const citymunCode = cityDropdown.children("option:selected").attr("id");
+                populateBarangays(citymunCode);
+                });
+
+                const capitalizeFirstLetter = string => {
+                return string.toLowerCase()
+                            .split(' ')
+                            .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
+                            .join(' ');
+                }
+
+        
+                async function fetchAddresses()  {
+                let res = await fetch("{% static './js/json/refprovince.json' %}");
+                provinces = await res.json();
+
+                res = await fetch("{% static './js/json/refcitymun.json' %}");
+                cities = await res.json();
+
+                res = await fetch("{% static './js/json/refbrgy.json' %}");
+                barangays = await res.json();
+                }
+                    
+        
+        </script>
+
+       <script type="text/javascript" src="{% static 'js/modal-js/populate-customer.js' %}"></script>
     {% endblock %}
 

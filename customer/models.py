@@ -26,6 +26,7 @@ class Customer(Person):
     image = models.ImageField(null=True, blank=True, upload_to = 'customers/')
     created_at = models.DateField(default = datetime.now())
     updated_at = models.DateField(default = datetime.now())
+    is_deleted = models.BooleanField(default=False)
 
     class Meta:
         db_table = "Customer"

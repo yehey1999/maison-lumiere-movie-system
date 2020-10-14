@@ -15,6 +15,7 @@ class Movie(models.Model):
     images = models.ImageField(null=True, blank=True, upload_to='movies/')
     created_at = models.DateField(default=datetime.now())   
     updated_at = models.DateField(default=datetime.now())
+    is_deleted = models.BooleanField(default=False)
     
     class Meta:
         db_table = "Movie"

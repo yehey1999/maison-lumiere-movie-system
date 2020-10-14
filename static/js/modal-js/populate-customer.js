@@ -10,8 +10,8 @@ const birthdate = document.querySelector("input[name=birthdate]");
 
 //Address Tab
 const street = document.querySelector("input[name=street]");
-const barangay = document.querySelector("input[name=barangay]");
-const city = document.querySelector("input[name=city]");
+const barangay = document.querySelector("select[name=barangay]");
+const city = document.querySelector("select[name=city]");
 const province = document.querySelector("select[name=province]");
 const zipCode = document.querySelector("input[name=zipcode]");
 
@@ -39,8 +39,16 @@ const populateCustomer = (id) => {
     
     street.value = customer.street;
     province.value = customer.province;
-    barangay.value = customer.barangay;
+
+    let provCode = document.querySelector(`[data-province="${customer.province}"]`)
+    populateCities(provCode.id);
+
+    let cityCode = document.querySelector(`[data-city="${customer.city}"]`);
+    populateBarangays(cityCode.id);
+
     city.value = customer.city;
+    barangay.value = customer.barangay;
+
     zipCode.value = customer.zipcode;
 
     spouseName.value = customer.spouse_name;

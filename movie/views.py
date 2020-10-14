@@ -48,7 +48,7 @@ class MovieRegistrationView(View):
 
 class MovieSummaryView(View):
     def get(self, request):
-        qs_movies = Movie.objects.all().values()
+        qs_movies = Movie.objects.filter(is_deleted=False).values()
         
         json_movies = []
         for qs_movie in qs_movies:
@@ -68,7 +68,9 @@ class MovieSummaryView(View):
     def post(self, request):
         if 'deleteBtn' in request.POST:
             id = request.POST.get('movie-id')
-            Movie.objects.filter(id=id).delete()
+            movie = Movie.objects.get(id=id)
+            movie.is_deleted = True
+            movie.save()
         
         elif 'updateBtn' in request.POST:
             movie = Movie.objects.get(id=request.POST.get('movie-id-update'))
