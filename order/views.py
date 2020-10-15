@@ -44,7 +44,7 @@ class OrderCustomersView(View):
         
         #orders = customers.order_set.all()
         #orders = Order.objects.filter(is_deleted=False)
-        
+            
         #reverse relationship
         #https://www.webforefront.com/django/setuprelationshipsdjangomodels.html
         orders = Order.objects.filter(customer__is_deleted=False)

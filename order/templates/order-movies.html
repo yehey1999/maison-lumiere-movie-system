@@ -22,93 +22,90 @@
     <div class="container card bg-white border">
         <!-- Title Start -->
         <div id="card-header" class="card-header bg-dark text-light">
-        <h1 class="text-center">Available Movies</h1>
+            <h1 class="text-center">Available Movies</h1>
         </div>
         
-        <!-- Title End -->
-        <div class="d-block w-100 pt-2 pr-4 text-right" >
-            <p> Customer ID: {{customer.id}} </p>
-            <p> Customer Name: {{customer.last_name}} {{customer.first_name}} </p>
-        </div>
-
+        
         <!-- Cards Start -->
-        <div class="row" style="padding: 4%;">
-
-            {% for movie in movies %}
-                <div class="col-sm-3" style="margin-bottom: 2%">
-                    <div class="card text-center align-middle">
-                        <div class="card-header" style="height: 80px;">
-                            <h5 class="card-title" name="title">{{movie.title}}</h5>
-                        </div>
-                        <img src="{{MEDIA_URL}}{{movie.images}}" class="card-img-top" alt="..." style="max-width: 100%; height: 130px;">
-                        <div class="card-body text-truncate" style="height: 90px;">
-                            <p class="card-text" name="genres">{{movie.genres}}</p>
-                            <p class="card-text" name="price">&#8369; {{movie.price}}</p>
-                        </div>
-                        <div class="card-footer text-center" >
-                            <button type="button" class="btn btn-success btn-lg ticketBtn" data-clicked="F" data-price="{{movie.price}}" id="{{movie.title}}" data-movie="{{movie.id}}"><i class="fas fa-ticket-alt"></i></button>
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
-            
-
-        </div>
-        <!-- Cards End -->
-
-        <hr>
         <div class="row">
-            <div class="col-md-4 offset-md-4 text-center" style="padding-left: 4%; padding-right: 4%; padding-bottom: 4%;">
-                
+            <div class="col-9 row" style="padding: 4%;">
 
-                <div class="col-25">
-                    <div class="text-left">
-                        <h4>Cart
-                            <span class="price" style="color:black">
-                            <i class="fa fa-shopping-cart"></i>
-                            <b id="quantity">0</b>
-                            </span>
-                        </h4>
-                        <table class="orders text-left" style="width: 100%;">
-                            <thead>
-                                <tr>
-                                    <th>Items</th>
-                                    <th>Price</th>
-                                </tr>
-                            </thead>
-                            <tbody class="items">
-
-                            </tbody>
-
-                            <tfoot class="pt-3">
-                                <tr>
-                                    <td><b>Total: </b></td>
-                                    <td>&#8369; <span id="total">0</span></td>
-                                </tr>                        
-                            </tfoot>                 
-                        </table>
+                {% for movie in movies %}
+                    <div class="col-4" style="margin-bottom: 2%">
+                        <div class="card text-center align-middle">
+                            <div class="card-header" style="height: 80px;">
+                                <h5 class="card-title" name="title">{{movie.title}}</h5>
+                            </div>
+                            <img src="{{MEDIA_URL}}{{movie.images}}" class="card-img-top" alt="..." style="max-width: 100%; height: 130px;">
+                            <div class="card-body text-truncate" style="height: 90px;">
+                                <p class="card-text" name="genres">{{movie.genres}}</p>
+                                <p class="card-text" name="price">&#8369; {{movie.price}}</p>
+                            </div>
+                            <div class="card-footer text-center" >
+                                <button type="button" class="btn btn-success btn-lg ticketBtn" data-clicked="F" data-price="{{movie.price}}" id="{{movie.title}}" data-movie="{{movie.id}}"><i class="fas fa-ticket-alt"></i></button>
+                            </div>
+                        </div>
                     </div>
-                </div>
-
-                <form method="POST" action="{% url 'order:customer-order' %}">
-                    {% csrf_token %}
-
-                    <!-- These are hidden inputs -->
-                    <!-- there values are set in the javascript below -->
-                    <input name="total" hidden>
-                    <input name="quantity" hidden>
-                    <input name="customer_id" value="{{customer.id}}" hidden>
-
-                    <!-- when this button is click, it will be redirected to tha action url in the form -->
-                    <button type="submit" class="btn btn-success" id="orderBtn" style="margin-top: 2rem;"> <h4> Place Order </h4> </button>
-
-                </form>
-
+                {% endfor %}
             </div>
+            <!-- Cards End -->
+
+            <hr>
+            <div class="col-3 mt-5 pl-0  d-block position-relative">
+                <div class="col-12 row position-sticky" style="position: sticky; top: 0;">
+                
+                    <div class="col-12">
+                        <!-- Title End -->
+                        <div class="d-block w-100 pt-2" >
+                            <p>ID: {{customer.id}} </p>
+                            <p> Name: {{customer.last_name}} {{customer.first_name}} </p>
+                        </div>
+                        <div class="text-left">
+                            <h4>Cart
+                                <span class="price" style="color:black">
+                                <i class="fa fa-shopping-cart"></i>
+                                <b id="quantity">0</b>
+                                </span>
+                            </h4>
+                            <table class="orders text-left" style="width: 100%;">
+                                <thead>
+                                    <tr>
+                                        <th>Items</th>
+                                        <th>Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="items">
+
+                                </tbody>
+
+                                <tfoot class="pt-3">
+                                    <tr>
+                                        <td><b>Total: </b></td>
+                                        <td>&#8369; <span id="total">0</span></td>
+                                    </tr>                        
+                                </tfoot>                 
+                            </table>
+                        </div>
+                    </div>
+
+                    <form method="POST" class="text-right w-100" action="{% url 'order:customer-order' %}">
+                        {% csrf_token %}
+                        <!-- These are hidden inputs -->
+                        <!-- there values are set in the javascript below -->
+                        <input name="total" hidden>
+                        <input name="quantity" hidden>
+                        <input name="customer_id" value="{{customer.id}}" hidden>
+
+                        <!-- when this button is click, it will be redirected to tha action url in the form -->
+                        <button type="submit" class="btn btn-success float-rignt" id="orderBtn" style="margin-top: 2rem;"> <h4> Place Order </h4> </button>
+                    </form>
+
+                </div>
+            </div>
+
         </div>
 
     </div>
-
 
     <!-- Body End -->
     {% endblock %}
