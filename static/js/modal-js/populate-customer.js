@@ -26,9 +26,11 @@ const profilePic = document.querySelector("#profile-pic");
 
 
 const populateCustomer = (id) => {
+    // reverts JSON to customer object
     customer = JSON.parse(document.querySelector("#data"+id).getAttribute('customer-json'));
     media_url = document.querySelector("#data"+id).getAttribute('media-url');
     
+    // assigns values in customer to inputs
     customer_id.value = customer.id;
     lastName.value = customer.last_name;
     firstName.value = customer.first_name;
@@ -59,6 +61,3 @@ const populateCustomer = (id) => {
     profilePic.src = media_url+customer.image;
     console.log(media_url+customer.image);
 }
-
-
-

@@ -36,7 +36,7 @@ class OrderMoviesView(View):
 
 #responsible for:
 # get: displays all the orders of the customer
-# post: handles the order movie order of the customer and redirects to orders-customer.html to display all the orders
+# post: handles the movie orders of the customer and redirects to orders-customer.html to display all the orders
 class OrderCustomersView(View):
     def get(self, request):
         #get all the order objects

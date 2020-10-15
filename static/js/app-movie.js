@@ -1,3 +1,5 @@
+// This JS is used for validating the inputs of the registration form for movie app
+
 const inputTexts = document.querySelectorAll("#input-text");
 const submitBtn = document.querySelector("#submitBtn");
 const tabs = document.getElementsByClassName("tab");
