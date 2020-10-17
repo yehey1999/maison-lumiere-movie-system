@@ -34,9 +34,9 @@
                         <a href="#" class="social"><i id="inIcon" class="fab fa-linkedin-in"></i></a>
                     </div>
                     <span>or use your email for registration</span>
-                    <input type="email" placeholder="Email" name='signUp_email' required="required"/>
+                    <input type="email" placeholder="Username" name='signUp_email' required="required"/>
                     <input type="password" placeholder="Password" name='signUp_password' required="required"/>
-                    <button name='btnSignUp' type="submit" >Sign Up</button>
+                    <button name='btnSignUp' type="submit" class="btn">Sign Up</button>
                 </form>
             </div>
             <!-- Sign Up End -->
@@ -54,10 +54,10 @@
                         <a href="#" class="social"><i id="inIcon" class="fab fa-linkedin-in"></i></a>
                     </div>
                     <span>or use your account</span>
-                    <input type="email" placeholder="Email" name='signIn_email' required="required"/>
+                    <input type="email" placeholder="Username" name='signIn_email' required="required"/>
                     <input type="password" placeholder="Password" name='signIn_password' required="required"/>
                     <a href="#">Forgot your password?</a>
-                    <a name='btnSignIn' href="{% url 'customer:view' %}" style="background: blue; color: white; padding: 0.8rem 3rem; border-radius: 50px; font-weight: 500;">SIGN IN</a>
+                    <a name='btnSignIn' href="{% url 'order:customer-order' %}" class="btn" >SIGN IN</a>
                 </form>
             </div>
             <!-- Sign In End -->
@@ -68,12 +68,12 @@
                     <div class="overlay-panel overlay-left">
                         <h1>Welcome Back!</h1>
                         <p>To keep connected with us please login with your personal info</p>
-                        <button class="ghost" id="signIn">Sign In</button>
+                        <button class="ghost" id="signIn" class="btn">Sign In</button>
                     </div>
                     <div class="overlay-panel overlay-right">
                         <h1>Hello, Friend!</h1>
                         <p>Enter your personal details and start journey with us</p>
-                        <button class="ghost" id="signUp">Sign Up</button>
+                        <button class="ghost" id="signUp" class="btn">Sign Up</button>
                     </div>
                 </div>
             </div>

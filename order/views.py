@@ -14,7 +14,7 @@ class OrderMoviesView(View):
     def get(self, request, id):
         
         #get all the movies which has quantity greater than 0
-        movies = Movie.objects.filter(no_items__gt=0)
+        movies = Movie.objects.filter(no_items__gt=0, is_deleted=False)
         
         #get the customer details based on the id - a url parameter
         #check the urls.py in this app
@@ -47,7 +47,7 @@ class OrderCustomersView(View):
             
         #reverse relationship
         #https://www.webforefront.com/django/setuprelationshipsdjangomodels.html
-        orders = Order.objects.filter(customer__is_deleted=False)
+        orders = Order.objects.filter(customer__is_deleted=False, is_deleted=False)
         
         #add this to context
         context = {

@@ -66,10 +66,10 @@ a {
 	margin: 15px 0;
 }
 
-button {
+.btn {
 	border-radius: 20px;
 	border: 1px solid #234099;
-	background-color: #234099;
+	background: #234099;
 	color: #FFFFFF;
 	font-size: 12px;
 	font-weight: bold;
@@ -77,6 +77,21 @@ button {
 	letter-spacing: 1px;
 	text-transform: uppercase;
 	transition: transform 80ms ease-in;
+	font-family: 'Montserrat', sans-serif;
+}
+
+button {
+	border-radius: 20px;
+	border: 1px solid #234099;
+	background: #234099;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+	font-family: 'Montserrat', sans-serif;
 }
 
 button:active {
